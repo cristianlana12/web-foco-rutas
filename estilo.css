@@ -1,0 +1,72 @@
+/* ESTILO CLARO - PANTALLA DIVIDIDA CON MÁRGENES (ESTILO TARJETA) */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f6f8; /* Un gris apenas más oscuro para que resalte el mapa blanco */
+    color: #333;
+}
+
+/* Contenedor principal: Flexbox con márgenes y separación (gap) */
+#scrolly {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 2rem; /* Separa todo el contenido de los bordes de la pantalla */
+    gap: 3rem; /* Espacio exacto entre el mapa y la columna de textos */
+}
+
+/* El mapa queda fijo, flotante y con bordes redondeados */
+#map-container {
+    position: sticky;
+    top: 2rem; /* Separación del techo al scrollear */
+    width: 50%; 
+    height: calc(100vh - 4rem); /* Altura total de la pantalla menos los márgenes (2 arriba + 2 abajo) */
+    z-index: 0;
+    border-radius: 16px; /* Bordes redondeados como en tu captura */
+    overflow: hidden; /* Fundamental para que el mapa respete las esquinas redondeadas */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra suave para que "flote" */
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Contenedor de textos en la mitad derecha */
+article {
+    position: relative;
+    width: 50%; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tarjetas de texto (Steps) */
+.step {
+    margin: 0 auto 80vh auto; /* 80vh mantiene el espacio de scrolleo */
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    padding: 2rem;
+    border-radius: 12px; /* Las tarjetas también con bordes suaves */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    opacity: 0.3;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+}
+
+.step.is-active {
+    opacity: 1;
+    transform: scale(1.02); /* Efecto sutil de zoom al leer */
+}
+
+h2 { 
+    margin-top: 0; 
+    font-size: 1.5rem;
+}
+
+/* Clases de colores para los títulos */
+.color-ruta3 { color: #d94838; } 
+.color-ruta5 { color: #e67e22; } 
+.color-ruta11 { color: #2980b9; } 
+.color-ruta18 { color: #27ae60; } 
+.color-ruta22 { color: #8e44ad; } 
+.color-ruta34 { color: #f1c40f; }
