@@ -17,14 +17,18 @@ body {
 }
 
 /* MINI MENÚ NAVEGADOR FIX (TOP-NAV) */
+/* MINI MENÚ NAVEGADOR FIX (TOP-NAV) - ESTILO EDITORIAL */
 .top-nav {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(17, 24, 39, 0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.6rem 1.5rem;
+    background-color: #ffffff;
+    /* Fondo blanco limpio */
+    border-bottom: 1px solid #e5e7eb;
+    /* Línea sutil separadora */
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Sombra muy suave */
 }
 
 .nav-container {
@@ -37,25 +41,17 @@ body {
     gap: 0.8rem;
 }
 
+/* Contenedor de la imagen del logo */
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
 }
 
-.nav-logo .badge-foco {
-    background-color: #ef4444;
-    color: #ffffff;
-    font-weight: 800;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-}
-
-.nav-logo .nav-title {
-    color: #f9fafb;
-    font-weight: 700;
-    font-size: 0.95rem;
+.nav-logo-img {
+    height: 32px;
+    /* Ajusta este valor si necesitas el logo más grande o chico */
+    width: auto;
+    display: block;
 }
 
 .nav-links {
@@ -65,35 +61,63 @@ body {
     flex-wrap: wrap;
 }
 
+/* Estilo base de los botones: rectángulos largos y de poca altura */
 .nav-btn {
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #e5e7eb;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    border: none;
+    color: #ffffff;
+    padding: 0.25rem 1.2rem;
+    /* Poco alto (0.25rem), más largo (1.2rem) */
+    border-radius: 3px;
+    /* Bordes apenitas redondeados, casi rectos */
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .nav-btn:hover {
-    background-color: #ffffff;
-    color: #111827;
+    opacity: 0.85;
+    /* Al pasar el mouse se aclaran un poco */
     transform: translateY(-1px);
 }
 
-.btn-rn3:hover { border-color: #d94838; }
-.btn-rn5:hover { border-color: #e67e22; }
-.btn-rn11:hover { border-color: #2980b9; }
-.btn-rn18:hover { border-color: #27ae60; }
-.btn-rn22:hover { border-color: #8e44ad; }
-.btn-rn34:hover { border-color: #d97706; }
+/* Colores específicos de fondo para cada ruta */
+.btn-rn3 {
+    background-color: #d94838;
+}
 
-/* HERO HEADER CON IMAGEN DE FONDO */
+.btn-rn5 {
+    background-color: #e67e22;
+}
+
+.btn-rn11 {
+    background-color: #2980b9;
+}
+
+.btn-rn18 {
+    background-color: #27ae60;
+}
+
+.btn-rn22 {
+    background-color: #8e44ad;
+}
+
+.btn-rn34 {
+    background-color: #d97706;
+}
+
+.btn-general {
+    background-color: #4b5563;
+    /* Gris oscuro para el panorama general */
+    padding: 0.25rem 1.5rem;
+}
+
+/* HERO HEADER CON TONALIDAD BEIGE Y CÁLIDA (IMAGEN 3) */
 .hero-header {
     position: relative;
-    min-height: 85vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,15 +125,16 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 4rem 1.5rem;
-    color: #ffffff;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+    color: #111827;
     text-align: center;
 }
 
+/* OVERLAY BEIGE / SEPIA CÁLIDO */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(17, 24, 39, 0.75) 0%, rgba(17, 24, 39, 0.92) 100%);
+    background: linear-gradient(180deg, rgba(245, 237, 224, 0.5) 0%, rgba(238, 228, 213, 0.7) 100%);
     z-index: 1;
 }
 
@@ -130,8 +155,8 @@ body {
 }
 
 .badge-tag {
-    background-color: #f59e0b;
-    color: #111827;
+    background-color: #111827;
+    color: #ffffff;
     font-size: 0.75rem;
     font-weight: 800;
     padding: 0.25rem 0.75rem;
@@ -141,92 +166,109 @@ body {
 
 .badge-partner {
     font-size: 0.8rem;
-    font-weight: 600;
-    color: #d1d5db;
+    font-weight: 700;
+    color: #4b5563;
     letter-spacing: 0.05em;
 }
 
+/* TÍTULO PRINCIPAL Y RESALTADO AMARILLO */
 .hero-main-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
     line-height: 1.15;
     letter-spacing: -0.03em;
     margin: 0 0 1.5rem 0;
-    color: #ffffff;
+    color: #111827;
 }
 
-/* SUBRAYADOS Y DESTACADOS DE IMAGEN */
 .highlight-yellow {
-    background: linear-gradient(120deg, rgba(245, 158, 11, 0.3) 0%, rgba(245, 158, 11, 0.8) 100%);
-    padding: 0 0.3rem;
+    background-color: #facc15;
+    /* Fondo amarillo cálido */
+    color: #111827;
+    padding: 0.1rem 0.6rem;
     border-radius: 4px;
     display: inline-block;
 }
 
-.underline-mark {
-    text-decoration: underline;
-    text-decoration-color: #f59e0b;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 4px;
-}
-
+/* PÁRRAFO PRINCIPAL MÁS GRANDE */
 .hero-lead {
-    font-size: 1.25rem;
-    color: #e5e7eb;
-    max-width: 800px;
+    font-size: 1.4rem;
+    /* Letras agrandadas */
+    color: #374151;
+    max-width: 880px;
     margin: 0 auto 3rem auto;
-    font-weight: 400;
+    font-weight: 500;
+    line-height: 1.6;
 }
 
-/* CUADROS RESUMEN DE DATOS (HERO STATS) */
+/* CUADROS BLANCOS (IMAGEN 2 & 3) */
 .hero-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .stat-box {
-    background-color: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 1.8rem 1.2rem;
+    background-color: #ffffff;
+    /* Blanco sólido */
+    border: 1px solid #e2e8f0;
+    padding: 1.8rem 1.4rem;
     border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.stat-box:hover {
-    transform: translateY(-4px);
-    background-color: rgba(255, 255, 255, 0.12);
-}
-
-.stat-alert {
-    border-color: rgba(245, 158, 11, 0.5);
-    background-color: rgba(245, 158, 11, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .stat-number {
     display: block;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: 900;
-    color: #ffffff;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.stat-title {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #f3f4f6;
-    margin-bottom: 0.4rem;
+    color: #111827;
+    /* Número oscuro de alto impacto */
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
 }
 
 .stat-desc {
-    font-size: 0.8rem;
-    color: #9ca3af;
+    font-size: 0.9rem;
+    color: #4b5563;
     margin: 0;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* MINI CUADRO DE RIESGO */
+.hero-mini-box {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.6rem;
+    max-width: 750px;
+    margin: 0 auto 3rem auto;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.mini-box-tag {
+    background-color: #d94838;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: -10px;
+    left: 1.5rem;
+}
+
+.hero-mini-box p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #4b5563;
+    line-height: 1.6;
 }
 
 .scroll-indicator {
@@ -236,12 +278,13 @@ body {
     align-items: center;
     gap: 0.4rem;
     font-size: 0.85rem;
-    color: #9ca3af;
+    color: #4b5563;
+    font-weight: 600;
     transition: color 0.2s ease;
 }
 
 .scroll-indicator:hover {
-    color: #ffffff;
+    color: #111827;
 }
 
 .arrow-down {
@@ -250,9 +293,22 @@ body {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(6px); }
-    60% { transform: translateY(3px); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(6px);
+    }
+
+    60% {
+        transform: translateY(3px);
+    }
 }
 
 /* LAYOUT DE SCROLLYTELLING */
@@ -274,7 +330,7 @@ body {
     z-index: 0;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
 }
@@ -296,7 +352,7 @@ article {
     border: 1px solid #e5e7eb;
     padding: 2.2rem;
     border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     opacity: 0.25;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
@@ -326,12 +382,29 @@ article {
     margin-bottom: 0.6rem;
 }
 
-.badge-ruta3 { background-color: #d94838; }
-.badge-ruta5 { background-color: #e67e22; }
-.badge-ruta11 { background-color: #2980b9; }
-.badge-ruta18 { background-color: #27ae60; }
-.badge-ruta22 { background-color: #8e44ad; }
-.badge-ruta34 { background-color: #d97706; }
+.badge-ruta3 {
+    background-color: #d94838;
+}
+
+.badge-ruta5 {
+    background-color: #e67e22;
+}
+
+.badge-ruta11 {
+    background-color: #2980b9;
+}
+
+.badge-ruta18 {
+    background-color: #27ae60;
+}
+
+.badge-ruta22 {
+    background-color: #8e44ad;
+}
+
+.badge-ruta34 {
+    background-color: #d97706;
+}
 
 .step h2 {
     margin: 0 0 0.8rem 0;
@@ -339,12 +412,29 @@ article {
     font-weight: 700;
 }
 
-.color-ruta3 { color: #d94838; }
-.color-ruta5 { color: #e67e22; }
-.color-ruta11 { color: #2980b9; }
-.color-ruta18 { color: #27ae60; }
-.color-ruta22 { color: #8e44ad; }
-.color-ruta34 { color: #d97706; }
+.color-ruta3 {
+    color: #d94838;
+}
+
+.color-ruta5 {
+    color: #e67e22;
+}
+
+.color-ruta11 {
+    color: #2980b9;
+}
+
+.color-ruta18 {
+    color: #27ae60;
+}
+
+.color-ruta22 {
+    color: #8e44ad;
+}
+
+.color-ruta34 {
+    color: #d97706;
+}
 
 .route-info-bar {
     display: flex;
@@ -383,16 +473,357 @@ article {
         flex-direction: column;
         padding: 1rem;
     }
+
     #map-container {
         position: sticky;
         width: 100%;
         height: 50vh;
         top: 3.8rem;
     }
+
     article {
         width: 100%;
     }
+
     .hero-main-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+}
+
+/* =========================================
+   SECCIÓN PÁGINA POR RUTA (TARJETAS VERDES)
+   ========================================= */
+.rutas-detalle-section {
+    background-color: #f4f6f8; 
+    padding: 4rem 2rem 6rem 2rem;
+}
+
+.rutas-detalle-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #111827;
+    margin: 0 0 0.4rem 0;
+    letter-spacing: -0.02em;
+}
+
+.section-desc {
+    font-size: 1.1rem;
+    color: #4b5563;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.6;
+}
+
+/* Grilla de 3 tarjetas por fila */
+.rutas-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
+
+/* Tarjeta Verde con esquina inferior derecha SIN redondear */
+.ruta-card-green {
+    position: relative;
+    background-color: #0F6E45; /* Verde Vial */
+    color: #ffffff;
+    /* Redondeado arriba-izq, arriba-der, abajo-der=0, abajo-izq */
+    border-radius: 12px 12px 0px 12px;
+    padding: 1.2rem 1.2rem 2.8rem 1.2rem;
+    box-shadow: 0 6px 18px rgba(21, 128, 61, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.25 ease, box-shadow 0.25s ease;
+}
+
+.ruta-card-green:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(15, 110, 69, 0.3);
+}
+
+/* Encabezado: Logo a la izquierda, título y trayecto a la derecha */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.8rem;
+}
+
+/* ==============================================
+   NUEVO BOTÓN RECTANGULAR: "VER DATOS DE RUTA"
+   ============================================== */
+.card-btn-rect {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #04482B; /* Nuevo verde muy oscuro */
+    color: #ffffff;
+    font-size: 0.75rem; /* Letra más chica y sutil */
+    font-weight: 700;
+    padding: 0.6rem 1.2rem; /* Forma rectangular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 8px 0 0 0; /* Curva arriba a la izquierda para encajar en la esquina */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    letter-spacing: 0.05em;
+}
+/* Efecto al pasar el mouse por toda la tarjeta verde */
+.ruta-card-green:hover .card-btn-rect {
+    background-color: #fef08a; /* Se pone amarillo de la paleta al pasar el mouse */
+    color: #111827; /* Letras oscuras para contraste */
+}
+
+.card-logo {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.card-title-group h3 {
+    margin: 0 0 0.2rem 0;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.card-trayecto {
+    font-size: 0.85rem;
+    color: #dcfce7;
+    font-weight: 500;
+    display: block;
+    line-height: 1.3;
+}
+
+/* Bloque de 3 datos */
+.card-stats-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-val {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff; /* Amarillo destacado para números */  
+    margin-bottom: 0.2rem;
+}
+
+.stat-lbl {
+    font-size: 0.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Botón cuadrado abajo a la derecha */
+.card-btn-square {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background-color: #ffffff;
+    color: #15803d;
+    font-size: 1.3rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 6px 0 0 0; /* Encaja en la esquina recta */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ruta-card-green:hover .card-btn-square {
+    background-color: #fef08a;
+    color: #111827;
+}
+
+/* =========================================
+   SECCIÓN: EJE DE LA INVESTIGACIÓN
+   ========================================= */
+.eje-investigacion-section {
+    position: relative;
+    background-image: url('img/img-ilustrativa-eje-investigacion.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 6rem 2rem;
+    color: #ffffff;
+}
+
+/* Capa oscura para que el texto blanco y las barras resalten sobre la foto */
+.eje-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(17, 24, 39, 0.85); /* Un gris oscuro casi negro, semi-transparente */
+    z-index: 1;
+}
+
+.eje-container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Cuadritos amarillos de categoría */
+.eje-badge {
+    background-color: #facc15;
+    color: #000000;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.mt-extra {
+    margin-top: 4rem; /* Separador extra para el bloque de promesas */
+}
+
+.eje-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem 0;
+}
+
+/* Párrafo difuminado */
+.eje-lead {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.65); /* Color blanco con 65% de opacidad (difuminado) */
+    line-height: 1.6;
+    margin: 0 0 2.5rem 0;
+}
+
+/* Párrafo un poco más visible para el cierre */
+.eje-lead-light {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Gráfico de barras horizontal */
+.bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bar-label {
+    width: 140px;
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    text-transform: uppercase;
+}
+
+.bar-track {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    /* Animación suave de carga al hacer scroll (opcional) */
+    transition: width 1.5s ease-in-out;
+}
+
+.bg-rojo { background-color: #ef4444; }
+.bg-gris { background-color: #9ca3af; }
+.bg-verde { background-color: #22c55e; }
+
+.bar-percent {
+    width: 40px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+/* Nota al pie color #FBF0C4 */
+.eje-nota-pie {
+    background-color: #FBF0C4;
+    color: #111827; /* Texto oscuro para que se lea bien sobre el crema */
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-left: 4px solid #facc15;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 600px) {
+    .bar-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+    .bar-label {
+        width: 100%;
+        text-align: left;
+    }
+    .bar-track {
+        width: 100%;
+    }
+    .bar-percent {
+        align-self: flex-end;
+    }
+}
+
+/* Responsividad para pantallas medianas y pequeñas */
+@media (max-width: 1024px) {
+    .rutas-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .rutas-grid-3 {
+        grid-template-columns: 1fr;
     }
 }
