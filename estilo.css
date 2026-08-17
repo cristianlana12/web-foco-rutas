@@ -1,31 +1,282 @@
-/* ESTILO CLARO - PANTALLA DIVIDIDA CON MÁRGENES (ESTILO TARJETA) */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f4f6f8; /* Un gris apenas más oscuro para que resalte el mapa blanco */
-    color: #333;
+/* ESTILOS GLOBALES */
+* {
+    box-sizing: border-box;
 }
 
-/* Contenedor principal: Flexbox con márgenes y separación (gap) */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f4f6f8;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+/* MINI MENÚ NAVEGADOR FIX (TOP-NAV) */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(17, 24, 39, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.5rem;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-logo .badge-foco {
+    background-color: #ef4444;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.nav-logo .nav-title {
+    color: #f9fafb;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #e5e7eb;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background-color: #ffffff;
+    color: #111827;
+    transform: translateY(-1px);
+}
+
+.btn-rn3:hover { border-color: #d94838; }
+.btn-rn5:hover { border-color: #e67e22; }
+.btn-rn11:hover { border-color: #2980b9; }
+.btn-rn18:hover { border-color: #27ae60; }
+.btn-rn22:hover { border-color: #8e44ad; }
+.btn-rn34:hover { border-color: #d97706; }
+
+/* HERO HEADER CON IMAGEN DE FONDO */
+.hero-header {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('img/img-ilustrativa.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 4rem 1.5rem;
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.75) 0%, rgba(17, 24, 39, 0.92) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.hero-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.badge-tag {
+    background-color: #f59e0b;
+    color: #111827;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+}
+
+.badge-partner {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #d1d5db;
+    letter-spacing: 0.05em;
+}
+
+.hero-main-title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem 0;
+    color: #ffffff;
+}
+
+/* SUBRAYADOS Y DESTACADOS DE IMAGEN */
+.highlight-yellow {
+    background: linear-gradient(120deg, rgba(245, 158, 11, 0.3) 0%, rgba(245, 158, 11, 0.8) 100%);
+    padding: 0 0.3rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.underline-mark {
+    text-decoration: underline;
+    text-decoration-color: #f59e0b;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 4px;
+}
+
+.hero-lead {
+    font-size: 1.25rem;
+    color: #e5e7eb;
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    font-weight: 400;
+}
+
+/* CUADROS RESUMEN DE DATOS (HERO STATS) */
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-box {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 1.8rem 1.2rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.stat-alert {
+    border-color: rgba(245, 158, 11, 0.5);
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-title {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f3f4f6;
+    margin-bottom: 0.4rem;
+}
+
+.stat-desc {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+.scroll-indicator {
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    transition: color 0.2s ease;
+}
+
+.scroll-indicator:hover {
+    color: #ffffff;
+}
+
+.arrow-down {
+    font-size: 1.2rem;
+    animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(6px); }
+    60% { transform: translateY(3px); }
+}
+
+/* LAYOUT DE SCROLLYTELLING */
 #scrolly {
     position: relative;
     display: flex;
     flex-direction: row;
-    padding: 2rem; /* Separa todo el contenido de los bordes de la pantalla */
-    gap: 3rem; /* Espacio exacto entre el mapa y la columna de textos */
+    padding: 2rem 2rem 4rem 2rem;
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* El mapa queda fijo, flotante y con bordes redondeados */
 #map-container {
     position: sticky;
-    top: 2rem; /* Separación del techo al scrollear */
-    width: 50%; 
-    height: calc(100vh - 4rem); /* Altura total de la pantalla menos los márgenes (2 arriba + 2 abajo) */
+    top: 4.5rem;
+    width: 50%;
+    height: calc(100vh - 6rem);
     z-index: 0;
-    border-radius: 16px; /* Bordes redondeados como en tu captura */
-    overflow: hidden; /* Fundamental para que el mapa respete las esquinas redondeadas */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Sombra suave para que "flote" */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
 }
 
 #map {
@@ -33,40 +284,115 @@ body, html {
     height: 100%;
 }
 
-/* Contenedor de textos en la mitad derecha */
 article {
     position: relative;
-    width: 50%; 
+    width: 50%;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Tarjetas de texto (Steps) */
 .step {
-    margin: 0 auto 80vh auto; /* 80vh mantiene el espacio de scrolleo */
+    margin: 0 auto 75vh auto;
     background-color: #ffffff;
-    border: 1px solid #eaeaea;
-    padding: 2rem;
-    border-radius: 12px; /* Las tarjetas también con bordes suaves */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    opacity: 0.3;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+    border: 1px solid #e5e7eb;
+    padding: 2.2rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    opacity: 0.25;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .step.is-active {
     opacity: 1;
-    transform: scale(1.02); /* Efecto sutil de zoom al leer */
+    transform: translateY(-2px);
 }
 
-h2 { 
-    margin-top: 0; 
-    font-size: 1.5rem;
+.step-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
 }
 
-/* Clases de colores para los títulos */
-.color-ruta3 { color: #d94838; } 
-.color-ruta5 { color: #e67e22; } 
-.color-ruta11 { color: #2980b9; } 
-.color-ruta18 { color: #27ae60; } 
-.color-ruta22 { color: #8e44ad; } 
-.color-ruta34 { color: #f1c40f; }
+.step-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+}
+
+.badge-ruta3 { background-color: #d94838; }
+.badge-ruta5 { background-color: #e67e22; }
+.badge-ruta11 { background-color: #2980b9; }
+.badge-ruta18 { background-color: #27ae60; }
+.badge-ruta22 { background-color: #8e44ad; }
+.badge-ruta34 { background-color: #d97706; }
+
+.step h2 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.color-ruta3 { color: #d94838; }
+.color-ruta5 { color: #e67e22; }
+.color-ruta11 { color: #2980b9; }
+.color-ruta18 { color: #27ae60; }
+.color-ruta22 { color: #8e44ad; }
+.color-ruta34 { color: #d97706; }
+
+.route-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #f9fafb;
+    border-left: 3px solid #d1d5db;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    color: #374151;
+    margin-bottom: 1rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.conclusion-box {
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #1e3a8a;
+}
+
+.footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background-color: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+@media (max-width: 900px) {
+    #scrolly {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    #map-container {
+        position: sticky;
+        width: 100%;
+        height: 50vh;
+        top: 3.8rem;
+    }
+    article {
+        width: 100%;
+    }
+    .hero-main-title {
+        font-size: 2rem;
+    }
+}

@@ -2,45 +2,190 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-width=1.0">
-    <title>Rutas Inconclusas - FOPEA & FOCO</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rutas Viales Inconclusas - FOPEA & FOCO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
     <link href="estilo.css" rel="stylesheet" />
 </head>
 <body>
 
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="badge-foco">FOCO</span>
+                <span class="nav-title">Rutas Inconclusas</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn btn-rn3" onclick="irARuta(1)">RN 3</button>
+                <button class="nav-btn btn-rn5" onclick="irARuta(2)">RN 5</button>
+                <button class="nav-btn btn-rn11" onclick="irARuta(3)">RN 11</button>
+                <button class="nav-btn btn-rn18" onclick="irARuta(4)">RN 18</button>
+                <button class="nav-btn btn-rn22" onclick="irARuta(5)">RN 22</button>
+                <button class="nav-btn btn-rn34" onclick="irARuta(6)">RN 34</button>
+                <button class="nav-btn btn-general" onclick="irARuta(7)">Panorama General</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-header">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            
+            <div class="hero-badges">
+                <span class="badge-tag">INVESTIGACIÓN DE DATOS</span>
+                <span class="badge-partner">FOPEA • FTA • SWISS EMBASSY</span>
+            </div>
+
+            <h1 class="hero-main-title">
+                Las obras sin terminar: <br>
+                el mapa de las <span class="highlight-yellow">rutas prometidas</span> en Argentina
+            </h1>
+
+            <p class="hero-lead">
+                A partir de solicitudes de <span class="underline-mark">Acceso a la Información Pública (AIP)</span> a Vialidad Nacional, reconstruimos la brecha entre los presupuestos ejecutados y los kilómetros reales construidos en seis corredores estratégicos del país.
+            </p>
+
+            <div class="hero-stats-grid">
+                <div class="stat-box">
+                    <span class="stat-number">+7.000</span>
+                    <span class="stat-title">Kilómetros auditados</span>
+                    <p class="stat-desc">Repartidos en 6 corredores viales troncales del país.</p>
+                </div>
+
+                <div class="stat-box stat-alert">
+                    <span class="stat-number">6</span>
+                    <span class="stat-title">Rutas bajo la lupa</span>
+                    <p class="stat-desc">Obras cobradas, paralizadas o con ejecución inconclusa.</p>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-title">Acceso público</span>
+                    <p class="stat-desc">Datos obtenidos vía Pedidos de AIP oficial.</p>
+                </div>
+            </div>
+
+            <div class="scroll-indicator" onclick="irARuta(0)">
+                <span>Desplázate para explorar el mapa interactivo</span>
+                <div class="arrow-down">↓</div>
+            </div>
+
+        </div>
+    </header>
+
     <main id="scrolly">
+        
         <div id="map-container">
             <div id="map"></div>
         </div>
 
         <article>
-            <div class="step" data-step="1">
-                <h2>El agujero negro vial</h2>
-                <p>Miles de kilómetros licitados, adjudicados y cobrados, pero nunca terminados. Una radiografía de las rutas de la corrupción en Argentina.</p>
-            </div>
             
-            <div class="step" data-step="2">
+            <div class="step" data-step="0" id="step-0">
+                <span class="step-tag">INTRODUCCIÓN</span>
+                <h2>La red vial paralizada</h2>
+                <p>
+                    A lo largo del país, miles de kilómetros de rutas nacionales presentan tramos sin finalizar, promesas de autopistas inconclusas o partidas presupuestarias ejecutadas con obras paralizadas.
+                </p>
+            </div>
+
+            <div class="step" data-step="1" id="step-1">
+                <span class="step-badge badge-ruta3">RN 3</span>
                 <h2 class="color-ruta3">Ruta Nacional 3</h2>
-                <p>CABA - Tierra del Fuego. Más de 3079 kilómetros que conectan el sur del país, con tramos paralizados históricamente.</p>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> CABA - Tierra del Fuego</span>
+                    <span><strong>Extensión:</strong> 3.079 km</span>
+                </div>
+                <p>
+                    La gran arteria de la Patagonia. Conecta la capital nacional con el extremo sur del país. Presenta tramos históricos de doble vía sin concluir y licitaciones renegociadas a lo largo de tres décadas.
+                </p>
             </div>
 
-            <div class="step" data-step="3">
+            <div class="step" data-step="2" id="step-2">
+                <span class="step-badge badge-ruta5">RN 5</span>
                 <h2 class="color-ruta5">Ruta Nacional 5</h2>
-                <p>Luján - Santa Rosa (545 km). Obras prometidas en el esquema PPP que quedaron en la nada.</p>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> Luján (BA) - Santa Rosa (La Pampa)</span>
+                    <span><strong>Extensión:</strong> 545 km</span>
+                </div>
+                <p>
+                    Corredor clave para la producción agropecuaria. Prometida como autopista bajo esquemas PPP y licitaciones tradicionales, mantiene cuellos de botella y tramos congelados.
+                </p>
             </div>
 
-            <div class="step" data-step="4">
-                <h2>El panorama completo</h2>
-                <p>Las rutas <span class="color-ruta11">11</span>, <span class="color-ruta18">18</span>, <span class="color-ruta22">22</span> y <span class="color-ruta34">34</span> completan el mapa de la desidia estatal.</p>
+            <div class="step" data-step="3" id="step-3">
+                <span class="step-badge badge-ruta11">RN 11</span>
+                <h2 class="color-ruta11">Ruta Nacional 11</h2>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> Rosario (Sta. Fe) - Formosa</span>
+                    <span><strong>Extensión:</strong> 988 km</span>
+                </div>
+                <p>
+                    Conocida por su alto flujo de tránsito pesado hacia la frontera con Paraguay. Registra severos deterioros de calzada y tramos de autovía paralizados.
+                </p>
             </div>
+
+            <div class="step" data-step="4" id="step-4">
+                <span class="step-badge badge-ruta18">RN 18</span>
+                <h2 class="color-ruta18">Ruta Nacional 18</h2>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> Paraná - Concordia (Entre Ríos)</span>
+                    <span><strong>Extensión:</strong> 227 km</span>
+                </div>
+                <p>
+                    Eje bi-oceánico central en Entre Ríos. A pesar de ser la más corta de la nómina, la conversión en autovía acumula años de demoras y tramos neutralizados.
+                </p>
+            </div>
+
+            <div class="step" data-step="5" id="step-5">
+                <span class="step-badge badge-ruta22">RN 22</span>
+                <h2 class="color-ruta22">Ruta Nacional 22</h2>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> Bahía Blanca (BA) - Zapala (Neuquén)</span>
+                    <span><strong>Extensión:</strong> 685 km</span>
+                </div>
+                <p>
+                    Ruta neurálgica para el Alto Valle y el acceso a Vaca Muerta. La paralización de puentes y accesos urbanos genera serios problemas de seguridad vial.
+                </p>
+            </div>
+
+            <div class="step" data-step="6" id="step-6">
+                <span class="step-badge badge-ruta34">RN 34</span>
+                <h2 class="color-ruta34">Ruta Nacional 34</h2>
+                <div class="route-info-bar">
+                    <span><strong>Trayecto:</strong> Rosario - Salta / Bolivia</span>
+                    <span><strong>Extensión:</strong> 1.488 km</span>
+                </div>
+                <p>
+                    Fundamental para el NOA. La obra presenta una ejecución parcial (no completada en su 100%), alternando sectores finalizados con tramos de alto riesgo e intervenciones suspendidas.
+                </p>
+            </div>
+
+            <div class="step" data-step="7" id="step-7">
+                <span class="step-tag">PANORAMA GENERAL</span>
+                <h2>El mapa consolidado de la desidia</h2>
+                <p>
+                    Al observar el país en su conjunto, la distribución de las rutas con obras inconclusas demuestra un patrón federal de proyectos interrumpidos.
+                </p>
+                <div class="conclusion-box">
+                    <p><strong>Conclusión del pedido de información:</strong> Transparencia, rendición de cuentas y continuidad de las obras públicas son indispensables para salvar vidas y dinamizar la economía.</p>
+                </div>
+            </div>
+
         </article>
     </main>
 
+    <footer class="footer">
+        <p>© 2026 FOCO Bootcamp — Proyecto de Periodismo de Datos y Transparencia Vial.</p>
+        <p>Desarrollado en colaboración con FOPEA y la Fundación Transparencia Activa (FTA).</p>
+    </footer>
+
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
-    
     <script src="script.js"></script>
 </body>
 </html>

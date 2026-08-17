@@ -1,4 +1,4 @@
-// 1. VARIABLES GLOBALES Y CONFIGURACIÓN
+// 1. VARIABLES GLOBALES Y CONFIGURACIÓN DE RUTAS
 let datosRutasGeoJSON = null; 
 let animacionId = null;       
 let pasoActualIndex = 0; 
@@ -9,7 +9,7 @@ const coloresRutas = {
     'ruta11': '#2980b9', 
     'ruta18': '#27ae60', 
     'ruta22': '#8e44ad', 
-    'ruta34': '#f1c40f'  
+    'ruta34': '#d97706'  
 };
 
 const todasLasRutas = [
@@ -21,7 +21,7 @@ const todasLasRutas = [
     { numero: 34, color: coloresRutas.ruta34 }
 ];
 
-// 2. CARGAR LOS DATOS EN MEMORIA
+// 2. CARGAR LOS DATOS
 fetch('rutas_inconclusas.geojson')
     .then(response => {
         if (!response.ok) throw new Error("No se pudo cargar el archivo GeoJSON");
@@ -35,7 +35,7 @@ fetch('rutas_inconclusas.geojson')
     .catch(error => console.error("Error al cargar el GeoJSON:", error));
 
 
-// 3. INICIALIZAR EL MAPA
+// 3. INICIALIZAR EL MAPA MAPLIBRE
 const map = new maplibregl.Map({
     container: 'map',
     style: {
@@ -62,19 +62,14 @@ const map = new maplibregl.Map({
         ]
     },
     center: [-65.0, -40.0],
-    zoom: 3.5
-    // Eliminamos el interactive: false
+    zoom: 3.8
 });
 
-// Agregamos los botones de zoom (+/-) y la brújula arriba a la derecha
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
-
-// Opcional: Desactivar el zoom con la rueda del mouse para que al scrollear
-// los textos, si el cursor está sobre el mapa, no se aleje/acerque sin querer.
 map.scrollZoom.disable();
 
 
-// 4. CONFIGURAR LAS CAPAS AL CARGAR EL MAPA
+// 4. CONFIGURAR CAPAS DE MAPLIBRE
 map.on('load', () => {
     map.addSource('rutas-base', {
         type: 'geojson',
@@ -86,9 +81,9 @@ map.on('load', () => {
         type: 'line',
         source: 'rutas-base',
         paint: {
-            'line-color': '#b3b3b3',
+            'line-color': '#c3c7cb',
             'line-width': 3,
-            'line-opacity': 0.5
+            'line-opacity': 0.6
         }
     });
 
@@ -114,7 +109,7 @@ map.on('load', () => {
 });
 
 
-// 5. MOTOR DE ANIMACIÓN MULTI-RUTA CON VELOCIDAD DINÁMICA
+// 5. MOTOR DE ANIMACIÓN MULTI-RUTA CON VELOCIDAD Y ORDENAMIENTO DINÁMICO
 function dibujarRutas(listaRutasConfigs) {
     if (!datosRutasGeoJSON) return;
     if (!map.getSource('ruta-animada')) return;
@@ -122,7 +117,7 @@ function dibujarRutas(listaRutasConfigs) {
     if (animacionId) cancelAnimationFrame(animacionId);
 
     let rutasAAnimar = [];
-    const FRAMES_DESEADOS = 120; // 120 fotogramas = ~2 segundos de animación para que terminen juntas
+    const FRAMES_DESEADOS = 120;
 
     listaRutasConfigs.forEach(config => {
         const numeroStr = String(config.numero).trim();
@@ -130,21 +125,20 @@ function dibujarRutas(listaRutasConfigs) {
 
         if (tramos.length > 0) {
             let segmentos = [];
-            let totalPuntosEnRuta = 0; // Sumador para saber qué tan larga es
+            let totalPuntos = 0;
 
             tramos.forEach(feature => {
                 if (feature.geometry.type === 'LineString') {
                     segmentos.push(feature.geometry.coordinates);
-                    totalPuntosEnRuta += feature.geometry.coordinates.length;
+                    totalPuntos += feature.geometry.coordinates.length;
                 } else if (feature.geometry.type === 'MultiLineString') {
                     feature.geometry.coordinates.forEach(s => {
                         segmentos.push(s);
-                        totalPuntosEnRuta += s.length;
+                        totalPuntos += s.length;
                     });
                 }
             });
 
-            // Ordenamiento Geográfico
             let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
             segmentos.forEach(seg => {
                 let pt = seg[0];
@@ -156,10 +150,8 @@ function dibujarRutas(listaRutasConfigs) {
             let esHorizontal = (maxLng - minLng) > (maxLat - minLat);
             segmentos.sort((a, b) => esHorizontal ? b[0][0] - a[0][0] : b[0][1] - a[0][1]);
 
-            // CÁLCULO DE VELOCIDAD DINÁMICA: (Total de puntos / Tiempo deseado)
-            // La ruta 3 tendrá una velocidad alta, la ruta 18 una velocidad baja.
-            let velocidadPersonalizada = totalPuntosEnRuta / FRAMES_DESEADOS;
-            if (velocidadPersonalizada < 0.5) velocidadPersonalizada = 0.5; // Velocidad mínima
+            let velocidadCalculada = totalPuntos / FRAMES_DESEADOS;
+            if (velocidadCalculada < 0.6) velocidadCalculada = 0.6;
 
             rutasAAnimar.push({
                 color: config.color,
@@ -167,7 +159,7 @@ function dibujarRutas(listaRutasConfigs) {
                 indiceSegmento: 0,
                 indiceCoordenada: 0,
                 lineasTerminadas: [],
-                velocidad: velocidadPersonalizada // Asignamos su velocidad propia
+                velocidad: velocidadCalculada
             });
         }
     });
@@ -185,8 +177,6 @@ function dibujarRutas(listaRutasConfigs) {
                 todasCompletadas = false;
 
                 let segmentoActual = ruta.segmentos[ruta.indiceSegmento];
-                
-                // Usamos la velocidad propia calculada para esta ruta en específico
                 ruta.indiceCoordenada += ruta.velocidad;
 
                 if (ruta.indiceCoordenada >= segmentoActual.length) {
@@ -198,7 +188,6 @@ function dibujarRutas(listaRutasConfigs) {
 
             let lineasParaMostrar = [...ruta.lineasTerminadas];
             if (ruta.indiceSegmento < ruta.segmentos.length) {
-                // Usamos Math.floor porque la velocidad puede tener decimales (ej. 1.5 puntos por cuadro)
                 let segmentoParcial = ruta.segmentos[ruta.indiceSegmento].slice(0, Math.floor(ruta.indiceCoordenada));
                 if (segmentoParcial.length >= 2) {
                     lineasParaMostrar.push(segmentoParcial);
@@ -230,37 +219,65 @@ function dibujarRutas(listaRutasConfigs) {
 }
 
 
-// 6. CONTROLADOR DE PASOS Y SCROLLAMA
+// 6. DIRECTOR DE CÁMARA (CONTROLADOR DE PASOS)
 function ejecutarPaso(index) {
     pasoActualIndex = index;
     const opcionesVuelo = {
-        duration: 3000, 
+        duration: 2800, 
         essential: true,
-        curve: 1.2
+        curve: 1.15
     };
 
     switch(index) {
-        case 0: 
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.5, pitch: 0, ...opcionesVuelo });
+        case 0: // Intro: Todo el país
+            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8, pitch: 0, ...opcionesVuelo });
             if (map.getSource('ruta-animada')) {
                 map.getSource('ruta-animada').setData({ type: 'FeatureCollection', features: [] });
             }
             break;
 
-        case 1: // Ruta 3 ajustada
-            map.flyTo({ center: [-65.0, -44.0], zoom: 4.0, pitch: 20, ...opcionesVuelo });
+        case 1: // Ruta 3 (Sur)
+            map.flyTo({ center: [-65.0, -44.0], zoom: 4.1, pitch: 20, ...opcionesVuelo });
             dibujarRutas([{ numero: 3, color: coloresRutas.ruta3 }]);
             break;
 
-        case 2: 
-            map.flyTo({ center: [-61.5, -35.5], zoom: 6, pitch: 20, ...opcionesVuelo });
+        case 2: // Ruta 5 (Centro)
+            map.flyTo({ center: [-61.5, -35.5], zoom: 6.2, pitch: 20, ...opcionesVuelo });
             dibujarRutas([{ numero: 5, color: coloresRutas.ruta5 }]);
             break;
 
-        case 3: // Cierre balanceado
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.5, pitch: 0, ...opcionesVuelo });
+        case 3: // Ruta 11 (Litoral/Norte)
+            map.flyTo({ center: [-59.5, -28.8], zoom: 5.6, pitch: 15, ...opcionesVuelo });
+            dibujarRutas([{ numero: 11, color: coloresRutas.ruta11 }]);
+            break;
+
+        case 4: // Ruta 18 (Entre Ríos)
+            map.flyTo({ center: [-59.0, -31.6], zoom: 7.2, pitch: 15, ...opcionesVuelo });
+            dibujarRutas([{ numero: 18, color: coloresRutas.ruta18 }]);
+            break;
+
+        case 5: // Ruta 22 (Alto Valle)
+            map.flyTo({ center: [-65.5, -38.8], zoom: 6.0, pitch: 20, ...opcionesVuelo });
+            dibujarRutas([{ numero: 22, color: coloresRutas.ruta22 }]);
+            break;
+
+        case 6: // Ruta 34 (NOA / Ejecución parcial)
+            map.flyTo({ center: [-63.5, -28.2], zoom: 5.4, pitch: 15, ...opcionesVuelo });
+            dibujarRutas([{ numero: 34, color: coloresRutas.ruta34 }]);
+            break;
+
+        case 7: // Panorama general consolidado
+            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8, pitch: 0, ...opcionesVuelo });
             dibujarRutas(todasLasRutas);
             break;
+    }
+}
+
+// REDIRECCIÓN Y DESPLAZAMIENTO DESDE EL MINI MENÚ
+function irARuta(pasoIndex) {
+    const elTarget = document.getElementById(`step-${pasoIndex}`);
+    if (elTarget) {
+        elTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 }
 
@@ -277,7 +294,7 @@ function handleStepEnter(response) {
 function init() {
     scroller.setup({
         step: '.step',
-        offset: 0.6,
+        offset: 0.55,
         debug: false
     }).onStepEnter(handleStepEnter);
     
