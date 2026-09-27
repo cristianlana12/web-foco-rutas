@@ -16,77 +16,96 @@
 
 <body>
 
-    <nav class="top-nav">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="img/logo-ruta-menu.png" alt="Malditas Rutas" class="nav-logo-img">
-            </div>
+    <!-- NUEVO HEADER PORTADA (AUTOVIAS PROMETIDAS) -->
+    <header class="banner-autovias">
 
-            <div class="nav-links">
-                <button class="nav-btn btn-rn3" onclick="irARuta(1)">RN 3</button>
-                <button class="nav-btn btn-rn5" onclick="irARuta(2)">RN 5</button>
-                <button class="nav-btn btn-rn11" onclick="irARuta(3)">RN 11</button>
-                <button class="nav-btn btn-rn18" onclick="irARuta(4)">RN 18</button>
-                <button class="nav-btn btn-rn22" onclick="irARuta(5)">RN 22</button>
-                <button class="nav-btn btn-rn34" onclick="irARuta(6)">RN 34</button>
-                <button class="nav-btn btn-general" onclick="irARuta(7)">Panorama General</button>
+        <!-- Capa 1: Filtro grisáceo sobre el fondo -->
+        <div class="banner-overlay"></div>
+
+        <!-- Capa 2: Contenedor central con la caja oscura -->
+        <div class="banner-container">
+            <div class="autovias-dark-box">
+                <!-- Logos superiores -->
+                <img src="img/logos.png" alt="Logos FOCO, FTA, FOPEA" class="logos-foco">
+
+                <!-- Título principal -->
+                <section class="cont-title">
+                    <h1 class="autovias-title">AUTOVIAS</h1>
+                    <h2 class="autovias-titleh2">PROMETIDAS</h2>
+                </section>
+
+
+                <!-- Párrafo descriptivo -->
+                <p class="autovias-desc">
+                    Kilómetros de rutas inconclusas, promesas y licitaciones con más de 10 años, tramos abandonados y
+                    vidas que quedaron en el camino. Esta es una investigación que sigue el rastro de las rutas, desde
+                    la promesa hasta sus consecuencias.
+                </p>
             </div>
         </div>
-    </nav>
 
-    <header class="hero-header">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
+        <!-- Capa 3: Gráficos Amarillos ENCIMA DE TODO -->
+        <div class="banner-graficos"></div>
 
+    </header>
+    <section class="landing-comienzo">
+        <figure>
+            <img src="img/fondo-header.png" alt="">
+        </figure>
+    </section>
+
+    <!-- INTRODUCCIÓN Y ESTADÍSTICAS (SECCIÓN LIMPIA) -->
+    <section class="intro-section">
+        <div class="intro-container">
             <div class="hero-badges">
-                <span class="badge-tag">INVESTIGACIÓN DE DATOS</span>
-                <span class="badge-partner">FOPEA • FTA</span>
+                <figure>
+                    <img src="img/logoFocoBootcamp.png" alt="">
+                </figure>
             </div>
 
             <h1 class="hero-main-title">
-                Obras inconclusas y vidas perdidas: autovías que <span class="highlight-yellow">nunca se
-                    terminaron</span>
+                Las autovías prometidas
             </h1>
 
             <p class="hero-lead">
-                Los años pasan y las obras no culminan. Esta investigación tiene como objetivo visibilizar las rutas
-                nacionales paralizadas, analizando la diferencia entre los fondos presupuestados y el avance real de las
-                autovías.
+                Hace más de 15 años que algunas rutas nacionales aguardan su transformación en autovía. En ese tiempo, 4
+                períodos presidenciales pasaron sin que las obras se completen. Mientras los expedientes duermen, los
+                accidentes no descansan y la falta de seguridad vial sigue cobrando vidas.
             </p>
 
-            <div class="hero-stats-grid">
-                <div class="stat-box">
-                    <span class="stat-number">4.060</span>
-                    <p class="stat-desc">Víctimas fatales por siniestros viales en 2025 en todo el país (ANSV,
-                        preliminar)</p>
-                </div>
-
-                <div class="stat-box">
-                    <span class="stat-number">51%</span>
-                    <p class="stat-desc">de los siniestros fatales de 2025 ocurrió en rutas. En autopistas: 5%</p>
-                </div>
-
-                <div class="stat-box">
-                    <span class="stat-number">7.012</span>
-                    <p class="stat-desc">kilómetros suman las seis rutas nacionales de esta investigación</p>
-                </div>
-            </div>
-
-            <div class="hero-mini-box">
-                <span class="mini-box-tag">RELEVAMIENTO DE RIESGO</span>
-                <p>Se relevaron 20.000 kilómetros de la red vial nacional: un 18% tiene un nivel de riesgo de accidente
-                    alto, un 32% medio/alto y un 50% medio y bajo. Este trabajo surge del Programa de Evaluación de
-                    Rutas (iRAP), que toma la siniestralidad de los últimos cinco años para realizar su informe.</p>
-            </div>
-
-            <div class="scroll-indicator" onclick="irARuta(0)">
-                <span>Desplázate para explorar el mapa interactivo</span>
-                <div class="arrow-down">↓</div>
-            </div>
-
+            <p class="hero-p">
+                Hay obras públicas que comienzan y culminan.  Algunas lo hacen en tiempo y forma y otras con alguna
+                demora. Pero están también aquellas que tienen una fecha de inicio y no de culminación. Se trata de
+                proyectos millonarios que se sabe cuándo comienzan, pero no cuándo terminan.
+            </p>
+            <p class="hero-p">
+                En los últimos quince años, aparecen dentro de esta lista seis rutas nacionales que un día, las
+                autoridades de turno proyectaron convertirlas en autovías.
+            </p>
+            <p class="hero-p">
+                Sin embargo, pasaron los años y con ellos varias gestiones nacionales de distinto signo político. Y las
+                obras nunca finalizaron. Algunas alcanzaron algún grado de avance. Otras quedaron a medio camino. Y hubo
+                rutas que con solo dar una mirada a su estado actual, solo se advierten parches o pequeñas reparaciones
+                en lugares puntuales. Se trata de las autovías prometidas y nunca terminadas.
+            </p>
+            <p class="hero-p">
+                Las seis obras que hoy forman parte de este informe atravesaron cuatro períodos presidenciales. Muchos
+                mandatarios prometieron culminarlas. Ninguno logró cortar las cintas inaugurales; apenas unos escasos
+                tramos fueron habilitados. Y, en el medio, numerosas vidas perdidas y cifras alarmantes de siniestros
+                viales.
+            </p>
         </div>
-    </header>
+    </section>
 
+    <!-- MAPA INTERACTIVO -->
+    <h2 class="title-map">
+        Kilómetros de proyectos anunciados
+    </h2>
+    <p class="map-p">
+        Cada ruta aparece sobre la red nacional entera → 156 rutas en total y las seis del informe resaltadas.
+        No están solas en el mapa: están adentro de un sistema que se dejó a medio hacer.
+    </p>
+    <!-- SECCIÓN SCROLLYTELLING CON PILA AL FINAL -->
     <main id="scrolly">
         <div id="map-container">
             <div id="map"></div>
@@ -94,6 +113,7 @@
 
         <article>
 
+            <!-- PASO 0: INTRODUCCIÓN -->
             <div class="step" data-step="0" id="step-0">
                 <span class="step-tag">INTRODUCCIÓN</span>
                 <h2>La red vial paralizada</h2>
@@ -103,6 +123,7 @@
                 </p>
             </div>
 
+            <!-- PASO 1: RN 3 -->
             <div class="step" data-step="1" id="step-1">
                 <span class="step-badge badge-ruta3">RN 3</span>
                 <h2 class="color-ruta3">Ruta Nacional 3</h2>
@@ -116,6 +137,7 @@
                 </p>
             </div>
 
+            <!-- PASO 2: RN 5 -->
             <div class="step" data-step="2" id="step-2">
                 <span class="step-badge badge-ruta5">RN 5</span>
                 <h2 class="color-ruta5">Ruta Nacional 5</h2>
@@ -129,6 +151,7 @@
                 </p>
             </div>
 
+            <!-- PASO 3: RN 11 -->
             <div class="step" data-step="3" id="step-3">
                 <span class="step-badge badge-ruta11">RN 11</span>
                 <h2 class="color-ruta11">Ruta Nacional 11</h2>
@@ -142,6 +165,7 @@
                 </p>
             </div>
 
+            <!-- PASO 4: RN 18 -->
             <div class="step" data-step="4" id="step-4">
                 <span class="step-badge badge-ruta18">RN 18</span>
                 <h2 class="color-ruta18">Ruta Nacional 18</h2>
@@ -155,6 +179,7 @@
                 </p>
             </div>
 
+            <!-- PASO 5: RN 22 -->
             <div class="step" data-step="5" id="step-5">
                 <span class="step-badge badge-ruta22">RN 22</span>
                 <h2 class="color-ruta22">Ruta Nacional 22</h2>
@@ -168,6 +193,7 @@
                 </p>
             </div>
 
+            <!-- PASO 6: RN 34 -->
             <div class="step" data-step="6" id="step-6">
                 <span class="step-badge badge-ruta34">RN 34</span>
                 <h2 class="color-ruta34">Ruta Nacional 34</h2>
@@ -181,240 +207,96 @@
                 </p>
             </div>
 
-            <div class="step" data-step="7" id="step-7">
-                <span class="step-tag">PANORAMA GENERAL</span>
-                <h2>El mapa consolidado de la desidia</h2>
-                <p>
-                    Al observar el país en su conjunto, la distribución de las rutas con obras inconclusas demuestra un
-                    patrón federal de proyectos interrumpidos.
-                </p>
-                <div class="conclusion-box">
-                    <p><strong>Conclusión del pedido de información:</strong> Transparencia, rendición de cuentas y
-                        continuidad de las obras públicas son indispensables para salvar vidas y dinamizar la economía.
+            <!-- PASO 7 FINAL: AQUÍ APARECE EL RECUADRO GRIS Y LA PILA INTERACTIVA -->
+            <div class="step step-final" data-step="7" id="step-7">
+                
+                <!-- Recuadro Gris -->
+                <div class="recuadro-gris" id="info-dinamica">
+                    <h3 id="recuadro-titulo">El mapa consolidado de la desidia</h3>
+                    <p id="recuadro-desc">
+                        Al observar el país en su conjunto, la distribución demuestra un patrón federal de obras interrumpidas. Hacé clic en cualquier ruta de la lista para examinarla en detalle.
                     </p>
                 </div>
+
+                <!-- Pila de Rutas interactiva -->
+                <div class="pila-rutas">
+                    <div class="pila-item" onclick="seleccionarRuta(1, 'Ruta Nacional 3', 'CABA → Tierra del Fuego', '3.079 km', 'La gran arteria patagónica. Obras de doble vía paralizadas y licitaciones renegociadas a lo largo de tres décadas.')">
+                        <span class="pila-line" style="background-color: #d94838;"></span>
+                        <span class="pila-name">RN 3</span>
+                        <span class="pila-trayecto">CABA → Tierra del Fuego</span>
+                        <span class="pila-km">3.079 km</span>
+                    </div>
+
+                    <div class="pila-item" onclick="seleccionarRuta(2, 'Ruta Nacional 5', 'Luján → Santa Rosa', '545 km', 'Eje agropecuario central. Proyectada como autopista bajo esquemas PPP y licitaciones tradicionales, mantiene tramos congelados.')">
+                        <span class="pila-line" style="background-color: #e67e22;"></span>
+                        <span class="pila-name">RN 5</span>
+                        <span class="pila-trayecto">Luján → Santa Rosa</span>
+                        <span class="pila-km">545 km</span>
+                    </div>
+
+                    <div class="pila-item" onclick="seleccionarRuta(3, 'Ruta Nacional 11', 'Rosario → Formosa', '988 km', 'Corredor internacional de tránsito pesado con calzadas deterioradas y tramos de autovía frenados.')">
+                        <span class="pila-line" style="background-color: #2980b9;"></span>
+                        <span class="pila-name">RN 11</span>
+                        <span class="pila-trayecto">Rosario → Formosa</span>
+                        <span class="pila-km">988 km</span>
+                    </div>
+
+                    <div class="pila-item" onclick="seleccionarRuta(4, 'Ruta Nacional 18', 'Paraná → Concordia', '227 km', 'Eje bioceánico en Entre Ríos. A pesar de su corta extensión, la conversión en autovía acumula años de neutralización.')">
+                        <span class="pila-line" style="background-color: #27ae60;"></span>
+                        <span class="pila-name">RN 18</span>
+                        <span class="pila-trayecto">Paraná → Concordia</span>
+                        <span class="pila-km">227 km</span>
+                    </div>
+
+                    <div class="pila-item" onclick="seleccionarRuta(5, 'Ruta Nacional 22', 'Bahía Blanca → Zapala', '685 km', 'Vía clave para el Alto Valle y Vaca Muerta. Puentes inconclusos y accesos urbanos paralizados generan alto riesgo.')">
+                        <span class="pila-line" style="background-color: #8e44ad;"></span>
+                        <span class="pila-name">RN 22</span>
+                        <span class="pila-trayecto">Bahía Blanca → Zapala</span>
+                        <span class="pila-km">685 km</span>
+                    </div>
+
+                    <div class="pila-item" onclick="seleccionarRuta(6, 'Ruta Nacional 34', 'Rosario → frontera con Bolivia', '1.488 km', 'Columna vertebral del NOA con tramos inconclusos de alta siniestralidad vial.')">
+                        <span class="pila-line" style="background-color: #d97706;"></span>
+                        <span class="pila-name">RN 34</span>
+                        <span class="pila-trayecto">Rosario → frontera con Bolivia</span>
+                        <span class="pila-km">1.488 km</span>
+                    </div>
+                </div>
+
+                <button class="nav-btn btn-general" onclick="seleccionarRuta(7, 'Panorama General', '', '', 'Al observar el país en su conjunto, la distribución demuestra un patrón federal de obras interrumpidas. Explorá el mapa para ver el estado de todas las rutas simultáneamente.')">Panorama General</button>
+
             </div>
 
         </article>
     </main>
 
-    <section class="rutas-detalle-section">
-        <div class="rutas-detalle-container">
-            <h2 class="section-title">Página por ruta</h2>
-            <p class="section-desc">Cada ruta tiene su propia página: mapa con los tramos y las víctimas, datos de la obra, y el archivo de promesa.</p>
+    <!-- EJE DE LA INVESTIGACIÓN -->
+    <!-- =========================================
+         SECCIÓN DETALLE DE RUTAS (TABS)
+         ========================================= -->
+    <section class="rutas-detalle-tabs-section" id="detalle-rutas">
+        <div class="tabs-container">
             
-            <div class="rutas-grid-3">
+            <!-- Menú de pestañas -->
+            <ul class="tabs-menu">
+                <li class="tab-btn is-active" data-ruta="3" data-color="#6E2A33" onclick="cambiarTab(this)">Ruta Nacional 3</li>
+                <li class="tab-btn" data-ruta="5" data-color="#DF741B" onclick="cambiarTab(this)">Ruta Nacional 5</li>
+                <li class="tab-btn" data-ruta="11" data-color="#206795" onclick="cambiarTab(this)">Ruta Nacional 11</li>
+                <li class="tab-btn" data-ruta="18" data-color="#31824A" onclick="cambiarTab(this)">Ruta Nacional 18</li>
+                <li class="tab-btn" data-ruta="22" data-color="#674199" onclick="cambiarTab(this)">Ruta Nacional 22</li>
+                <li class="tab-btn" data-ruta="34" data-color="#E3A711" onclick="cambiarTab(this)">Ruta Nacional 34</li>
+            </ul>
+
+            <!-- Contenedor del contenido (con el borde izquierdo de color dinámico) -->
+            <div class="tab-content-area" id="tab-content-area">
                 
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta3.png" alt="Ruta 3">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 3</h3>
-                            <span class="card-trayecto">CABA — Tierra del Fuego</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">3.079 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Alto</span>
-                            <span class="stat-lbl">Riesgo vial</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Inconclusa</span>
-                            <span class="stat-lbl">Estado de obra</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 3">VER DATOS DE RUTA  →</a>
-                </div>  
-
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta5.png" alt="Ruta 5">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 5</h3>
-                            <span class="card-trayecto">Luján (BA) — Santa Rosa (La Pampa)</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">545 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">PPP Fallido</span>
-                            <span class="stat-lbl">Licitación</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Paralizada</span>
-                            <span class="stat-lbl">Estado de obra</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 5">VER DATOS DE RUTA  →</a>
-                </div>
-
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta11.png" alt="Ruta 11">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 11</h3>
-                            <span class="card-trayecto">Rosario (Sta. Fe) — Formosa</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">988 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Tránsito pesado</span>
-                            <span class="stat-lbl">Flujo vial</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Deteriorada</span>
-                            <span class="stat-lbl">Calzada</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 11">VER DATOS DE RUTA  →</a>
-                </div>
-
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta18.png" alt="Ruta 18">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 18</h3>
-                            <span class="card-trayecto">Paraná — Concordia (Entre Ríos)</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">227 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Demorada</span>
-                            <span class="stat-lbl">Autovía</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Neutralizada</span>
-                            <span class="stat-lbl">Estado de obra</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 18">VER DATOS DE RUTA  →</a>
-                </div>
-
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta22.png" alt="Ruta 22">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 22</h3>
-                            <span class="card-trayecto">Bahía Blanca (BA) — Zapala (Neuquén)</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">685 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Alto Valle</span>
-                            <span class="stat-lbl">Corredor Vaca Muerta</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Incompleta</span>
-                            <span class="stat-lbl">Puentes urbanos</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 22">VER DATOS DE RUTA  →</a>
-                </div>
-
-                <div class="ruta-card-green">
-                    <div class="card-header">
-                        <div class="card-logo">
-                            <img src="img/ruta34.png" alt="Ruta 34">
-                        </div>
-                        <div class="card-title-group">
-                            <h3>RN 34</h3>
-                            <span class="card-trayecto">Rosario — Salta / Bolivia</span>
-                        </div>
-                    </div>
-                    <div class="card-stats-3">
-                        <div class="stat-item">
-                            <span class="stat-val">1.488 km</span>
-                            <span class="stat-lbl">Extensión total</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Parcial</span>
-                            <span class="stat-lbl">Ejecución</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-val">Alto Riesgo</span>
-                            <span class="stat-lbl">Siniestralidad</span>
-                        </div>
-                    </div>
-                    <a href="#" class="card-btn-rect" title="Ver detalle Ruta 34">VER DATOS DE RUTA  →</a>
+                <!-- Aquí armaremos el desarrollo de la ruta en el siguiente paso -->
+                <div class="tab-pane is-active" id="pane-ruta-3">
+                    <!-- Placeholder visual -->
+                    <h4 style="text-align: center; color: #9ca3af; margin-top: 4rem;">Espacio para el contenido de la ruta...</h4>
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <section class="eje-investigacion-section">
-        <div class="eje-overlay"></div>
-        <div class="eje-container">
-            
-            <span class="eje-badge">El eje de la investigación</span>
-            <h2 class="eje-title">Donde no hay autovía, se muere más</h2>
-            <p class="eje-lead">De los siniestros fatales de 2025 con tipo de vía informado, más de la mitad ocurrió en rutas. Las autopistas concentran apenas el 5%.</p>
-            
-            <div class="bar-chart">
-                <div class="bar-row">
-                    <span class="bar-label">ruta (nac. + prov.)</span>
-                    <div class="bar-track"><div class="bar-fill bg-rojo" style="width: 51%;"></div></div>
-                    <span class="bar-percent">51%</span>
-                </div>
-                <div class="bar-row">
-                    <span class="bar-label">calle</span>
-                    <div class="bar-track"><div class="bar-fill bg-gris" style="width: 25%;"></div></div>
-                    <span class="bar-percent">25%</span>
-                </div>
-                <div class="bar-row">
-                    <span class="bar-label">avenida</span>
-                    <div class="bar-track"><div class="bar-fill bg-gris" style="width: 17%;"></div></div>
-                    <span class="bar-percent">17%</span>
-                </div>
-                <div class="bar-row">
-                    <span class="bar-label">autopista</span>
-                    <div class="bar-track"><div class="bar-fill bg-verde" style="width: 5%;"></div></div>
-                    <span class="bar-percent">5%</span>
-                </div>
-                <div class="bar-row">
-                    <span class="bar-label">otro</span>
-                    <div class="bar-track"><div class="bar-fill bg-gris" style="width: 2%;"></div></div>
-                    <span class="bar-percent">2%</span>
-                </div>
-            </div>
-
-            <div class="eje-nota-pie">
-                <strong>Nota al pie:</strong> Porcentajes no normalizados por km recorridos ni volumen de tránsito: describen dónde ocurren los siniestros, no el riesgo por kilómetro. ANSV 2025 (base 2.630).
-            </div>
-
-            <span class="eje-badge mt-extra">PROMESAS INCUMPLIDAS</span>
-            <h2 class="eje-title">No son números: son promesas incumplidas</h2>
-            <p class="eje-lead-light">Detrás de cada obra detenida hay un acto público: un funcionario que prometió terminarla, con fecha, lugar y palabras textuales. Esta investigación construye ese registro para cada ruta.</p>
-
         </div>
     </section>
 

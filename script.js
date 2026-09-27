@@ -1,15 +1,15 @@
 // 1. VARIABLES GLOBALES Y CONFIGURACIÓN DE RUTAS
-let datosRutasGeoJSON = null; 
-let animacionId = null;       
-let pasoActualIndex = 0; 
+let datosRutasGeoJSON = null;
+let animacionId = null;
+let pasoActualIndex = 0;
 
 const coloresRutas = {
-    'ruta3': '#d94838',  
-    'ruta5': '#e67e22',  
-    'ruta11': '#2980b9', 
-    'ruta18': '#27ae60', 
-    'ruta22': '#8e44ad', 
-    'ruta34': '#d97706'  
+    'ruta3': '#d94838',
+    'ruta5': '#e67e22',
+    'ruta11': '#2980b9',
+    'ruta18': '#27ae60',
+    'ruta22': '#8e44ad',
+    'ruta34': '#d97706'
 };
 
 const todasLasRutas = [
@@ -35,29 +35,43 @@ fetch('rutas_inconclusas.geojson')
     .catch(error => console.error("Error al cargar el GeoJSON:", error));
 
 
-// 3. INICIALIZAR EL MAPA MAPLIBRE
+// 3. INICIALIZAR EL MAPA MAPLIBRE (SIN MARCA DE AGUA Y CON PROVINCIAS)
 const map = new maplibregl.Map({
     container: 'map',
     style: {
+        'background': '#DDD9D0',
         'version': 8,
         'sources': {
-            'carto-light': {
+            'esri-base': {
                 'type': 'raster',
                 'tiles': [
-                    'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png',
-                    'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
                 ],
                 'tileSize': 256,
-                'attribution': '&copy; OpenStreetMap &copy; CARTO'
+                'attribution': '&copy; Esri, OpenStreetMap contributors'
+            },
+            'esri-borders': {
+                'type': 'raster',
+                'tiles': [
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
+                ],
+                'tileSize': 256
             }
         },
         'layers': [
             {
-                'id': 'carto-light-layer',
+                'id': 'esri-base-layer',
                 'type': 'raster',
-                'source': 'carto-light',
+                'source': 'esri-base',
                 'minzoom': 0,
-                'maxzoom': 22
+                'maxzoom': 16
+            },
+            {
+                'id': 'esri-borders-layer',
+                'type': 'raster',
+                'source': 'esri-borders',
+                'minzoom': 0,
+                'maxzoom': 16
             }
         ]
     },
@@ -71,20 +85,11 @@ map.scrollZoom.disable();
 
 // 4. CONFIGURAR CAPAS DE MAPLIBRE
 map.on('load', () => {
+
+    // 1. Agregar fuentes de datos (GeoJSON)
     map.addSource('rutas-base', {
         type: 'geojson',
-        data: 'rutas_inconclusas.geojson' 
-    });
-
-    map.addLayer({
-        id: 'capa-rutas-base',
-        type: 'line',
-        source: 'rutas-base',
-        paint: {
-            'line-color': '#c3c7cb',
-            'line-width': 3,
-            'line-opacity': 0.6
-        }
+        data: 'rutas_inconclusas.geojson'
     });
 
     map.addSource('ruta-animada', {
@@ -92,6 +97,27 @@ map.on('load', () => {
         data: { type: 'FeatureCollection', features: [] }
     });
 
+    // 2. Agregar capas en el orden correcto (de abajo hacia arriba)
+
+    // A. Líneas grises de fondo (Todas las rutas)
+    map.addLayer({
+        id: 'capa-rutas-base',
+        type: 'line',
+        source: 'rutas-base',
+        paint: {
+            'line-color': '#d1d5db', // Gris un poco más claro
+            'line-width': 2.5,
+            'line-opacity': 0.5
+        }
+    });
+
+    // B. FORZAR la capa de bordes provinciales de Esri para que esté SOBRE las líneas grises
+    // (Movemos la capa 'esri-borders-layer' encima de 'capa-rutas-base' si es necesario)
+    if (map.getLayer('esri-borders-layer')) {
+        map.moveLayer('esri-borders-layer'); // La mueve al tope temporalmente
+    }
+
+    // C. Línea de color animada (La ruta activa) -> DEBE ESTAR ARRIBA DE TODO
     map.addLayer({
         id: 'capa-ruta-animada',
         type: 'line',
@@ -101,13 +127,12 @@ map.on('load', () => {
             'line-join': 'round'
         },
         paint: {
-            'line-color': ['get', 'color'], 
-            'line-width': 6,               
+            'line-color': ['get', 'color'],
+            'line-width': 5, // Reduje un pelito el grosor para más elegancia
             'line-opacity': 1
         }
     });
 });
-
 
 // 5. MOTOR DE ANIMACIÓN MULTI-RUTA CON VELOCIDAD Y ORDENAMIENTO DINÁMICO
 function dibujarRutas(listaRutasConfigs) {
@@ -142,10 +167,10 @@ function dibujarRutas(listaRutasConfigs) {
             let minLat = 90, maxLat = -90, minLng = 180, maxLng = -180;
             segmentos.forEach(seg => {
                 let pt = seg[0];
-                if(pt[0] < minLng) minLng = pt[0];
-                if(pt[0] > maxLng) maxLng = pt[0];
-                if(pt[1] < minLat) minLat = pt[1];
-                if(pt[1] > maxLat) maxLat = pt[1];
+                if (pt[0] < minLng) minLng = pt[0];
+                if (pt[0] > maxLng) maxLng = pt[0];
+                if (pt[1] < minLat) minLat = pt[1];
+                if (pt[1] > maxLat) maxLat = pt[1];
             });
             let esHorizontal = (maxLng - minLng) > (maxLat - minLat);
             segmentos.sort((a, b) => esHorizontal ? b[0][0] - a[0][0] : b[0][1] - a[0][1]);
@@ -223,12 +248,12 @@ function dibujarRutas(listaRutasConfigs) {
 function ejecutarPaso(index) {
     pasoActualIndex = index;
     const opcionesVuelo = {
-        duration: 2800, 
+        duration: 2800,
         essential: true,
         curve: 1.15
     };
 
-    switch(index) {
+    switch (index) {
         case 0: // Intro: Todo el país
             map.flyTo({ center: [-65.0, -40.0], zoom: 3.8, pitch: 0, ...opcionesVuelo });
             if (map.getSource('ruta-animada')) {
@@ -262,7 +287,7 @@ function ejecutarPaso(index) {
             break;
 
         case 6: // Ruta 34 (NOA / Ejecución parcial)
-            map.flyTo({ center: [-63.5, -28.2], zoom: 5.4, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-63.5, -29.5], zoom: 4.6, pitch: 15, ...opcionesVuelo });
             dibujarRutas([{ numero: 34, color: coloresRutas.ruta34 }]);
             break;
 
@@ -297,8 +322,48 @@ function init() {
         offset: 0.55,
         debug: false
     }).onStepEnter(handleStepEnter);
-    
+
     window.addEventListener('resize', scroller.resize);
 }
 
 window.onload = init;
+
+// FUNCIÓN PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM DE LA PILA
+// FUNCIÓN PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM O BOTÓN
+function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
+    // 1. Ejecuta la animación del mapa hacia esa ruta (o panorama general)
+    ejecutarPaso(index);
+
+    // 2. Actualiza el recuadro gris (si existe)
+    const infoDinamica = document.getElementById('info-dinamica');
+    if (infoDinamica) {
+        infoDinamica.style.opacity = 0;
+        setTimeout(() => {
+            // Condicional para adaptar el texto si es una ruta específica o el panorama general
+            if (km && trayecto) {
+                infoDinamica.innerHTML = `
+                    <h3>${nombre} (${km})</h3>
+                    <p><strong>${trayecto}:</strong> ${descripcion}</p> 
+                `;
+            } else {
+                infoDinamica.innerHTML = `
+                    <h3>${nombre}</h3>
+                    <p>${descripcion}</p>
+                `;
+            }
+            infoDinamica.style.opacity = 1;
+        }, 180);
+    }
+
+    // 3. Actualiza el badge inferior con el color de la ruta (si es que la estás usando)
+    const badge = document.getElementById('pila-active-badge');
+    if (badge) {
+        badge.innerText = nombre;
+        // Si el index es 7 (Panorama General), usa un gris oscuro. Si no, busca el color de la ruta.
+        let color = '#4b5563';
+        if (index > 0 && index < 7) {
+            color = coloresRutas[`ruta${todasLasRutas[index - 1]?.numero}`] || '#27ae60';
+        }
+        badge.style.backgroundColor = color;
+    }
+}
