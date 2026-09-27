@@ -417,3 +417,40 @@ document.addEventListener('DOMContentLoaded', () => {
         primerTab.style.color = '#ffffff';
     }
 });
+
+// ==========================================
+// 9. CONTROLADOR DE REPRODUCTORES DE AUDIO
+// ==========================================
+function toggleAudio(audioId, btnElement) {
+    const audioElement = document.getElementById(audioId);
+    const iconPlay = btnElement.querySelector('.icon-play');
+    const iconPause = btnElement.querySelector('.icon-pause');
+    const waveform = btnElement.nextElementSibling; // Selecciona la onda de sonido
+
+    // Verifica si el archivo de audio fue cargado
+    if (!audioElement.src || audioElement.src === window.location.href) {
+        alert("Acá se reproducirá el audio cuando agregues la ruta del archivo MP3 en el HTML.");
+        return;
+    }
+
+    if (audioElement.paused) {
+        // Reproducir
+        audioElement.play();
+        iconPlay.style.display = 'none';
+        iconPause.style.display = 'block';
+        waveform.style.opacity = '1'; // "Enciende" la onda
+    } else {
+        // Pausar
+        audioElement.pause();
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+        waveform.style.opacity = '0.5'; // "Apaga" la onda
+    }
+
+    // Cuando el audio termine, volver al estado inicial
+    audioElement.onended = function() {
+        iconPlay.style.display = 'block';
+        iconPause.style.display = 'none';
+        waveform.style.opacity = '0.5';
+    };
+}
