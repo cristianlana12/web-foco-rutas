@@ -35,11 +35,10 @@ fetch('rutas_inconclusas.geojson')
     .catch(error => console.error("Error al cargar el GeoJSON:", error));
 
 
-// 3. INICIALIZAR EL MAPA MAPLIBRE (SIN MARCA DE AGUA Y CON PROVINCIAS)
+// 3. INICIALIZAR EL MAPA MAPLIBRE (FONDO BEIGE Y PROVINCIAS)
 const map = new maplibregl.Map({
     container: 'map',
     style: {
-        'background': '#DDD9D0',
         'version': 8,
         'sources': {
             'esri-base': {
@@ -59,19 +58,35 @@ const map = new maplibregl.Map({
             }
         },
         'layers': [
+            // 1. CAPA DE COLOR SÓLIDO (Tu color beige)
+            {
+                'id': 'fondo-beige',
+                'type': 'background',
+                'paint': {
+                    'background-color': '#DDD9D0'
+                }
+            },
+            // 2. CAPA DEL MAPA (Con opacidad baja para que se transparente el beige)
             {
                 'id': 'esri-base-layer',
                 'type': 'raster',
                 'source': 'esri-base',
                 'minzoom': 0,
-                'maxzoom': 16
+                'maxzoom': 16,
+                'paint': {
+                    'raster-opacity': 0.65 /* Acá está la magia: filtra la imagen */
+                }
             },
+            // 3. CAPA DE PROVINCIAS Y CIUDADES
             {
                 'id': 'esri-borders-layer',
                 'type': 'raster',
                 'source': 'esri-borders',
                 'minzoom': 0,
-                'maxzoom': 16
+                'maxzoom': 16,
+                'paint': {
+                    'raster-opacity': 0.85
+                }
             }
         ]
     },
@@ -367,3 +382,38 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
         badge.style.backgroundColor = color;
     }
 }
+
+// ==========================================
+// 8. LÓGICA DE LAS PESTAÑAS (TABS) DE RUTAS
+// ==========================================
+function cambiarTab(elemento) {
+    // 1. Quitar la clase activa y los colores en línea de todas las pestañas
+    const tabs = document.querySelectorAll('.tab-btn');
+    tabs.forEach(tab => {
+        tab.classList.remove('is-active');
+        tab.style.backgroundColor = ''; 
+        tab.style.color = '';
+    });
+
+    // 2. Activar la pestaña clickeada y ponerle su color específico
+    elemento.classList.add('is-active');
+    const colorHex = elemento.getAttribute('data-color');
+    elemento.style.backgroundColor = colorHex;
+    elemento.style.color = '#ffffff';
+
+    // 3. Cambiar el color del borde izquierdo del contenedor de contenido
+    const contentArea = document.getElementById('tab-content-area');
+    contentArea.style.borderLeftColor = colorHex;
+
+    // (En el próximo paso agregaremos aquí la lógica para mostrar el texto de cada ruta)
+}
+
+// Inicializar el color de la primera pestaña al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    const primerTab = document.querySelector('.tab-btn.is-active');
+    if (primerTab) {
+        const colorInicial = primerTab.getAttribute('data-color');
+        primerTab.style.backgroundColor = colorInicial;
+        primerTab.style.color = '#ffffff';
+    }
+});
