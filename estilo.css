@@ -1715,3 +1715,68 @@ article {
 .graficosRN5 img{
     width: 95%;
 }
+
+/* =========================================
+   LAYOUT DIVIDIDO (RUTA 11)
+   ========================================= */
+.ruta-split-layout {
+    display: flex;
+    gap: 3rem; /* Separación amplia entre foto y texto */
+    margin: 4rem 0;
+    align-items: stretch;
+}
+
+.split-left {
+    flex: 1; /* Ocupa el 50% */
+}
+
+.split-right {
+    flex: 1; /* Ocupa el otro 50% */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Adaptación a celulares */
+@media (max-width: 900px) {
+    .ruta-split-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .split-left .ruta-img-box {
+        min-height: 300px !important;
+    }
+}
+
+/* =========================================
+   TARJETAS DE GRÁFICOS
+   ========================================= */
+.ruta-chart-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 2rem 0 4rem 0;
+}
+
+.ruta-chart-card {
+    border-radius: 4px;
+    padding: 2.5rem; /* Le da el marco blanco generoso al gráfico */
+    display: flex;
+    justify-content: center;
+}
+
+.ruta-chart-card {
+    width: 100%;
+}
+.chart-img{
+    width: 170%;
+}
+
+/* Adaptación a celulares para los gráficos */
+@media (max-width: 900px) {
+    .ruta-chart-card {
+        padding: 1rem;
+    }
+    .ruta-chart-wrapper .km-marker-container {
+        left: -1rem; /* Ajuste del marcador en móviles */
+    }
+}
