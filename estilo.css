@@ -1422,11 +1422,11 @@ article {
    TARJETA DE AUDIO (LAS VOCES DE LA RUTA)
    ========================================= */
 .ruta-audio-card {
-    margin: 1.5rem 0 2.5rem 0; /* Espaciado dentro del artículo */
+    margin: 1.5rem auto 2.5rem;
     padding: 3.5rem;
     border-radius: 4px;
     color: #ffffff;
-    width: 100%;
+    width: 70%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
@@ -1706,4 +1706,12 @@ article {
     .gallery-img-box {
         height: 250px;
     }
+}
+
+.graficosRN5{
+    width: 100%;
+}
+
+.graficosRN5 img{
+    width: 95%;
 }

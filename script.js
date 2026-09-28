@@ -387,7 +387,7 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
 // 8. LÓGICA DE LAS PESTAÑAS (TABS) DE RUTAS
 // ==========================================
 function cambiarTab(elemento) {
-    // 1. Quitar la clase activa y los colores en línea de todas las pestañas
+    // 1. Quitar la clase activa y los colores en línea de todas las pestañas superiores
     const tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(tab => {
         tab.classList.remove('is-active');
@@ -395,17 +395,34 @@ function cambiarTab(elemento) {
         tab.style.color = '';
     });
 
-    // 2. Activar la pestaña clickeada y ponerle su color específico
+    // 2. Activar la pestaña clickeada
     elemento.classList.add('is-active');
     const colorHex = elemento.getAttribute('data-color');
     elemento.style.backgroundColor = colorHex;
     elemento.style.color = '#ffffff';
 
-    // 3. Cambiar el color del borde izquierdo del contenedor de contenido
+    // 3. Cambiar el color del borde izquierdo del contenedor
     const contentArea = document.getElementById('tab-content-area');
     contentArea.style.borderLeftColor = colorHex;
 
-    // (En el próximo paso agregaremos aquí la lógica para mostrar el texto de cada ruta)
+    // 4. OCULTAR TODOS LOS PANELES Y MOSTRAR SOLO EL SELECCIONADO
+    const rutaId = elemento.getAttribute('data-ruta');
+    const paneles = document.querySelectorAll('.tab-pane');
+    
+    paneles.forEach(pane => {
+        pane.style.display = 'none';
+        pane.classList.remove('is-active');
+    });
+    
+    const paneActivo = document.getElementById('pane-ruta-' + rutaId);
+    if (paneActivo) {
+        paneActivo.style.display = 'block';
+        
+        // Pequeño truco para que aparezca con un fade suave
+        setTimeout(() => {
+            paneActivo.classList.add('is-active');
+        }, 50);
+    }
 }
 
 // Inicializar el color de la primera pestaña al cargar la página
