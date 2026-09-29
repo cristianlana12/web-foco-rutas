@@ -75,12 +75,12 @@ body {
     transform: translateY(-1px);
 }
 
-.btn-rn3 { background-color: #d94838; }
-.btn-rn5 { background-color: #e67e22; }
-.btn-rn11 { background-color: #2980b9; }
-.btn-rn18 { background-color: #27ae60; }
-.btn-rn22 { background-color: #8e44ad; }
-.btn-rn34 { background-color: #d97706; }
+.btn-rn3 { background-color: #6E2A33; }
+.btn-rn5 { background-color: #DF741B; }
+.btn-rn11 { background-color: #206795; }
+.btn-rn18 { background-color: #31824A; }
+.btn-rn22 { background-color: #674199; }
+.btn-rn34 { background-color: #E3A711; }
 .btn-general { background-color: #4b5563; padding: 0.25rem 1.5rem; }
 
 
@@ -340,7 +340,7 @@ body {
 }
 
 .mini-box-tag {
-    background-color: #d94838;
+    background-color: #6E2A33;
     color: #ffffff;
     font-size: 0.7rem;
     font-weight: 800;
@@ -421,25 +421,23 @@ body {
    ========================================= */
 #scrolly {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    padding: 2rem 2rem 4rem 2rem;
-    gap: 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    display: block;
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
 }
 
 #map-container {
     position: sticky;
-    top: 4.5rem;
-    width: 50%;
-    height: calc(100vh - 6rem);
+    top: 0;
+    width: 100%;
+    height: 100vh;
     z-index: 0;
-    border-radius: 16px;
+    border: none;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
     background-color: #DDD9D0;
-    border: 1px solid #e5e7eb;
 }
 
 #map {
@@ -451,17 +449,21 @@ body {
 
 article {
     position: relative;
-    width: 50%;
+    z-index: 10;
+    width: 100%;
     padding: 0;
+    margin-top: -100vh;
+    padding-top: 2rem;
 }
 
 .step {
-    margin: 0 auto 75vh auto;
+    margin: 0 5% 75vh auto;
+    max-width: 450px;
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: none;
     padding: 2.2rem;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0.25;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
@@ -491,12 +493,12 @@ article {
     margin-bottom: 0.6rem;
 }
 
-.badge-ruta3 { background-color: #d94838; }
-.badge-ruta5 { background-color: #e67e22; }
-.badge-ruta11 { background-color: #2980b9; }
-.badge-ruta18 { background-color: #27ae60; }
-.badge-ruta22 { background-color: #8e44ad; }
-.badge-ruta34 { background-color: #d97706; }
+.badge-ruta3 { background-color: #6E2A33; }
+.badge-ruta5 { background-color: #DF741B; }
+.badge-ruta11 { background-color: #206795; }
+.badge-ruta18 { background-color: #31824A; }
+.badge-ruta22 { background-color: #674199; }
+.badge-ruta34 { background-color: #E3A711; }
 
 .step h2 {
     margin: 0 0 0.8rem 0;
@@ -504,12 +506,12 @@ article {
     font-weight: 700;
 }
 
-.color-ruta3 { color: #d94838; }
-.color-ruta5 { color: #e67e22; }
-.color-ruta11 { color: #2980b9; }
-.color-ruta18 { color: #27ae60; }
-.color-ruta22 { color: #8e44ad; }
-.color-ruta34 { color: #d97706; }
+.color-ruta3 { color: #6E2A33; }
+.color-ruta5 { color: #DF741B; }
+.color-ruta11 { color: #206795; }
+.color-ruta18 { color: #31824A; }
+.color-ruta22 { color: #674199; }
+.color-ruta34 { color: #E3A711; }
 
 .route-info-bar {
     display: flex;
@@ -987,26 +989,30 @@ article {
 
 /* El último paso tiene más presencia y no desaparece con el scroll */
 .step-final {
+    margin: 0 5% 25vh auto;
+    max-width: 450px;
     background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    border: none;
     border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    margin-bottom: 25vh !important;
+    padding: 2.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Recuadro gris superior del boceto */
 .recuadro-gris {
-    background-color: #d8dcde;
-    border-radius: 4px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
     padding: 2.2rem;
-    margin-bottom: 2rem;
+    margin: 0 5% 2rem auto;
+    max-width: 450px;
     color: #2c343b;
     min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transition: opacity 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .recuadro-gris h3 {
@@ -1083,7 +1089,7 @@ article {
 
 .pila-badge-tag {
     display: inline-block;
-    background-color: #27ae60;
+    background-color: #31824A;
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: 800;
@@ -1784,3 +1790,78 @@ article {
         left: -1rem; /* Ajuste del marcador en móviles */
     }
 }
+
+.scroll-text {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.tabs-menu {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #F2EFE7;
+    padding: 1rem 0 0 0;
+    margin: -1rem 0 0 0;
+}
+
+@media (max-width: 900px) {
+    .autovias-title {
+        font-size: 2.2rem !important;
+    }
+    .autovias-titleh2 {
+        font-size: 2rem !important;
+    }
+    .scroll-text {
+        padding: 1rem !important;
+    }
+    .step, .step-final, .recuadro-gris {
+        width: 85% !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+        padding: 1.5rem !important;
+    }
+    .stack-on-mobile {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    .stack-on-mobile > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+    }
+    .mobile-padding {
+        padding: 1.5rem !important;
+    }
+    .tab-pane h2 {
+        font-size: 2rem !important;
+    }
+    .tab-pane h3 {
+        font-size: 1.5rem !important;
+    }
+}
+
+
+
+
+article {
+    padding-top: 50vh !important;
+    padding-bottom: 50vh !important;
+}
+
+@media (max-width: 900px) {
+    #scrolly {
+        padding: 0 !important;
+    }
+    #map-container {
+        height: 100vh !important;
+        top: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+}
+
+

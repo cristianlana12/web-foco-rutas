@@ -4,12 +4,12 @@ let animacionId = null;
 let pasoActualIndex = 0;
 
 const coloresRutas = {
-    'ruta3': '#d94838',
-    'ruta5': '#e67e22',
-    'ruta11': '#2980b9',
-    'ruta18': '#27ae60',
-    'ruta22': '#8e44ad',
-    'ruta34': '#d97706'
+    'ruta3': '#6E2A33',
+    'ruta5': '#DF741B',
+    'ruta11': '#206795',
+    'ruta18': '#31824A',
+    'ruta22': '#674199',
+    'ruta34': '#E3A711'
 };
 
 const todasLasRutas = [
@@ -377,7 +377,7 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
         // Si el index es 7 (Panorama General), usa un gris oscuro. Si no, busca el color de la ruta.
         let color = '#4b5563';
         if (index > 0 && index < 7) {
-            color = coloresRutas[`ruta${todasLasRutas[index - 1]?.numero}`] || '#27ae60';
+            color = coloresRutas[`ruta${todasLasRutas[index - 1]?.numero}`] || '#31824A';
         }
         badge.style.backgroundColor = color;
     }
