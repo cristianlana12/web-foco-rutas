@@ -1112,9 +1112,13 @@ article {
 .tabs-menu {
     display: flex;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 1rem 0 0 0;
+    margin: -1rem 0 0 0;
     gap: 0.5rem; /* Separación sutil entre pestañas */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #F2EFE7;
 }
 
 /* Diseño de cada pestaña inactiva */
