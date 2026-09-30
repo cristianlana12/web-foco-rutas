@@ -2,11 +2,9 @@
 * {
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 body {
     margin: 0;
     padding: 0;
@@ -15,7 +13,6 @@ body {
     color: #1f2937;
     line-height: 1.6;
 }
-
 /* =========================================
    MINI MENÚ NAVEGADOR FIX (TOP-NAV)
    ========================================= */
@@ -28,7 +25,6 @@ body {
     padding: 0.5rem 1.5rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -38,25 +34,21 @@ body {
     flex-wrap: wrap;
     gap: 0.8rem;
 }
-
 .nav-logo {
     display: flex;
     align-items: center;
 }
-
 .nav-logo-img {
     height: 32px;
     width: auto;
     display: block;
 }
-
 .nav-links {
     display: flex;
     align-items: center;
     gap: 0.4rem;
     flex-wrap: wrap;
 }
-
 .nav-btn {
     border: none;
     color: #ffffff;
@@ -69,12 +61,10 @@ body {
     cursor: pointer;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .nav-btn:hover {
     opacity: 0.85;
     transform: translateY(-1px);
 }
-
 .btn-rn3 { background-color: #6E2A33; }
 .btn-rn5 { background-color: #DF741B; }
 .btn-rn11 { background-color: #206795; }
@@ -82,8 +72,6 @@ body {
 .btn-rn22 { background-color: #674199; }
 .btn-rn34 { background-color: #E3A711; }
 .btn-general { background-color: #4b5563; padding: 0.25rem 1.5rem; }
-
-
 /* =========================================
    NUEVO HEADER PORTADA (AUTOVIAS PROMETIDAS)
    ========================================= */
@@ -100,7 +88,6 @@ body {
     overflow: hidden;
     z-index: 1;
 }
-
 /* Capa 1: Traslucidad grisácea sutil sobre la foto de fondo */
 .banner-overlay {
     position: absolute;
@@ -108,7 +95,6 @@ body {
     background-color: rgba(45, 50, 55, 0.65); /* Filtro gris/azulado al 40% */
     z-index: 2;
 }
-
 /* Capa 2: Contenedor Principal */
 .banner-container {
     position: relative;
@@ -120,7 +106,6 @@ body {
     display: flex;
     justify-content: flex-start; /* Alinea la caja oscura a la izquierda */
 }
-
 /* Caja oscura principal TRASLÚCIDA */
 .autovias-dark-box {
     background-color: rgba(35, 39, 43, 0.80); /* Negro/Gris traslúcido al 75% */
@@ -130,8 +115,6 @@ body {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px); /* Difumina ligeramente lo que hay detrás de la caja */
 }
-
-
 /* Estilos de contenido interno */
 .logos-foco {
     height: 32px; 
@@ -139,7 +122,6 @@ body {
     margin-bottom: 2.5rem;
     display: block;
 }
-
 .cont-title{
     display: flex;
     flex-direction: column;
@@ -149,7 +131,6 @@ body {
     margin-bottom: 80px;
     width: 100%;
 }
-
 .autovias-title {
     font-size: 6.5rem;
     font-weight: 900;
@@ -160,7 +141,6 @@ body {
     letter-spacing: -0.02em;
     text-align: center;
 }
-
 .autovias-titleh2{
     font-size: 5.2rem;
     font-weight: 900;
@@ -171,7 +151,6 @@ body {
     letter-spacing: -0.02em;
     text-align: center;
 }
-
 .autovias-desc {
     font-size: 1.1rem;
     color: #e5e7eb;
@@ -179,7 +158,6 @@ body {
     margin: 0;
     font-weight: 400;
 }
-
 /* Capa 3: Gráficos Amarillos ENCIMA DE TODO */
 .banner-graficos {
     position: absolute;
@@ -192,7 +170,6 @@ body {
     width: 87%;
     height: 100vh;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 768px) {
     .banner-autovias {
@@ -214,19 +191,15 @@ body {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
     }
 }
-
 .landing-comienzo{
     width: 100%;
 }
-
 .landing-comienzo figure{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-
 /* =========================================
    SECCIÓN INTRO Y ESTADÍSTICAS
    ========================================= */
@@ -235,12 +208,10 @@ body {
     background-color: #f4f6f8;
     text-align: center;
 }
-
 .intro-container {
     max-width: 950px;
     margin: 0 auto;
 }
-
 .hero-badges {
     display: flex;
     justify-content: center;
@@ -250,7 +221,6 @@ body {
     flex-wrap: wrap;
     scale: calc(0.7);
 }
-
 .badge-tag {
     background-color: #111827;
     color: #ffffff;
@@ -260,14 +230,12 @@ body {
     border-radius: 4px;
     letter-spacing: 0.05em;
 }
-
 .badge-partner {
     font-size: 0.8rem;
     font-weight: 700;
     color: #4b5563;
     letter-spacing: 0.05em;
 }
-
 .hero-main-title {
     font-size: 4.2rem;
     font-weight: 900;
@@ -276,7 +244,6 @@ body {
     margin: 0 0 1.5rem 0;
     color: #0F2D3D;
 }
-
 .highlight-yellow {
     background-color: #facc15;
     color: #111827;
@@ -284,7 +251,6 @@ body {
     border-radius: 4px;
     display: inline-block;
 }
-
 .hero-lead {
     font-size: 1.4rem;
     color: #0F2D3D;
@@ -293,14 +259,12 @@ body {
     font-weight: 500;
     line-height: 1.6;
 }
-
 .hero-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2.5rem;
 }
-
 .stat-box {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
@@ -309,7 +273,6 @@ body {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
-
 .stat-number {
     display: block;
     font-size: 2.6rem;
@@ -318,7 +281,6 @@ body {
     line-height: 1.1;
     margin-bottom: 0.8rem;
 }
-
 .stat-desc {
     font-size: 0.9rem;
     color: #4b5563;
@@ -326,7 +288,6 @@ body {
     line-height: 1.5;
     font-weight: 500;
 }
-
 .hero-mini-box {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
@@ -338,7 +299,6 @@ body {
     position: relative;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
-
 .mini-box-tag {
     background-color: #6E2A33;
     color: #ffffff;
@@ -352,14 +312,12 @@ body {
     top: -10px;
     left: 1.5rem;
 }
-
 .hero-mini-box p {
     margin: 0;
     font-size: 0.92rem;
     color: #4b5563;
     line-height: 1.6;
 }
-
 .scroll-indicator {
     cursor: pointer;
     display: inline-flex;
@@ -371,22 +329,18 @@ body {
     font-weight: 600;
     transition: color 0.2s ease;
 }
-
 .scroll-indicator:hover {
     color: #111827;
 }
-
 .arrow-down {
     font-size: 1.2rem;
     animation: bounce 1.8s infinite;
 }
-
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(6px); }
     60% { transform: translateY(3px); }
 }
-
 .hero-p{
     width: 65%;
     margin: 1.5rem auto;
@@ -394,7 +348,6 @@ body {
     font-family: Bitter;
     font-size: 1.2rem;
 }
-
 .title-map{
     font-size: 40px;
     font-weight: 900;
@@ -404,7 +357,6 @@ body {
     color: #0F2D3D;
     text-align: center;
 }
-
 .map-p{
     width: 45%;
     margin: 1.5rem auto;
@@ -414,8 +366,6 @@ body {
     color: #5A646C;
     font-size: 17px;
 }
-
-
 /* =========================================
    LAYOUT DE SCROLLYTELLING Y MAPA
    ========================================= */
@@ -426,7 +376,6 @@ body {
     max-width: 100%;
     margin: 0;
 }
-
 #map-container {
     position: sticky;
     top: 0;
@@ -439,14 +388,11 @@ body {
     box-shadow: none;
     background-color: #DDD9D0;
 }
-
 #map {
     width: 100%;
     height: 100%;
     background-color: #DDD9D0;
-
 }
-
 article {
     position: relative;
     z-index: 10;
@@ -455,7 +401,6 @@ article {
     margin-top: -100vh;
     padding-top: 2rem;
 }
-
 .step {
     margin: 0 5% 75vh auto;
     max-width: 450px;
@@ -467,12 +412,10 @@ article {
     opacity: 0.25;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
 .step.is-active {
     opacity: 1;
     transform: translateY(-2px);
 }
-
 .step-tag {
     display: inline-block;
     font-size: 0.75rem;
@@ -482,7 +425,6 @@ article {
     color: #6b7280;
     margin-bottom: 0.5rem;
 }
-
 .step-badge {
     display: inline-block;
     font-size: 0.8rem;
@@ -492,27 +434,23 @@ article {
     border-radius: 4px;
     margin-bottom: 0.6rem;
 }
-
 .badge-ruta3 { background-color: #6E2A33; }
 .badge-ruta5 { background-color: #DF741B; }
 .badge-ruta11 { background-color: #206795; }
 .badge-ruta18 { background-color: #31824A; }
 .badge-ruta22 { background-color: #674199; }
 .badge-ruta34 { background-color: #E3A711; }
-
 .step h2 {
     margin: 0 0 0.8rem 0;
     font-size: 1.6rem;
     font-weight: 700;
 }
-
 .color-ruta3 { color: #6E2A33; }
 .color-ruta5 { color: #DF741B; }
 .color-ruta11 { color: #206795; }
 .color-ruta18 { color: #31824A; }
 .color-ruta22 { color: #674199; }
 .color-ruta34 { color: #E3A711; }
-
 .route-info-bar {
     display: flex;
     flex-wrap: wrap;
@@ -525,7 +463,6 @@ article {
     margin-bottom: 1rem;
     border-radius: 0 6px 6px 0;
 }
-
 .conclusion-box {
     background-color: #eff6ff;
     border: 1px solid #bfdbfe;
@@ -535,8 +472,6 @@ article {
     font-size: 0.9rem;
     color: #1e3a8a;
 }
-
-
 /* =========================================
    SECCIÓN: EJE DE LA INVESTIGACIÓN
    ========================================= */
@@ -549,21 +484,18 @@ article {
     padding: 6rem 2rem;
     color: #ffffff;
 }
-
 .eje-overlay {
     position: absolute;
     inset: 0;
     background-color: rgba(17, 24, 39, 0.85); 
     z-index: 1;
 }
-
 .eje-container {
     position: relative;
     z-index: 2;
     max-width: 800px;
     margin: 0 auto;
 }
-
 .eje-badge {
     background-color: #facc15;
     color: #000000;
@@ -576,11 +508,9 @@ article {
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
 }
-
 .mt-extra {
     margin-top: 4rem; 
 }
-
 .eje-title {
     font-size: 2.2rem;
     font-weight: 900;
@@ -588,34 +518,29 @@ article {
     letter-spacing: -0.02em;
     margin: 0 0 1rem 0;
 }
-
 .eje-lead {
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.65); 
     line-height: 1.6;
     margin: 0 0 2.5rem 0;
 }
-
 .eje-lead-light {
     font-size: 1.15rem;
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
     margin: 0;
 }
-
 .bar-chart {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 2.5rem;
 }
-
 .bar-row {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
-
 .bar-label {
     width: 140px;
     text-align: right;
@@ -624,7 +549,6 @@ article {
     color: #e5e7eb;
     text-transform: uppercase;
 }
-
 .bar-track {
     flex-grow: 1;
     background-color: rgba(255, 255, 255, 0.1);
@@ -632,24 +556,20 @@ article {
     border-radius: 4px;
     overflow: hidden;
 }
-
 .bar-fill {
     height: 100%;
     border-radius: 4px;
     transition: width 1.5s ease-in-out;
 }
-
 .bg-rojo { background-color: #ef4444; }
 .bg-gris { background-color: #9ca3af; }
 .bg-verde { background-color: #22c55e; }
-
 .bar-percent {
     width: 40px;
     font-weight: 800;
     font-size: 1rem;
     color: #ffffff;
 }
-
 .eje-nota-pie {
     background-color: #FBF0C4;
     color: #111827; 
@@ -659,8 +579,6 @@ article {
     line-height: 1.5;
     border-left: 4px solid #facc15;
 }
-
-
 /* =========================================
    SECCIÓN PÁGINA POR RUTA (TARJETAS VERDES)
    ========================================= */
@@ -668,12 +586,10 @@ article {
     background-color: #f4f6f8; 
     padding: 4rem 2rem 6rem 2rem;
 }
-
 .rutas-detalle-container {
     max-width: 1300px;
     margin: 0 auto;
 }
-
 .section-title {
     font-size: 1.8rem;
     font-weight: 900;
@@ -682,20 +598,17 @@ article {
     margin: 0 0 0.4rem 0;
     letter-spacing: -0.02em;
 }
-
 .section-desc {
     font-size: 1.1rem;
     color: #4b5563;
     margin: 0 0 2.5rem 0;
     line-height: 1.6;
 }
-
 .rutas-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.8rem;
 }
-
 .ruta-card-green {
     position: relative;
     background-color: #0F6E45; 
@@ -708,12 +621,10 @@ article {
     justify-content: space-between;
     transition: transform 0.25 ease, box-shadow 0.25s ease;
 }
-
 .ruta-card-green:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(15, 110, 69, 0.3);
 }
-
 .card-header {
     display: flex;
     align-items: center;
@@ -722,7 +633,6 @@ article {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 0.8rem;
 }
-
 .card-logo {
     width: 54px;
     height: 54px;
@@ -731,20 +641,17 @@ article {
     align-items: center;
     justify-content: center;
 }
-
 .card-logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
-
 .card-title-group h3 {
     margin: 0 0 0.2rem 0;
     font-size: 1.4rem;
     font-weight: 900;
     color: #ffffff;
 }
-
 .card-trayecto {
     font-size: 0.85rem;
     color: #dcfce7;
@@ -752,7 +659,6 @@ article {
     display: block;
     line-height: 1.3;
 }
-
 .card-stats-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -762,26 +668,22 @@ article {
     border-radius: 8px;
     text-align: center;
 }
-
 .stat-item {
     display: flex;
     flex-direction: column;
 }
-
 .stat-val {
     font-size: 0.95rem;
     font-weight: 800;
     color: #fff;  
     margin-bottom: 0.2rem;
 }
-
 .stat-lbl {
     font-size: 0.7rem;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
-
 .card-btn-rect {
     position: absolute;
     bottom: 0;
@@ -799,12 +701,10 @@ article {
     transition: background-color 0.2s ease, color 0.2s ease;
     letter-spacing: 0.05em;
 }
-
 .ruta-card-green:hover .card-btn-rect {
     background-color: #fef08a; 
     color: #111827; 
 }
-
 /* =========================================
    FOOTER Y RESPONSIVIDAD
    ========================================= */
@@ -816,35 +716,29 @@ article {
     font-size: 0.85rem;
     color: #6b7280;
 }
-
 @media (max-width: 1024px) {
     .rutas-grid-3 {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (max-width: 900px) {
     #scrolly {
         flex-direction: column;
         padding: 1rem;
     }
-
     #map-container {
         position: sticky;
         width: 100%;
         height: 50vh;
         top: 3.8rem;
     }
-
     article {
         width: 100%;
     }
-
     .hero-main-title {
         font-size: 2.2rem;
     }
 }
-
 @media (max-width: 768px) {
     .banner-autovias {
         padding: 3rem 1.5rem;
@@ -853,7 +747,6 @@ article {
         max-width: 400px;
     }
 }
-
 @media (max-width: 600px) {
     .rutas-grid-3 {
         grid-template-columns: 1fr;
@@ -874,7 +767,6 @@ article {
         align-self: flex-end;
     }
 }
-
 /* =========================================
    PANEL INTERACTIVO DERECHO (ESTILO FIGMA)
    ========================================= */
@@ -884,7 +776,6 @@ article {
     display: flex;
     flex-direction: column;
 }
-
 /* El recuadro gris gigante */
 .recuadro-gris {
     background-color: #d1d5db; /* Gris sólido del diseño */
@@ -899,27 +790,23 @@ article {
     justify-content: center;
     transition: opacity 0.3s ease;
 }
-
 .recuadro-gris h3 {
     margin: 0 0 1rem 0;
     font-size: 1.6rem;
     color: #111827;
     font-weight: 800;
 }
-
 .recuadro-gris p {
     margin: 0;
     font-size: 1.1rem;
     line-height: 1.6;
 }
-
 /* La pila de rutas inferior */
 .pila-rutas {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-
 .pila-item {
     display: flex;
     align-items: center;
@@ -928,12 +815,10 @@ article {
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
 .pila-item:hover {
     transform: translateX(5px); /* Efecto sutil al pasar el mouse */
     background-color: #f9fafb;
 }
-
 /* Rayita de color */
 .pila-line {
     width: 14px;
@@ -941,7 +826,6 @@ article {
     border-radius: 2px;
     margin-right: 1.5rem;
 }
-
 /* Nombre (RN X) */
 .pila-name {
     font-weight: 900;
@@ -950,7 +834,6 @@ article {
     width: 75px;
     flex-shrink: 0;
 }
-
 /* Trayecto */
 .pila-trayecto {
     flex-grow: 1;
@@ -958,7 +841,6 @@ article {
     font-size: 0.95rem;
     font-weight: 400;
 }
-
 /* Kilómetros */
 .pila-km {
     font-weight: 700;
@@ -966,7 +848,6 @@ article {
     font-size: 0.9rem;
     text-align: right;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 900px) {
     .panel-interactivo {
@@ -982,11 +863,9 @@ article {
         padding-left: 2.5rem;
     }
 }
-
 /* =========================================
    PILA INTERACTIVA DENTRO DEL SCROLLYTELLING
    ========================================= */
-
 /* El último paso tiene más presencia y no desaparece con el scroll */
 .step-final {
     margin: 0 5% 25vh auto;
@@ -997,7 +876,6 @@ article {
     padding: 2.2rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-
 /* Recuadro gris superior del boceto */
 .recuadro-gris {
     background-color: #ffffff;
@@ -1014,21 +892,18 @@ article {
     transition: opacity 0.25s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-
 .recuadro-gris h3 {
     margin: 0 0 0.8rem 0;
     font-size: 1.45rem;
     color: #111827;
     font-weight: 800;
 }
-
 .recuadro-gris p {
     margin: 0;
     font-size: 0.98rem;
     line-height: 1.6;
     color: #374151;
 }
-
 /* Lista de filas de la pila */
 .pila-rutas {
     display: flex;
@@ -1036,7 +911,6 @@ article {
     width: 100%;
     margin-bottom: 1.5rem;
 }
-
 .pila-item {
     display: flex;
     align-items: center;
@@ -1046,12 +920,10 @@ article {
     border-radius: 4px;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
 .pila-item:hover {
     background-color: #f3f4f6;
     transform: translateX(4px);
 }
-
 .pila-line {
     width: 16px;
     height: 4px;
@@ -1059,7 +931,6 @@ article {
     margin-right: 1rem;
     flex-shrink: 0;
 }
-
 .pila-name {
     font-weight: 800;
     font-size: 0.95rem;
@@ -1067,26 +938,22 @@ article {
     width: 65px;
     flex-shrink: 0;
 }
-
 .pila-trayecto {
     flex-grow: 1;
     color: #6b7280;
     font-size: 0.88rem;
     font-weight: 400;
 }
-
 .pila-km {
     font-weight: 700;
     color: #9ca3af;
     font-size: 0.85rem;
     text-align: right;
 }
-
 /* Badge que resalta la ruta seleccionada abajo a la izquierda */
 .pila-active-badge-container {
     margin-top: 1rem;
 }
-
 .pila-badge-tag {
     display: inline-block;
     background-color: #31824A;
@@ -1099,7 +966,6 @@ article {
     text-transform: uppercase;
     transition: background-color 0.3s ease;
 }
-
 /* =========================================
    SECCIÓN DETALLE DE RUTAS (TABS)
    ========================================= */
@@ -1108,12 +974,10 @@ article {
     padding: 5rem 2rem;
     width: 100%;
 }
-
 .tabs-container {
     max-width: 1300px;
     margin: 0 auto;
 }
-
 /* Menú superior */
 .tabs-menu {
     display: flex;
@@ -1126,7 +990,6 @@ article {
     z-index: 1000;
     background-color: #F2EFE7;
 }
-
 /* Diseño de cada pestaña inactiva */
 .tab-btn {
     flex: 1;
@@ -1140,11 +1003,9 @@ article {
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .tab-btn:hover {
     background-color: #d1d5db; /* Oscurece apenitas al pasar el mouse */
 }
-
 /* Caja de contenido inferior */
 .tab-content-area {
     background-color: #F4F3EF;
@@ -1153,7 +1014,6 @@ article {
     padding: 4rem 3rem;
     transition: border-left-color 0.3s ease;
 }
-
 /* Adaptación para celulares */
 @media (max-width: 900px) {
     .tabs-menu {
@@ -1170,7 +1030,6 @@ article {
         border-left-width: 4px;
     }
 }
-
 /* =========================================
    CONTENIDO INTERNO DE LAS PESTAÑAS (RUTAS)
    ========================================= */
@@ -1179,7 +1038,6 @@ article {
     max-width: 800px;
     margin: 0 auto 3rem auto;
 }
-
 .ruta-tab-subtitle {
     display: block;
     font-size: 0.9rem;
@@ -1187,7 +1045,6 @@ article {
     color: #0F2D3D;
     margin-bottom: 1rem;
 }
-
 .ruta-tab-title {
     font-size: 2.4rem;
     font-weight: 900;
@@ -1195,14 +1052,12 @@ article {
     margin: 0 0 1.5rem 0;
     letter-spacing: -0.03em;
 }
-
 .ruta-tab-desc {
     font-size: 1.15rem;
     color: #20252A;
     line-height: 1.6;
     font-family: 'Bitter', serif; /* Tipografía de lectura con serifa */
 }
-
 /* Barra Blanca de Estadísticas */
 .ruta-stats-bar {
     background-color: #ffffff;
@@ -1213,13 +1068,11 @@ article {
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-
 .ruta-stat-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-
 .ruta-stat-item .stat-lbl {
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -1228,20 +1081,17 @@ article {
     line-height: 1.2;
     margin-bottom: 0.4rem;
 }
-
 .ruta-stat-item .stat-val {
     font-size: 1.6rem;
     font-weight: 900;
     color: #0F2D3D;
     line-height: 1;
 }
-
 .ruta-stat-item .stat-val small {
     font-size: 0.8rem;
     font-weight: 800;
     margin-left: 2px;
 }
-
 /* El borde rayado dinámico */
 .stripe-border-bottom {
     position: absolute;
@@ -1250,7 +1100,6 @@ article {
     width: 100%;
     height: 8px; /* Grosor de la franja rayada */
 }
-
 /* Adaptación a celulares de la barra blanca */
 @media (max-width: 900px) {
     .ruta-tab-title {
@@ -1265,11 +1114,9 @@ article {
         flex: 1 1 30%; /* Tres columnas en móviles */
     }
 }
-
 /* =========================================
    ELEMENTOS INTERNOS DE RUTA (MAPA Y TEXTO)
    ========================================= */
-
 /* Caja gris de reemplazo para el mapa estático */
 .ruta-map-placeholder {
     width: 100%;
@@ -1278,7 +1125,6 @@ article {
     margin: 4rem 0;
     border-radius: 4px;
 }
-
 /* Sección que contiene el texto y el marcador lateral */
 .ruta-text-section {
     position: relative;
@@ -1287,7 +1133,6 @@ article {
     display: flex;
     justify-content: center; /* Centra el párrafo en la pantalla */
 }
-
 /* Párrafo de lectura */
 .ruta-text-section .ruta-text-desc {
     max-width: 780px; /* Limita el ancho para que la lectura sea cómoda (como en la foto) */
@@ -1297,7 +1142,6 @@ article {
     margin: 0;
     font-family: 'Bitter';
 }
-
 /* Contenedor del marcador de kilómetro (pegado al borde izquierdo) */
 .km-marker-container {
     position: absolute;
@@ -1308,20 +1152,17 @@ article {
     align-items: center;
     gap: 0.5rem;
 }
-
 .km-box {
     width: 16px;
     height: 14px;
     /* El color se inyecta en el HTML para que coincida con cada ruta */
 }
-
 .km-text {
     font-size: 0.75rem;
     font-weight: 800;
     color: #6b7280;
     letter-spacing: 0.02em;
 }
-
 /* Adaptación a celulares para el marcador */
 @media (max-width: 900px) {
     .ruta-map-placeholder {
@@ -1333,7 +1174,6 @@ article {
         left: -1rem; 
     }
 }
-
 /* =========================================
    GRILLA DE DOS COLUMNAS (IMÁGENES/GRÁFICOS)
    ========================================= */
@@ -1343,7 +1183,6 @@ article {
     margin-bottom: 4rem;
     width: 100%;
 }
-
 /* Recuadro gris individual */
 .ruta-img-box {
     flex: 1; /* Hace que ambas cajas ocupen exactamente la mitad del ancho disponible */
@@ -1351,7 +1190,6 @@ article {
     background-color: #E8E7E3; /* Gris claro/beige del diseño */
     border-radius: 4px;
 }
-
 /* Adaptación a celulares para que bajen una debajo de la otra */
 @media (max-width: 900px) {
     .ruta-two-columns {
@@ -1362,16 +1200,13 @@ article {
         height: 250px;
     }
 }
-
 .graficosRN3{
     width: 100%;
 }
-
 .graficosRN3 img{
     width: 95%;
     margin: auto;
 }
-
 /* =========================================
    CUERPO DE LECTURA (ARTÍCULO Y DESTACADOS)
    ========================================= */
@@ -1382,15 +1217,13 @@ article {
     flex-direction: column;
     gap: 1.5rem; /* Separación automática entre todos los párrafos */
 }
-
 .ruta-text-heading {
     font-size: 1.5rem;
     font-weight: 800;
     color: #0F2D3D;
-    margin: 1.5rem 0 0.2rem 0; /* Separación extra arriba */
+    margin: 1.5rem 0 -1.5rem 0; /* Separación extra arriba */
     letter-spacing: -0.02em;
 }
-
 /* Caja de cita (Blockquote) */
 .ruta-blockquote {
     margin: 1.5rem 0;
@@ -1399,7 +1232,6 @@ article {
     border-left: 4px solid #111827; 
     background-color: transparent;
 }
-
 .ruta-blockquote p {
     font-size: 1.25rem;
     font-weight: 800;
@@ -1408,7 +1240,6 @@ article {
     margin: 0 0 0.8rem 0;
     font-family: 'Inter', sans-serif; /* Rompe con la serifa para contrastar */
 }
-
 .ruta-blockquote cite {
     display: block;
     font-size: 0.65rem;
@@ -1418,7 +1249,6 @@ article {
     letter-spacing: 0.05em;
     font-style: normal;
 }
-
 .ruta-text-desc{
     max-width: 780px; /* Limita el ancho para que la lectura sea cómoda (como en la foto) */
     font-size: 1.15rem;
@@ -1427,7 +1257,6 @@ article {
     margin: 0;
     font-family: 'Bitter';
 }
-
 /* =========================================
    TARJETA DE AUDIO (LAS VOCES DE LA RUTA)
    ========================================= */
@@ -1436,10 +1265,10 @@ article {
     padding: 3.5rem;
     border-radius: 4px;
     color: #ffffff;
-    width: 70%;
+    width: 100%;
+    max-width: 546px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-
 .audio-eyebrow {
     display: block;
     font-size: 0.65rem;
@@ -1449,7 +1278,6 @@ article {
     margin-bottom: 1.5rem;
     color: rgba(255, 255, 255, 0.85);
 }
-
 .audio-quote {
     font-size: 1.9rem;
     font-weight: 800;
@@ -1458,30 +1286,25 @@ article {
     color: #ffffff;
     letter-spacing: -0.02em;
 }
-
 .audio-info {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     margin-bottom: 2rem;
 }
-
 .audio-author {
     font-size: 1rem;
     font-weight: 800;
 }
-
 .audio-role {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.85);
 }
-
 .audio-meta {
     font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.65);
     margin-top: 0.4rem;
 }
-
 /* Reproductor inferior */
 .audio-player {
     display: flex;
@@ -1491,7 +1314,6 @@ article {
     padding: 0.6rem 1.5rem 0.6rem 0.6rem;
     border-radius: 50px; /* Bordes totalmente redondeados */
 }
-
 /* Botón de Play */
 .audio-play-btn {
     background-color: #2c343b; /* Gris oscuro del diseño */
@@ -1507,18 +1329,15 @@ article {
     transition: transform 0.2s ease, background-color 0.2s ease;
     flex-shrink: 0;
 }
-
 .audio-play-btn:hover {
     transform: scale(1.05);
     background-color: #111827;
 }
-
 .audio-play-btn svg {
     width: 20px;
     height: 20px;
     margin-left: 3px; /* Centra visualmente el triángulo */
 }
-
 /* Onda de sonido (Waveform ficticia en CSS) */
 .audio-waveform-css {
     flex-grow: 1;
@@ -1528,27 +1347,23 @@ article {
     height: 24px;
     opacity: 0.5; /* Lo hace semitransparente como en el diseño */
 }
-
 .audio-waveform-css span {
     flex: 1;
     background-color: #ffffff;
     border-radius: 2px;
 }
-
 /* Modificadores para crear el dibujo irregular de la onda */
 .audio-waveform-css span:nth-child(even) { height: 60%; }
 .audio-waveform-css span:nth-child(odd) { height: 35%; }
 .audio-waveform-css span:nth-child(3n) { height: 100%; }
 .audio-waveform-css span:nth-child(5n) { height: 45%; }
 .audio-waveform-css span:nth-child(7n) { height: 85%; }
-
 .audio-time {
     font-size: 0.85rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.9);
     flex-shrink: 0;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 600px) {
     .ruta-audio-card {
@@ -1562,29 +1377,24 @@ article {
         gap: 0.8rem;
     }
 }
-
 .audio-play-btn svg {
     width: 20px;
     height: 20px;
 }
-
 .audio-play-btn svg.icon-play {
     margin-left: 3px; /* Centra visualmente el triángulo */
 }
-
 .audio-play-btn svg.icon-pause {
     margin-left: 0; /* Centra perfectamente las barras de pausa */
 }
-
 /* =========================================
    SECCIÓN DE AUDITORÍAS (LISTA NUMERADA)
    ========================================= */
 .ruta-audit-section {
-    margin: 3.5rem 0;
-    width: 70%;
-    margin: auto;
+    width: 100%;
+    max-width: 780px;
+    margin: 3.5rem auto;
 }
-
 .audit-title {
     font-size: 1.6rem;
     font-weight: 800;
@@ -1595,30 +1405,26 @@ article {
     letter-spacing: -0.02em;
     max-width: 600px; /* Evita que el título se estire demasiado */
 }
-
 .audit-list {
     border-top: 1px solid #d1d5db; /* Línea superior */
     border-bottom: 1px solid #d1d5db; /* Línea inferior */
+    padding: 2rem 3rem;
 }
-
 .audit-item {
     display: flex;
     gap: 1.5rem;
     padding: 1.5rem 0;
     border-bottom: 1px solid #e5e7eb; /* Línea divisoria interna muy sutil */
 }
-
 .audit-item.border-none {
     border-bottom: none; /* Le quita la línea interna al último ítem */
 }
-
 .audit-num {
     font-size: 1.1rem;
     font-weight: 900;
     font-family: 'Inter', sans-serif;
     flex-shrink: 0;
 }
-
 .audit-text {
     font-size: 1.05rem;
     color: #4b5563;
@@ -1626,9 +1432,12 @@ article {
     font-family: 'Bitter', serif;
     margin: 0;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 600px) {
+    .audit-list {
+        padding: 1.5rem !important;
+    }
+
     .audit-item {
         gap: 1rem;
         padding: 1.2rem 0;
@@ -1637,7 +1446,6 @@ article {
         font-size: 1.35rem;
     }
 }
-
 /* =========================================
    GALERÍA DE FOTOS (GRILLA DE 3 COLUMNAS)
    ========================================= */
@@ -1645,7 +1453,6 @@ article {
     margin: 3rem 0 1rem 0; /* Espaciado final */
     width: 100%;
 }
-
 .gallery-eyebrow {
     display: block;
     font-size: 0.65rem;
@@ -1655,19 +1462,16 @@ article {
     letter-spacing: 0.1em;
     margin-bottom: 1.2rem;
 }
-
 .gallery-grid {
     display: flex;
     gap: 1.5rem;
     width: 100%;
 }
-
 .gallery-item {
     flex: 1; /* Distribuye las 3 columnas en partes iguales */
     display: flex;
     flex-direction: column;
 }
-
 .gallery-img-box {
     background-color: #E8E7E3; /* Gris claro/beige del diseño */
     height: 220px;
@@ -1679,7 +1483,6 @@ article {
     background-size: cover;
     background-position: center;
 }
-
 /* Textos temporales (Placeholder) */
 .gallery-img-box .placeholder-text {
     position: absolute;
@@ -1694,19 +1497,16 @@ article {
     align-items: center;
     gap: 0.4rem;
 }
-
 .gallery-img-box .placeholder-text .square {
     color: #d1d5db; /* Cuadradito sutil */
     font-size: 0.8rem;
 }
-
 .gallery-caption {
     font-size: 0.75rem;
     color: #4b5563;
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 900px) {
     .gallery-grid {
@@ -1717,15 +1517,12 @@ article {
         height: 250px;
     }
 }
-
 .graficosRN5{
     width: 100%;
 }
-
 .graficosRN5 img{
     width: 95%;
 }
-
 /* =========================================
    LAYOUT DIVIDIDO (RUTA 11)
    ========================================= */
@@ -1735,18 +1532,15 @@ article {
     margin: 4rem 0;
     align-items: stretch;
 }
-
 .split-left {
     flex: 1; /* Ocupa el 50% */
 }
-
 .split-right {
     flex: 1; /* Ocupa el otro 50% */
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
-
 /* Adaptación a celulares */
 @media (max-width: 900px) {
     .ruta-split-layout {
@@ -1757,7 +1551,6 @@ article {
         min-height: 300px !important;
     }
 }
-
 /* =========================================
    TARJETAS DE GRÁFICOS
    ========================================= */
@@ -1766,21 +1559,18 @@ article {
     width: 100%;
     margin: 2rem 0 4rem 0;
 }
-
 .ruta-chart-card {
     border-radius: 4px;
     padding: 2.5rem; /* Le da el marco blanco generoso al gráfico */
     display: flex;
     justify-content: center;
 }
-
 .ruta-chart-card {
     width: 100%;
 }
 .chart-img{
     width: 170%;
 }
-
 /* Adaptación a celulares para los gráficos */
 @media (max-width: 900px) {
     .ruta-chart-card {
@@ -1790,14 +1580,12 @@ article {
         left: -1rem; /* Ajuste del marcador en móviles */
     }
 }
-
 .scroll-text {
     position: relative;
     z-index: 10;
     width: 100%;
     padding: 2rem 0;
 }
-
 .tabs-menu {
     position: sticky;
     top: 0;
@@ -1806,7 +1594,6 @@ article {
     padding: 1rem 0 0 0;
     margin: -1rem 0 0 0;
 }
-
 @media (max-width: 900px) {
     .autovias-title {
         font-size: 2.2rem !important;
@@ -1842,15 +1629,10 @@ article {
         font-size: 1.5rem !important;
     }
 }
-
-
-
-
 article {
     padding-top: 50vh !important;
     padding-bottom: 50vh !important;
 }
-
 @media (max-width: 900px) {
     #scrolly {
         padding: 0 !important;
@@ -1863,5 +1645,3 @@ article {
         box-shadow: none !important;
     }
 }
-
-

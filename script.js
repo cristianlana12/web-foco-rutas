@@ -44,7 +44,7 @@ const map = new maplibregl.Map({
             'esri-base': {
                 'type': 'raster',
                 'tiles': [
-                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
                 ],
                 'tileSize': 256,
                 'attribution': '&copy; Esri, OpenStreetMap contributors'
@@ -74,7 +74,10 @@ const map = new maplibregl.Map({
                 'minzoom': 0,
                 'maxzoom': 16,
                 'paint': {
-                    'raster-opacity': 0.65 /* Acá está la magia: filtra la imagen */
+                    'raster-opacity': 0.55,
+                    'raster-saturation': -1,
+                    'raster-contrast': -0.1,
+                    'raster-brightness-min': 0.3
                 }
             },
             // 3. CAPA DE PROVINCIAS Y CIUDADES
@@ -85,7 +88,8 @@ const map = new maplibregl.Map({
                 'minzoom': 0,
                 'maxzoom': 16,
                 'paint': {
-                    'raster-opacity': 0.85
+                    'raster-opacity': 1,
+                    'raster-saturation': -1
                 }
             }
         ]
@@ -104,7 +108,7 @@ map.on('load', () => {
     // 1. Agregar fuentes de datos (GeoJSON)
     map.addSource('rutas-base', {
         type: 'geojson',
-        data: 'rutas_inconclusas.geojson'
+        data: 'vial_nacional.geojson'
     });
 
     map.addSource('ruta-animada', {
@@ -277,32 +281,32 @@ function ejecutarPaso(index) {
             break;
 
         case 1: // Ruta 3 (Sur)
-            map.flyTo({ center: [-65.0, -44.0], zoom: 4.1, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -44.0], zoom: 5.2, pitch: 20, ...opcionesVuelo });
             dibujarRutas([{ numero: 3, color: coloresRutas.ruta3 }]);
             break;
 
         case 2: // Ruta 5 (Centro)
-            map.flyTo({ center: [-61.5, -35.5], zoom: 6.2, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-61.5, -35.5], zoom: 7.2, pitch: 20, ...opcionesVuelo });
             dibujarRutas([{ numero: 5, color: coloresRutas.ruta5 }]);
             break;
 
         case 3: // Ruta 11 (Litoral/Norte)
-            map.flyTo({ center: [-59.5, -28.8], zoom: 5.6, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-59.5, -28.8], zoom: 6.6, pitch: 15, ...opcionesVuelo });
             dibujarRutas([{ numero: 11, color: coloresRutas.ruta11 }]);
             break;
 
         case 4: // Ruta 18 (Entre Ríos)
-            map.flyTo({ center: [-59.0, -31.6], zoom: 7.2, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-59.0, -31.6], zoom: 8.2, pitch: 15, ...opcionesVuelo });
             dibujarRutas([{ numero: 18, color: coloresRutas.ruta18 }]);
             break;
 
         case 5: // Ruta 22 (Alto Valle)
-            map.flyTo({ center: [-65.5, -38.8], zoom: 6.0, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-65.5, -38.8], zoom: 7.0, pitch: 20, ...opcionesVuelo });
             dibujarRutas([{ numero: 22, color: coloresRutas.ruta22 }]);
             break;
 
         case 6: // Ruta 34 (NOA / Ejecución parcial)
-            map.flyTo({ center: [-63.5, -29.5], zoom: 4.6, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-63.5, -29.5], zoom: 5.6, pitch: 15, ...opcionesVuelo });
             dibujarRutas([{ numero: 34, color: coloresRutas.ruta34 }]);
             break;
 
