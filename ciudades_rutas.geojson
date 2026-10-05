@@ -1,0 +1,42 @@
+﻿{
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature", "properties": {"nombre": "CABA", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-58.3816, -34.6037]}},
+    {"type": "Feature", "properties": {"nombre": "Bahía Blanca", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-62.2663, -38.7183]}},
+    {"type": "Feature", "properties": {"nombre": "Viedma", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-62.9967, -40.8135]}},
+    {"type": "Feature", "properties": {"nombre": "Comodoro Rivadavia", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-67.4839, -45.8641]}},
+    {"type": "Feature", "properties": {"nombre": "Río Gallegos", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-69.2181, -51.6226]}},
+    {"type": "Feature", "properties": {"nombre": "Ushuaia", "ruta": 3}, "geometry": {"type": "Point", "coordinates": [-68.3030, -54.8019]}},
+    
+    {"type": "Feature", "properties": {"nombre": "Luján", "ruta": 5}, "geometry": {"type": "Point", "coordinates": [-59.1053, -34.5703]}},
+    {"type": "Feature", "properties": {"nombre": "Chivilcoy", "ruta": 5}, "geometry": {"type": "Point", "coordinates": [-60.0167, -34.8957]}},
+    {"type": "Feature", "properties": {"nombre": "9 de Julio", "ruta": 5}, "geometry": {"type": "Point", "coordinates": [-60.8833, -35.4444]}},
+    {"type": "Feature", "properties": {"nombre": "Trenque Lauquen", "ruta": 5}, "geometry": {"type": "Point", "coordinates": [-62.7333, -35.9667]}},
+    {"type": "Feature", "properties": {"nombre": "Santa Rosa", "ruta": 5}, "geometry": {"type": "Point", "coordinates": [-64.2833, -36.6167]}},
+    
+    {"type": "Feature", "properties": {"nombre": "Rosario", "ruta": 11}, "geometry": {"type": "Point", "coordinates": [-60.6393, -32.9468]}},
+    {"type": "Feature", "properties": {"nombre": "Santa Fe", "ruta": 11}, "geometry": {"type": "Point", "coordinates": [-60.7000, -31.6333]}},
+    {"type": "Feature", "properties": {"nombre": "Reconquista", "ruta": 11}, "geometry": {"type": "Point", "coordinates": [-59.6500, -29.1500]}},
+    {"type": "Feature", "properties": {"nombre": "Resistencia", "ruta": 11}, "geometry": {"type": "Point", "coordinates": [-58.9833, -27.4500]}},
+    {"type": "Feature", "properties": {"nombre": "Formosa", "ruta": 11}, "geometry": {"type": "Point", "coordinates": [-58.1781, -26.1849]}},
+    
+    {"type": "Feature", "properties": {"nombre": "Paraná", "ruta": 18}, "geometry": {"type": "Point", "coordinates": [-60.5238, -31.7319]}},
+    {"type": "Feature", "properties": {"nombre": "Villaguay", "ruta": 18}, "geometry": {"type": "Point", "coordinates": [-59.0269, -31.8653]}},
+    {"type": "Feature", "properties": {"nombre": "San Salvador", "ruta": 18}, "geometry": {"type": "Point", "coordinates": [-58.5052, -31.6249]}},
+    {"type": "Feature", "properties": {"nombre": "Concordia", "ruta": 18}, "geometry": {"type": "Point", "coordinates": [-58.0167, -31.3833]}},
+    
+    {"type": "Feature", "properties": {"nombre": "Bahía Blanca", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-62.2663, -38.7183]}},
+    {"type": "Feature", "properties": {"nombre": "Río Colorado", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-64.0928, -39.0156]}},
+    {"type": "Feature", "properties": {"nombre": "Choele Choel", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-65.6667, -39.2667]}},
+    {"type": "Feature", "properties": {"nombre": "General Roca", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-67.5833, -39.0333]}},
+    {"type": "Feature", "properties": {"nombre": "Neuquén", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-68.0591, -38.9516]}},
+    {"type": "Feature", "properties": {"nombre": "Zapala", "ruta": 22}, "geometry": {"type": "Point", "coordinates": [-70.0667, -38.9000]}},
+    
+    {"type": "Feature", "properties": {"nombre": "Rosario", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-60.6393, -32.9468]}},
+    {"type": "Feature", "properties": {"nombre": "Rafaela", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-61.4867, -31.2503]}},
+    {"type": "Feature", "properties": {"nombre": "Santiago del Estero", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-64.2667, -27.7833]}},
+    {"type": "Feature", "properties": {"nombre": "San Miguel de Tucumán", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-65.2226, -26.8241]}},
+    {"type": "Feature", "properties": {"nombre": "Salta", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-65.4117, -24.7821]}},
+    {"type": "Feature", "properties": {"nombre": "Tartagal", "ruta": 34}, "geometry": {"type": "Point", "coordinates": [-63.8013, -22.5164]}}
+  ]
+}

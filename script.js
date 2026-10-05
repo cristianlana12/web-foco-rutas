@@ -1,4 +1,4 @@
-// 1. VARIABLES GLOBALES Y CONFIGURACIÓN DE RUTAS
+﻿// 1. VARIABLES GLOBALES Y CONFIGURACIÃ“N DE RUTAS
 let datosRutasGeoJSON = null;
 let animacionId = null;
 let pasoActualIndex = 0;
@@ -40,25 +40,20 @@ const map = new maplibregl.Map({
     container: 'map',
     style: {
         'version': 8,
+        'glyphs': 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
         'sources': {
             'esri-base': {
                 'type': 'raster',
                 'tiles': [
-                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
                 ],
                 'tileSize': 256,
                 'attribution': '&copy; Esri, OpenStreetMap contributors'
             },
-            'esri-borders': {
-                'type': 'raster',
-                'tiles': [
-                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}'
-                ],
-                'tileSize': 256
-            }
+
         },
         'layers': [
-            // 1. CAPA DE COLOR SÓLIDO (Tu color beige)
+            // 1. CAPA DE COLOR SÃ“LIDO (Tu color beige)
             {
                 'id': 'fondo-beige',
                 'type': 'background',
@@ -80,22 +75,11 @@ const map = new maplibregl.Map({
                     'raster-brightness-min': 0.3
                 }
             },
-            // 3. CAPA DE PROVINCIAS Y CIUDADES
-            {
-                'id': 'esri-borders-layer',
-                'type': 'raster',
-                'source': 'esri-borders',
-                'minzoom': 0,
-                'maxzoom': 16,
-                'paint': {
-                    'raster-opacity': 1,
-                    'raster-saturation': -1
-                }
-            }
+
         ]
     },
     center: [-65.0, -40.0],
-    zoom: 3.8
+    zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0)
 });
 
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
@@ -106,6 +90,7 @@ map.scrollZoom.disable();
 map.on('load', () => {
 
     // 1. Agregar fuentes de datos (GeoJSON)
+    map.addSource('provincias', { type: 'geojson', data: 'provincias.geojson' });
     map.addSource('rutas-base', {
         type: 'geojson',
         data: 'vial_nacional.geojson'
@@ -116,27 +101,71 @@ map.on('load', () => {
         data: { type: 'FeatureCollection', features: [] }
     });
 
+    map.addSource('ciudades', {
+        type: 'geojson',
+        data: 'ciudades_rutas.geojson'
+    });
+
     // 2. Agregar capas en el orden correcto (de abajo hacia arriba)
 
-    // A. Líneas grises de fondo (Todas las rutas)
+    map.addLayer({
+        id: 'capa-provincias-fill',
+        type: 'fill',
+        source: 'provincias',
+        paint: {
+            'fill-color': '#e8e6e1',
+            'fill-opacity': 0.8
+        }
+    });
+
+    map.addLayer({
+        id: 'capa-provincias-line',
+        type: 'line',
+        source: 'provincias',
+        paint: {
+            'line-color': '#000000',
+            'line-width': 1.5
+        }
+    });
+
+    // A. LÃ­neas grises de fondo (Todas las rutas)
     map.addLayer({
         id: 'capa-rutas-base',
         type: 'line',
         source: 'rutas-base',
         paint: {
-            'line-color': '#d1d5db', // Gris un poco más claro
+            'line-color': '#d1d5db', // Gris un poco mÃ¡s claro
             'line-width': 2.5,
             'line-opacity': 0.5
         }
     });
 
-    // B. FORZAR la capa de bordes provinciales de Esri para que esté SOBRE las líneas grises
+    // B. FORZAR la capa de bordes provinciales de Esri para que estÃ© SOBRE las lÃ­neas grises
     // (Movemos la capa 'esri-borders-layer' encima de 'capa-rutas-base' si es necesario)
     if (map.getLayer('esri-borders-layer')) {
         map.moveLayer('esri-borders-layer'); // La mueve al tope temporalmente
     }
 
-    // C. Línea de color animada (La ruta activa) -> DEBE ESTAR ARRIBA DE TODO
+    // C. LÃ­nea de color animada (La ruta activa) -> DEBE ESTAR ARRIBA DE TODO
+    map.addLayer({
+        id: 'capa-ciudades',
+        type: 'symbol',
+        source: 'ciudades',
+        layout: {
+            'text-field': ['get', 'nombre'],
+            'text-font': ['Open Sans Semibold'],
+            'text-size': 14,
+            'text-anchor': 'top',
+            'text-offset': [0, 0.5]
+        },
+        paint: {
+            'text-color': '#333333',
+            'text-halo-color': '#ffffff',
+            'text-halo-width': 1.5
+        },
+        filter: ['==', 'ruta', -1] // Oculto por defecto
+    });
+
     map.addLayer({
         id: 'capa-ruta-animada',
         type: 'line',
@@ -147,13 +176,13 @@ map.on('load', () => {
         },
         paint: {
             'line-color': ['get', 'color'],
-            'line-width': 5, // Reduje un pelito el grosor para más elegancia
+            'line-width': 5, // Reduje un pelito el grosor para mÃ¡s elegancia
             'line-opacity': 1
         }
     });
 });
 
-// 5. MOTOR DE ANIMACIÓN MULTI-RUTA CON VELOCIDAD Y ORDENAMIENTO DINÁMICO
+// 5. MOTOR DE ANIMACIÃ“N MULTI-RUTA CON VELOCIDAD Y ORDENAMIENTO DINÃMICO
 function dibujarRutas(listaRutasConfigs) {
     if (!datosRutasGeoJSON) return;
     if (!map.getSource('ruta-animada')) return;
@@ -263,7 +292,7 @@ function dibujarRutas(listaRutasConfigs) {
 }
 
 
-// 6. DIRECTOR DE CÁMARA (CONTROLADOR DE PASOS)
+// 6. DIRECTOR DE CÃMARA (CONTROLADOR DE PASOS)
 function ejecutarPaso(index) {
     pasoActualIndex = index;
     const opcionesVuelo = {
@@ -274,50 +303,58 @@ function ejecutarPaso(index) {
 
     switch (index) {
         case 0: // Intro: Todo el país
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8, pitch: 0, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 0, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', -1]);
             if (map.getSource('ruta-animada')) {
                 map.getSource('ruta-animada').setData({ type: 'FeatureCollection', features: [] });
             }
             break;
 
         case 1: // Ruta 3 (Sur)
-            map.flyTo({ center: [-65.0, -44.0], zoom: 5.2, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -44.0], zoom: 4.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 3]);
             dibujarRutas([{ numero: 3, color: coloresRutas.ruta3 }]);
             break;
 
         case 2: // Ruta 5 (Centro)
-            map.flyTo({ center: [-61.5, -35.5], zoom: 7.2, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-61.5, -35.5], zoom: 6.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 5]);
             dibujarRutas([{ numero: 5, color: coloresRutas.ruta5 }]);
             break;
 
         case 3: // Ruta 11 (Litoral/Norte)
-            map.flyTo({ center: [-59.5, -28.8], zoom: 6.6, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-59.5, -28.8], zoom: 5.4 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 11]);
             dibujarRutas([{ numero: 11, color: coloresRutas.ruta11 }]);
             break;
 
         case 4: // Ruta 18 (Entre Ríos)
-            map.flyTo({ center: [-59.0, -31.6], zoom: 8.2, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-59.0, -31.6], zoom: 7.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 18]);
             dibujarRutas([{ numero: 18, color: coloresRutas.ruta18 }]);
             break;
 
         case 5: // Ruta 22 (Alto Valle)
-            map.flyTo({ center: [-65.5, -38.8], zoom: 7.0, pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-65.5, -38.8], zoom: 5.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 22]);
             dibujarRutas([{ numero: 22, color: coloresRutas.ruta22 }]);
             break;
 
         case 6: // Ruta 34 (NOA / Ejecución parcial)
-            map.flyTo({ center: [-63.5, -29.5], zoom: 5.6, pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-63.5, -29.5], zoom: 4.4 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 34]);
             dibujarRutas([{ numero: 34, color: coloresRutas.ruta34 }]);
             break;
 
         case 7: // Panorama general consolidado
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8, pitch: 0, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 0, ...opcionesVuelo });
+            if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', -1]);
             dibujarRutas(todasLasRutas);
             break;
     }
 }
 
-// REDIRECCIÓN Y DESPLAZAMIENTO DESDE EL MINI MENÚ
+// REDIRECCIÃ“N Y DESPLAZAMIENTO DESDE EL MINI MENÃš
 function irARuta(pasoIndex) {
     const elTarget = document.getElementById(`step-${pasoIndex}`);
     if (elTarget) {
@@ -347,10 +384,10 @@ function init() {
 
 window.onload = init;
 
-// FUNCIÓN PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM DE LA PILA
-// FUNCIÓN PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM O BOTÓN
+// FUNCIÃ“N PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM DE LA PILA
+// FUNCIÃ“N PARA INTERACTUAR AL HACER CLIC EN CUALQUIER ITEM O BOTÃ“N
 function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
-    // 1. Ejecuta la animación del mapa hacia esa ruta (o panorama general)
+    // 1. Ejecuta la animaciÃ³n del mapa hacia esa ruta (o panorama general)
     ejecutarPaso(index);
 
     // 2. Actualiza el recuadro gris (si existe)
@@ -358,7 +395,7 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
     if (infoDinamica) {
         infoDinamica.style.opacity = 0;
         setTimeout(() => {
-            // Condicional para adaptar el texto si es una ruta específica o el panorama general
+            // Condicional para adaptar el texto si es una ruta especÃ­fica o el panorama general
             if (km && trayecto) {
                 infoDinamica.innerHTML = `
                     <h3>${nombre} (${km})</h3>
@@ -374,7 +411,7 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
         }, 180);
     }
 
-    // 3. Actualiza el badge inferior con el color de la ruta (si es que la estás usando)
+    // 3. Actualiza el badge inferior con el color de la ruta (si es que la estÃ¡s usando)
     const badge = document.getElementById('pila-active-badge');
     if (badge) {
         badge.innerText = nombre;
@@ -388,10 +425,10 @@ function seleccionarRuta(index, nombre, trayecto, km, descripcion) {
 }
 
 // ==========================================
-// 8. LÓGICA DE LAS PESTAÑAS (TABS) DE RUTAS
+// 8. LÃ“GICA DE LAS PESTAÃ‘AS (TABS) DE RUTAS
 // ==========================================
 function cambiarTab(elemento) {
-    // 1. Quitar la clase activa y los colores en línea de todas las pestañas superiores
+    // 1. Quitar la clase activa y los colores en lÃ­nea de todas las pestaÃ±as superiores
     const tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(tab => {
         tab.classList.remove('is-active');
@@ -399,7 +436,7 @@ function cambiarTab(elemento) {
         tab.style.color = '';
     });
 
-    // 2. Activar la pestaña clickeada
+    // 2. Activar la pestaÃ±a clickeada
     elemento.classList.add('is-active');
     const colorHex = elemento.getAttribute('data-color');
     elemento.style.backgroundColor = colorHex;
@@ -422,14 +459,14 @@ function cambiarTab(elemento) {
     if (paneActivo) {
         paneActivo.style.display = 'block';
         
-        // Pequeño truco para que aparezca con un fade suave
+        // PequeÃ±o truco para que aparezca con un fade suave
         setTimeout(() => {
             paneActivo.classList.add('is-active');
         }, 50);
     }
 }
 
-// Inicializar el color de la primera pestaña al cargar la página
+// Inicializar el color de la primera pestaÃ±a al cargar la pÃ¡gina
 document.addEventListener('DOMContentLoaded', () => {
     const primerTab = document.querySelector('.tab-btn.is-active');
     if (primerTab) {
@@ -450,7 +487,7 @@ function toggleAudio(audioId, btnElement) {
 
     // Verifica si el archivo de audio fue cargado
     if (!audioElement.src || audioElement.src === window.location.href) {
-        alert("Acá se reproducirá el audio cuando agregues la ruta del archivo MP3 en el HTML.");
+        alert("AcÃ¡ se reproducirÃ¡ el audio cuando agregues la ruta del archivo MP3 en el HTML.");
         return;
     }
 

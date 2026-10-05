@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -49,9 +49,23 @@
 
     </header>
     <section class="landing-comienzo">
-        <figure>
-            <img src="img/fondo-header.png" alt="">
-        </figure>
+        <div class="carousel-container">
+            <figure class="carousel-slide">
+                <img src="img/fondo-header.png" alt="Rutas Inconclusas">
+            </figure>
+            <figure class="carousel-slide">
+                <img src="img/fondo-header.png" alt="Rutas Inconclusas">
+            </figure>
+            <figure class="carousel-slide">
+                <img src="img/fondo-header.png" alt="Rutas Inconclusas">
+            </figure>
+            <figure class="carousel-slide">
+                <img src="img/fondo-header.png" alt="Rutas Inconclusas">
+            </figure>
+            <figure class="carousel-slide">
+                <img src="img/fondo-header.png" alt="Rutas Inconclusas">
+            </figure>
+        </div>
     </section>
 
     <!-- INTRODUCCIÓN Y ESTADÍSTICAS (SECCIÓN LIMPIA) -->
@@ -280,13 +294,12 @@
 
             <!-- Menú de pestañas -->
             <ul class="tabs-menu">
-                <li class="tab-btn is-active" data-ruta="3" data-color="#6E2A33" onclick="cambiarTab(this)">Ruta
-                    Nacional 3</li>
-                <li class="tab-btn" data-ruta="5" data-color="#DF741B" onclick="cambiarTab(this)">Ruta Nacional 5</li>
-                <li class="tab-btn" data-ruta="11" data-color="#206795" onclick="cambiarTab(this)">Ruta Nacional 11</li>
-                <li class="tab-btn" data-ruta="18" data-color="#31824A" onclick="cambiarTab(this)">Ruta Nacional 18</li>
-                <li class="tab-btn" data-ruta="22" data-color="#674199" onclick="cambiarTab(this)">Ruta Nacional 22</li>
-                <li class="tab-btn" data-ruta="34" data-color="#E3A711" onclick="cambiarTab(this)">Ruta Nacional 34</li>
+                <li class="tab-btn is-active" data-ruta="3" data-color="#6E2A33" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>3</li>
+                <li class="tab-btn" data-ruta="5" data-color="#DF741B" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>5</li>
+                <li class="tab-btn" data-ruta="11" data-color="#206795" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>11</li>
+                <li class="tab-btn" data-ruta="18" data-color="#31824A" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>18</li>
+                <li class="tab-btn" data-ruta="22" data-color="#674199" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>22</li>
+                <li class="tab-btn" data-ruta="34" data-color="#E3A711" onclick="cambiarTab(this)"><span class="hide-on-mobile">Ruta Nacional </span><span class="show-on-mobile">RN</span>34</li>
             </ul>
 
             <!-- Contenedor del contenido (con el borde izquierdo de color dinámico) -->
@@ -296,7 +309,7 @@
                 <div class="tab-pane is-active" id="pane-ruta-3">
 
                     <div class="ruta-tab-header">
-                        <span class="ruta-tab-subtitle">Ruta Nacional 3</span>
+                        <span class="ruta-tab-subtitle" style="color: #6E2A33;">Ruta Nacional 3</span>
                         <h3 class="ruta-tab-title">Una autovía que recién empezaría en 2034</h3>
                         <p class="ruta-tab-desc">
                             La Ruta Nacional 3 es la segunda más extensa del país: más de tres mil kilómetros entre la
@@ -332,10 +345,7 @@
                             <span class="stat-lbl">TRAMOS<br>DE OBRA</span>
                             <span class="stat-val">4</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>EN EJECUCIÓN</span>
-                            <span class="stat-val">0 <small>de 4</small></span>
-                        </div>
+                        
 
                         <!-- Borde inferior rayado -->
                         <div class="stripe-border-bottom"
@@ -584,7 +594,7 @@
                 <div class="tab-pane" id="pane-ruta-5" style="display: none;">
 
                     <div class="ruta-tab-header">
-                        <span class="ruta-tab-subtitle">Ruta Nacional 5</span>
+                        <span class="ruta-tab-subtitle" style="color: #DF741B;">Ruta Nacional 5</span>
                         <h3 class="ruta-tab-title">Treinta y siete años de espera camino a Vaca Muerta</h3>
                         <p class="ruta-tab-desc">
                             La Ruta Nacional 5 parte de Luján, en la provincia de Buenos Aires, y termina en Santa Rosa,
@@ -607,22 +617,13 @@
                             <span class="stat-lbl">INICIO DEL<br>PROYECTO</span>
                             <span class="stat-val">1989</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">PLAZO<br>ORIGINAL</span>
-                            <span class="stat-val">◊</span>
-                        </div>
+                        
                         <div class="ruta-stat-item">
                             <span class="stat-lbl">TIEMPO<br>TRANSCURRIDO</span>
                             <span class="stat-val">37 años</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>DE OBRA</span>
-                            <span class="stat-val">◊</span>
-                        </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>EN EJECUCIÓN</span>
-                            <span class="stat-val">◊</span>
-                        </div>
+                        
+                        
 
                         <!-- Borde inferior rayado Naranja -->
                         <div class="stripe-border-bottom"
@@ -689,8 +690,7 @@
                             <cite>◊ FALTA CITA TEXTUAL · relevamiento propio sobre la traza</cite>
                         </blockquote>
 
-                        <h4 class="ruta-text-heading" style="text-align: center; margin-top: 3rem;">Los accidentes en la
-                            Ruta 5</h4>
+                        <h4 class="audit-title">Los accidentes en la Ruta 5</h4>
 
                         <p class="ruta-text-desc">
                             La importancia de la ruta 5 no se justifica sólo en motivos económicos, sino también en la
@@ -820,7 +820,7 @@
                 <div class="tab-pane" id="pane-ruta-11" style="display: none;">
 
                     <div class="ruta-tab-header">
-                        <span class="ruta-tab-subtitle">Ruta Nacional 11</span>
+                        <span class="ruta-tab-subtitle" style="color: #206795;">Ruta Nacional 11</span>
                         <h3 class="ruta-tab-title">Once kilómetros después de veinte años</h3>
                         <p class="ruta-tab-desc">
                             La Ruta Nacional 11 va desde Rosario hasta Clorinda, en la frontera con Paraguay. En sus 988
@@ -843,22 +843,13 @@
                             <span class="stat-lbl">INICIO DEL<br>PROYECTO</span>
                             <span class="stat-val">2012</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">PLAZO<br>ORIGINAL</span>
-                            <span class="stat-val">◊</span>
-                        </div>
+                        
                         <div class="ruta-stat-item">
                             <span class="stat-lbl">TIEMPO<br>TRANSCURRIDO</span>
                             <span class="stat-val">14 años</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>DE OBRA</span>
-                            <span class="stat-val">◊</span>
-                        </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>EN EJECUCIÓN</span>
-                            <span class="stat-val">0 <small>de 9</small></span>
-                        </div>
+                        
+                        
 
                         <!-- Borde inferior sólido Azul -->
                         <div class="stripe-border-bottom" style="background-color: #206795;"></div>
@@ -1246,7 +1237,7 @@
                 <div class="tab-pane" id="pane-ruta-18" style="display: none;">
 
                     <div class="ruta-tab-header">
-                        <span class="ruta-tab-subtitle">Ruta Nacional 18</span>
+                        <span class="ruta-tab-subtitle" style="color: #31824A;">Ruta Nacional 18</span>
                         <h3 class="ruta-tab-title">Una obra casi eterna y con alta siniestralidad</h3>
                         <p class="ruta-tab-desc">
                             La transformación de la ruta nacional 18 en autovía fue anunciada en 2010 y las obras
@@ -1282,10 +1273,7 @@
                             <span class="stat-lbl">TRAMOS<br>DE OBRA</span>
                             <span class="stat-val">4</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>EN EJECUCIÓN</span>
-                            <span class="stat-val">1 <small>de 4</small></span>
-                        </div>
+                        
 
                         <!-- Borde inferior rayado Verde -->
                         <div class="stripe-border-bottom"
@@ -1352,40 +1340,36 @@
                             realizaron las siguientes observaciones:
                         </p>
 
-                        <!-- Título de auditorías -->
-                        <h4 style="text-align: center; color: #113243; font-size: 1.8rem; font-weight: 700; margin: 2rem auto 2rem auto; max-width: 700px; line-height: 1.3;">
-                            Los puntos más importantes que resaltan las auditorías realizadas
-                        </h4>
-
-                        <!-- Lista de observaciones -->
-                        <div style="width: 100%; max-width: 780px; margin: 0 auto 4rem auto; border: 1px solid rgba(255,255,255,0.7); padding: 2rem 3rem;" class="mobile-padding">
-                            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.5rem;">
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">01</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">Los proyectos ejecutivos se encuentran incompletos.</p>
+                        <!-- SECCION DE AUDITORIAS (LISTA NUMERADA) -->
+<div class="ruta-audit-section">
+    <h4 class="audit-title">Los puntos más importantes que resaltan las auditorías realizadas</h4>
+    <ul class="audit-list">
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">01</span>
+                                    <p class="audit-text">Los proyectos ejecutivos se encuentran incompletos.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">02</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">Los plazos de neutralización están vencidos en los tres tramos que acordaron esa figura. Solo está en ejecución el Tramo IV.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">02</span>
+                                    <p class="audit-text">Los plazos de neutralización están vencidos en los tres tramos que acordaron esa figura. Solo está en ejecución el Tramo IV.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">03</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">El 17.º Distrito Entre Ríos no realizó el mantenimiento y conservación de los tramos neutralizados, con sectores en riesgo de alcanzar la ruina de obra.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">03</span>
+                                    <p class="audit-text">El 17.º Distrito Entre Ríos no realizó el mantenimiento y conservación de los tramos neutralizados, con sectores en riesgo de alcanzar la ruina de obra.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">04</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">Interrupción del flujo de las inversiones y paralización de las obras.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">04</span>
+                                    <p class="audit-text">Interrupción del flujo de las inversiones y paralización de las obras.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">05</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">Incremento de los índices de siniestralidad vial como consecuencia de la paralización. Se registraron accidentes con víctimas fatales por despistes e impactos contra las infraestructuras abandonadas.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">05</span>
+                                    <p class="audit-text">Incremento de los índices de siniestralidad vial como consecuencia de la paralización. Se registraron accidentes con víctimas fatales por despistes e impactos contra las infraestructuras abandonadas.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #31824a; font-weight: 800; font-size: 1.1rem; min-width: 25px;">06</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1rem; line-height: 1.6;">Inconvenientes vinculados con el avanzado estado de las expropiaciones de los inmuebles afectados a la traza.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #31824a;">06</span>
+                                    <p class="audit-text">Inconvenientes vinculados con el avanzado estado de las expropiaciones de los inmuebles afectados a la traza.</p>
                                 </li>
                             </ul>
-                        </div>
+</div>
 
                         <!-- Cita destacada -->
                         <div style="max-width: 800px; margin: 0 auto 4rem auto; padding-left: 2rem; border-left: 4px solid #31824a;">
@@ -1569,7 +1553,7 @@
                 <div class="tab-pane" id="pane-ruta-22" style="display: none;">
 
                     <div class="ruta-tab-header">
-                        <span class="ruta-tab-subtitle">Ruta Nacional 22</span>
+                        <span class="ruta-tab-subtitle" style="color: #674199;">Ruta Nacional 22</span>
                         <h3 class="ruta-tab-title">75 kilómetros de autovía que esperan desde hace 15 años</h3>
                         <p class="ruta-tab-desc">
                             La Ruta Nacional 22 recorre 685 kilómetros desde Bahía Blanca hasta Zapala,
@@ -1593,10 +1577,7 @@
                             <span class="stat-lbl">INICIO DEL<br>PROYECTO</span>
                             <span class="stat-val">2010</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">PLAZO<br>ORIGINAL</span>
-                            <span class="stat-val" style="font-size: 1.5rem; line-height: 1;">◆</span>
-                        </div>
+                        
                         <div class="ruta-stat-item">
                             <span class="stat-lbl">TIEMPO<br>TRANSCURRIDO</span>
                             <span class="stat-val">16 <small>años</small></span>
@@ -1783,28 +1764,22 @@
                         </div>
 
                         <!-- Título de las cuatro secciones -->
-                        <h4 style="text-align: center; color: #113243; font-size: 1.8rem; font-weight: 700; margin: 2rem auto 2rem auto; max-width: 700px; line-height: 1.3;">
-                            Las cuatro secciones del tramo Chichinales – Cipolletti
-                        </h4>
-
-                        <!-- Lista de secciones -->
-                        <div style="width: 100%; max-width: 780px; margin: 0 auto 4rem auto; border: 1px solid rgba(255,255,255,0.7); padding: 2rem 3rem;" class="mobile-padding">
-                            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2rem;">
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #674199; font-weight: 800; font-size: 1.1rem; min-width: 25px;">01</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Sección II · 20,7 km, del acceso a Godoy al acceso a Cervantes. Es la de mayor avance: 71,96 % en el sistema SIGO y 98 % de avance físico según los informes del distrito. Neutralizada.</p>
+                        <div class="ruta-audit-section"><h4 class="audit-title">Las cuatro secciones del tramo Chichinales – Cipolletti</h4><ul class="audit-list">
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #674199;">01</span>
+                                    <p class="audit-text">Sección II · 20,7 km, del acceso a Godoy al acceso a Cervantes. Es la de mayor avance: 71,96 % en el sistema SIGO y 98 % de avance físico según los informes del distrito. Neutralizada.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #674199; font-weight: 800; font-size: 1.1rem; min-width: 25px;">02</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Sección III · 22 km, del acceso a Cervantes al acceso a J. J. Gómez. Iniciada en 2012, tiene un 25 % de avance físico. Neutralizada.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #674199;">02</span>
+                                    <p class="audit-text">Sección III · 22 km, del acceso a Cervantes al acceso a J. J. Gómez. Iniciada en 2012, tiene un 25 % de avance físico. Neutralizada.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #674199; font-weight: 800; font-size: 1.1rem; min-width: 25px;">03</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Sección IV · de J. J. Gómez al acceso a Fernández Oro. Licitada en 2010, con contrato firmado en 2012. Los trabajos nunca se iniciaron: avance nulo.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #674199;">03</span>
+                                    <p class="audit-text">Sección IV · de J. J. Gómez al acceso a Fernández Oro. Licitada en 2010, con contrato firmado en 2012. Los trabajos nunca se iniciaron: avance nulo.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #674199; font-weight: 800; font-size: 1.1rem; min-width: 25px;">04</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Sección V · 9,7 km, del acceso a Fernández Oro al acceso al Parque Industrial de Cipolletti. 85 % de avance físico según una nota técnica de Vialidad Nacional; 65,99 % en el sistema. Neutralizada.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #674199;">04</span>
+                                    <p class="audit-text">Sección V · 9,7 km, del acceso a Fernández Oro al acceso al Parque Industrial de Cipolletti. 85 % de avance físico según una nota técnica de Vialidad Nacional; 65,99 % en el sistema. Neutralizada.</p>
                                 </li>
                             </ul>
                         </div>
@@ -1861,20 +1836,16 @@
                 <!-- PANEL RUTA 34 -->
                 <div class="tab-pane" id="pane-ruta-34">
                     <!-- ENCABEZADO: TITULO Y BAJADA -->
-                    <div style="text-align: center; max-width: 800px; margin: 4rem auto 3rem auto; padding: 0 1rem;">
-                        <h4 style="color: #113243; font-size: 1rem; font-weight: 800; margin-bottom: 1rem;">
-                            Ruta Nacional 34
-                        </h4>
-                        <h2 style="color: #113243; font-size: 2.8rem; font-weight: 900; margin-bottom: 1.5rem; letter-spacing: -1px; line-height: 1.2;">
-                            El 95 % de la 34 sigue siendo ruta común
-                        </h2>
-                        <p style="color: #4b5563; font-size: 1.2rem; line-height: 1.6; max-width: 700px; margin: 0 auto;">
+                    <div class="ruta-tab-header">
+                        <span class="ruta-tab-subtitle" style="color: #E3A711;">Ruta Nacional 34</span>
+                        <h3 class="ruta-tab-title">El 95 % de la 34 sigue siendo ruta común</h3>
+                        <p class="ruta-tab-desc">
                             La 34 no es una ruta cualquiera: es una de las carreteras más importantes de la Argentina. Se extiende desde la Avenida de Circunvalación de Rosario hasta la Quebrada de Yacuiba, en la frontera con Bolivia.
                         </p>
                     </div>
 
                     <!-- BARRA DE DATOS -->
-                    <div class="ruta-stats-bar" style="max-width: 900px; margin: 0 auto 4rem auto; background-color: #ffffff; padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; position: relative;">
+                    <div class="ruta-stats-bar">
                         
                         <div class="ruta-stat-item">
                             <span class="stat-lbl">LONGITUD<br>TOTAL</span>
@@ -1888,22 +1859,13 @@
                             <span class="stat-lbl">INICIO DEL<br>PROYECTO</span>
                             <span class="stat-val">2010</span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">PLAZO<br>ORIGINAL</span>
-                            <span class="stat-val">◆</span>
-                        </div>
+                        
                         <div class="ruta-stat-item">
                             <span class="stat-lbl">TIEMPO<br>TRANSCURRIDO</span>
                             <span class="stat-val">16 <small>años</small></span>
                         </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>DE OBRA</span>
-                            <span class="stat-val">◆</span>
-                        </div>
-                        <div class="ruta-stat-item">
-                            <span class="stat-lbl">TRAMOS<br>EN EJECUCIÓN</span>
-                            <span class="stat-val">◆</span>
-                        </div>
+                        
+                        
 
                         <!-- Borde inferior rayado Amarillo y Negro -->
                         <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 8px; background: repeating-linear-gradient(-45deg, #E3A711, #E3A711 10px, #262626 10px, #262626 20px);"></div>
@@ -1995,42 +1957,36 @@
                             </p>
                         </div>
 
-                        <!-- Título de auditorías -->
-                        <h4 style="text-align: center; color: #113243; font-size: 1.8rem; font-weight: 700; margin: 2rem auto 2rem auto; max-width: 700px; line-height: 1.3;">
-                            Los puntos más importantes que resaltan las auditorías realizadas
-                        </h4>
-
-                        <!-- Lista de observaciones -->
-                        <div style="width: 100%; max-width: 780px; margin: 0 auto 4rem auto; border: 1px solid rgba(255,255,255,0.7); padding: 2rem 3rem;" class="mobile-padding">
-                            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2rem;">
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">01</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Cambios en las condiciones contractuales durante la ejecución de obras.</p>
+                        <!-- SECCION DE AUDITORIAS (LISTA NUMERADA) -->
+<div class="ruta-audit-section">
+    <h4 class="audit-title">Los puntos más importantes que resaltan las auditorías realizadas</h4>
+    <ul class="audit-list">
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">01</span>
+                                    <p class="audit-text">Cambios en las condiciones contractuales durante la ejecución de obras.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">02</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Falta de disponibilidad de la totalidad de los terrenos expropiados al momento de iniciar la ejecución de las obras.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">02</span>
+                                    <p class="audit-text">Falta de disponibilidad de la totalidad de los terrenos expropiados al momento de iniciar la ejecución de las obras.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">03</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Incumplimiento de los plazos de obra previstos originalmente.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">03</span>
+                                    <p class="audit-text">Incumplimiento de los plazos de obra previstos originalmente.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">04</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Incremento del costo de las obras como consecuencia de los atrasos en su ejecución.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">04</span>
+                                    <p class="audit-text">Incremento del costo de las obras como consecuencia de los atrasos en su ejecución.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">05</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">Seis modificaciones de obra registradas en algunos de los tramos auditados, y una mayor cantidad de redeterminaciones de precios que contribuyeron al aumento de costos.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">05</span>
+                                    <p class="audit-text">Seis modificaciones de obra registradas en algunos de los tramos auditados, y una mayor cantidad de redeterminaciones de precios que contribuyeron al aumento de costos.</p>
                                 </li>
-                                <li style="display: flex; gap: 1rem; align-items: flex-start;">
-                                    <span style="color: #E3A711; font-weight: 800; font-size: 1.1rem; min-width: 25px;">06</span>
-                                    <p style="margin: 0; color: #4a4a4a; font-size: 1.05rem; line-height: 1.6;">La SIGEN identifica debilidades en la gestión durante la ejecución de las obras y señala que, a partir de esas situaciones, formuló recomendaciones.</p>
+                                <li class="audit-item">
+                                    <span class="audit-num" style="color: #E3A711;">06</span>
+                                    <p class="audit-text">La SIGEN identifica debilidades en la gestión durante la ejecución de las obras y señala que, a partir de esas situaciones, formuló recomendaciones.</p>
                                 </li>
                             </ul>
-                        </div>
-
-                        <!-- Párrafos descriptivos post-lista -->
+</div><!-- Párrafos descriptivos post-lista -->
                         <div style="max-width: 780px; margin: 4rem auto;">
                             <p class="ruta-text-desc" style="font-size: 1.1rem; color: #374151; line-height: 1.7; margin-bottom: 1.5rem;">
                                 En conjunto, las observaciones del organismo dan cuenta de demoras, modificaciones contractuales y mayores costos respecto de las condiciones originalmente previstas.

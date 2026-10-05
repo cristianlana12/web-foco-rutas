@@ -1,4 +1,4 @@
-/* ESTILOS GLOBALES */
+﻿/* ESTILOS GLOBALES */
 * {
     box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ body {
     line-height: 1.6;
 }
 /* =========================================
-   MINI MENÚ NAVEGADOR FIX (TOP-NAV)
+   MINI MENÃš NAVEGADOR FIX (TOP-NAV)
    ========================================= */
 .top-nav {
     position: sticky;
@@ -88,7 +88,7 @@ body {
     overflow: hidden;
     z-index: 1;
 }
-/* Capa 1: Traslucidad grisácea sutil sobre la foto de fondo */
+/* Capa 1: Traslucidad grisÃ¡cea sutil sobre la foto de fondo */
 .banner-overlay {
     position: absolute;
     inset: 0;
@@ -106,14 +106,14 @@ body {
     display: flex;
     justify-content: flex-start; /* Alinea la caja oscura a la izquierda */
 }
-/* Caja oscura principal TRASLÚCIDA */
+/* Caja oscura principal TRASLÃšCIDA */
 .autovias-dark-box {
-    background-color: rgba(35, 39, 43, 0.80); /* Negro/Gris traslúcido al 75% */
+    background-color: rgba(35, 39, 43, 0.80); /* Negro/Gris traslÃºcido al 75% */
     padding: 3.5rem 3.5rem 4rem 3.5rem;
     max-width: 620px;
     position: relative;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px); /* Difumina ligeramente lo que hay detrás de la caja */
+    backdrop-filter: blur(4px); /* Difumina ligeramente lo que hay detrÃ¡s de la caja */
 }
 /* Estilos de contenido interno */
 .logos-foco {
@@ -138,7 +138,7 @@ body {
     color: #ffffff;
     margin: 40px 0 1.5rem 0;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    
     text-align: center;
 }
 .autovias-titleh2{
@@ -148,7 +148,7 @@ body {
     color: #ffffff;
     margin: 0 0 1.5rem 0;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
+    
     text-align: center;
 }
 .autovias-desc {
@@ -158,7 +158,7 @@ body {
     margin: 0;
     font-weight: 400;
 }
-/* Capa 3: Gráficos Amarillos ENCIMA DE TODO */
+/* Capa 3: GrÃ¡ficos Amarillos ENCIMA DE TODO */
 .banner-graficos {
     position: absolute;
     inset: 0;
@@ -166,11 +166,11 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 10; /* Máxima jerarquía para superar a la caja oscura */
+    z-index: 10; /* MÃ¡xima jerarquÃ­a para superar a la caja oscura */
     width: 87%;
     height: 100vh;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 768px) {
     .banner-autovias {
         min-height: 60vh;
@@ -191,17 +191,45 @@ body {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
     }
 }
-.landing-comienzo{
+.landing-comienzo {
     width: 100%;
+    /* Quitamos el height fijo para que la imagen no se corte */
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0; /* Agrega espacio arriba y abajo */
+    background-color: #f4f6f8;
 }
-.landing-comienzo figure{
+
+.carousel-container {
     display: flex;
-    flex-direction: column;
+    width: 500%; /* Contiene 5 slides (100% * 5) */
+    /* AnimaciÃ³n lateral infinita y continua (linear) para 5 elementos */
+    animation: carousel-slide 20s infinite linear;
+}
+
+.carousel-slide {
+    width: 20%; /* Cada slide ocupa el 100% de la pantalla (100% / 5) */
+    display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+}
+
+.carousel-slide img {
+    /* La imagen se ve completa y con menos ancho (80% del contenedor) */
+    width: 80%; 
+    max-width: 1200px;
+    height: auto; 
+    object-fit: contain; 
+}
+
+/* AnimaciÃ³n de transiciÃ³n lateral continua para 5 slides */
+@keyframes carousel-slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-80%); } /* Al llegar a la 5ta imagen, repite el ciclo suavemente */
 }
 /* =========================================
-   SECCIÓN INTRO Y ESTADÍSTICAS
+   SECCIÃ“N INTRO Y ESTADÃSTICAS
    ========================================= */
 .intro-section {
     padding: 4rem 1.5rem;
@@ -473,7 +501,7 @@ article {
     color: #1e3a8a;
 }
 /* =========================================
-   SECCIÓN: EJE DE LA INVESTIGACIÓN
+   SECCIÃ“N: EJE DE LA INVESTIGACIÃ“N
    ========================================= */
 .eje-investigacion-section {
     position: relative;
@@ -515,7 +543,7 @@ article {
     font-size: 2.2rem;
     font-weight: 900;
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    
     margin: 0 0 1rem 0;
 }
 .eje-lead {
@@ -580,7 +608,7 @@ article {
     border-left: 4px solid #facc15;
 }
 /* =========================================
-   SECCIÓN PÁGINA POR RUTA (TARJETAS VERDES)
+   SECCIÃ“N PÃGINA POR RUTA (TARJETAS VERDES)
    ========================================= */
 .rutas-detalle-section {
     background-color: #f4f6f8; 
@@ -596,7 +624,7 @@ article {
     text-transform: uppercase;
     color: #111827;
     margin: 0 0 0.4rem 0;
-    letter-spacing: -0.02em;
+    
 }
 .section-desc {
     font-size: 1.1rem;
@@ -722,6 +750,22 @@ article {
     }
 }
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     #scrolly {
         flex-direction: column;
         padding: 1rem;
@@ -778,7 +822,7 @@ article {
 }
 /* El recuadro gris gigante */
 .recuadro-gris {
-    background-color: #d1d5db; /* Gris sólido del diseño */
+    background-color: #d1d5db; /* Gris sÃ³lido del diseÃ±o */
     width: 100%;
     min-height: 280px;
     border-radius: 4px;
@@ -841,15 +885,31 @@ article {
     font-size: 0.95rem;
     font-weight: 400;
 }
-/* Kilómetros */
+/* KilÃ³metros */
 .pila-km {
     font-weight: 700;
     color: #9ca3af;
     font-size: 0.9rem;
     text-align: right;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .panel-interactivo {
         width: 100%;
         padding: 2rem 0;
@@ -866,7 +926,7 @@ article {
 /* =========================================
    PILA INTERACTIVA DENTRO DEL SCROLLYTELLING
    ========================================= */
-/* El último paso tiene más presencia y no desaparece con el scroll */
+/* El Ãºltimo paso tiene mÃ¡s presencia y no desaparece con el scroll */
 .step-final {
     margin: 0 5% 25vh auto;
     max-width: 450px;
@@ -967,7 +1027,7 @@ article {
     transition: background-color 0.3s ease;
 }
 /* =========================================
-   SECCIÓN DETALLE DE RUTAS (TABS)
+   SECCIÃ“N DETALLE DE RUTAS (TABS)
    ========================================= */
 .rutas-detalle-tabs-section {
     background-color: #F2EFE7; /* Beige crema del fondo editorial */
@@ -978,19 +1038,19 @@ article {
     max-width: 1300px;
     margin: 0 auto;
 }
-/* Menú superior */
+/* MenÃº superior */
 .tabs-menu {
     display: flex;
     list-style: none;
     padding: 1rem 0 0 0;
     margin: -1rem 0 0 0;
-    gap: 0.5rem; /* Separación sutil entre pestañas */
+    gap: 0.5rem; /* SeparaciÃ³n sutil entre pestaÃ±as */
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: #F2EFE7;
 }
-/* Diseño de cada pestaña inactiva */
+/* DiseÃ±o de cada pestaÃ±a inactiva */
 .tab-btn {
     flex: 1;
     background-color: #E8E7E3; /* Gris clarito inactivo */
@@ -1014,14 +1074,30 @@ article {
     padding: 4rem 3rem;
     transition: border-left-color 0.3s ease;
 }
-/* Adaptación para celulares */
+/* AdaptaciÃ³n para celulares */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .tabs-menu {
-        flex-wrap: wrap; /* Permite que las pestañas bajen de línea si no entran */
+        flex-wrap: wrap; /* Permite que las pestaÃ±as bajen de lÃ­nea si no entran */
         gap: 0.2rem;
     }
     .tab-btn {
-        flex: 1 1 30%; /* Ocupan 1/3 del ancho en móviles */
+        flex: 1 1 30%; /* Ocupan 1/3 del ancho en mÃ³viles */
         font-size: 0.75rem;
         padding: 0.8rem 0.2rem;
     }
@@ -1031,7 +1107,7 @@ article {
     }
 }
 /* =========================================
-   CONTENIDO INTERNO DE LAS PESTAÑAS (RUTAS)
+   CONTENIDO INTERNO DE LAS PESTAÃ‘AS (RUTAS)
    ========================================= */
 .ruta-tab-header {
     text-align: center;
@@ -1053,13 +1129,15 @@ article {
     letter-spacing: -0.03em;
 }
 .ruta-tab-desc {
+    font-family: 'Inter', sans-serif;
     font-size: 1.15rem;
     color: #20252A;
     line-height: 1.6;
-    font-family: 'Bitter', serif; /* Tipografía de lectura con serifa */
 }
-/* Barra Blanca de Estadísticas */
+/* Barra Blanca de EstadÃ­sticas */
 .ruta-stats-bar {
+    max-width: 780px;
+    margin: 0 auto 4rem auto;
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
@@ -1092,7 +1170,7 @@ article {
     font-weight: 800;
     margin-left: 2px;
 }
-/* El borde rayado dinámico */
+/* El borde rayado dinÃ¡mico */
 .stripe-border-bottom {
     position: absolute;
     bottom: 0;
@@ -1100,8 +1178,24 @@ article {
     width: 100%;
     height: 8px; /* Grosor de la franja rayada */
 }
-/* Adaptación a celulares de la barra blanca */
+/* AdaptaciÃ³n a celulares de la barra blanca */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .ruta-tab-title {
         font-size: 1.8rem;
     }
@@ -1111,43 +1205,43 @@ article {
         padding: 1.5rem;
     }
     .ruta-stat-item {
-        flex: 1 1 30%; /* Tres columnas en móviles */
+        flex: 1 1 30%; /* Tres columnas en mÃ³viles */
     }
 }
 /* =========================================
    ELEMENTOS INTERNOS DE RUTA (MAPA Y TEXTO)
    ========================================= */
-/* Caja gris de reemplazo para el mapa estático */
+/* Caja gris de reemplazo para el mapa estÃ¡tico */
 .ruta-map-placeholder {
     width: 100%;
     height: 500px;
-    background-color: #E8E7E3; /* Gris claro/beige del diseño */
+    background-color: #E8E7E3; /* Gris claro/beige del diseÃ±o */
     margin: 4rem 0;
     border-radius: 4px;
 }
-/* Sección que contiene el texto y el marcador lateral */
+/* SecciÃ³n que contiene el texto y el marcador lateral */
 .ruta-text-section {
     position: relative;
     width: 100%;
     margin-bottom: 4rem;
     display: flex;
-    justify-content: center; /* Centra el párrafo en la pantalla */
+    justify-content: center; /* Centra el pÃ¡rrafo en la pantalla */
 }
-/* Párrafo de lectura */
+/* PÃ¡rrafo de lectura */
 .ruta-text-section .ruta-text-desc {
-    max-width: 780px; /* Limita el ancho para que la lectura sea cómoda (como en la foto) */
+    max-width: 780px; /* Limita el ancho para que la lectura sea cÃ³moda (como en la foto) */
     font-size: 1.15rem;
     line-height: 1.8;
     color: #374151;
     margin: 0;
     font-family: 'Bitter';
 }
-/* Contenedor del marcador de kilómetro (pegado al borde izquierdo) */
+/* Contenedor del marcador de kilÃ³metro (pegado al borde izquierdo) */
 .km-marker-container {
     position: absolute;
     /* El -3rem compensa exactamente el padding izquierdo de .tab-content-area */
     left: -3rem; 
-    top: 0.45rem; /* Alinea visualmente con la primera línea de texto */
+    top: 0.45rem; /* Alinea visualmente con la primera lÃ­nea de texto */
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -1163,19 +1257,35 @@ article {
     color: #6b7280;
     letter-spacing: 0.02em;
 }
-/* Adaptación a celulares para el marcador */
+/* AdaptaciÃ³n a celulares para el marcador */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .ruta-map-placeholder {
         height: 300px;
         margin: 2.5rem 0;
     }
     .km-marker-container {
-        /* En móviles el padding es menor (1rem), compensamos distinto */
+        /* En mÃ³viles el padding es menor (1rem), compensamos distinto */
         left: -1rem; 
     }
 }
 /* =========================================
-   GRILLA DE DOS COLUMNAS (IMÁGENES/GRÁFICOS)
+   GRILLA DE DOS COLUMNAS (IMÃGENES/GRÃFICOS)
    ========================================= */
 .ruta-two-columns {
     display: flex;
@@ -1187,11 +1297,27 @@ article {
 .ruta-img-box {
     flex: 1; /* Hace que ambas cajas ocupen exactamente la mitad del ancho disponible */
     height: 380px;
-    background-color: #E8E7E3; /* Gris claro/beige del diseño */
+    background-color: #E8E7E3; /* Gris claro/beige del diseÃ±o */
     border-radius: 4px;
 }
-/* Adaptación a celulares para que bajen una debajo de la otra */
+/* AdaptaciÃ³n a celulares para que bajen una debajo de la otra */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .ruta-two-columns {
         flex-direction: column;
         gap: 1rem;
@@ -1208,21 +1334,21 @@ article {
     margin: auto;
 }
 /* =========================================
-   CUERPO DE LECTURA (ARTÍCULO Y DESTACADOS)
+   CUERPO DE LECTURA (ARTÃCULO Y DESTACADOS)
    ========================================= */
 .ruta-article-body {
-    max-width: 780px; /* Ancho óptimo de lectura */
+    max-width: 780px; /* Ancho Ã³ptimo de lectura */
     margin: 0 auto 4rem auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Separación automática entre todos los párrafos */
+    gap: 1.5rem; /* SeparaciÃ³n automÃ¡tica entre todos los pÃ¡rrafos */
 }
 .ruta-text-heading {
     font-size: 1.5rem;
     font-weight: 800;
     color: #0F2D3D;
-    margin: 1.5rem 0 -1.5rem 0; /* Separación extra arriba */
-    letter-spacing: -0.02em;
+    margin: 1.5rem 0 -1.5rem 0; /* SeparaciÃ³n extra arriba */
+    
 }
 /* Caja de cita (Blockquote) */
 .ruta-blockquote {
@@ -1250,7 +1376,7 @@ article {
     font-style: normal;
 }
 .ruta-text-desc{
-    max-width: 780px; /* Limita el ancho para que la lectura sea cómoda (como en la foto) */
+    max-width: 780px; /* Limita el ancho para que la lectura sea cÃ³moda (como en la foto) */
     font-size: 1.15rem;
     line-height: 1.8;
     color: #374151;
@@ -1284,7 +1410,7 @@ article {
     line-height: 1.35;
     margin: 0 0 2.5rem 0;
     color: #ffffff;
-    letter-spacing: -0.02em;
+    
 }
 .audio-info {
     display: flex;
@@ -1314,9 +1440,9 @@ article {
     padding: 0.6rem 1.5rem 0.6rem 0.6rem;
     border-radius: 50px; /* Bordes totalmente redondeados */
 }
-/* Botón de Play */
+/* BotÃ³n de Play */
 .audio-play-btn {
-    background-color: #2c343b; /* Gris oscuro del diseño */
+    background-color: #2c343b; /* Gris oscuro del diseÃ±o */
     border: none;
     width: 44px;
     height: 44px;
@@ -1336,7 +1462,7 @@ article {
 .audio-play-btn svg {
     width: 20px;
     height: 20px;
-    margin-left: 3px; /* Centra visualmente el triángulo */
+    margin-left: 3px; /* Centra visualmente el triÃ¡ngulo */
 }
 /* Onda de sonido (Waveform ficticia en CSS) */
 .audio-waveform-css {
@@ -1345,7 +1471,7 @@ article {
     align-items: center;
     gap: 3px;
     height: 24px;
-    opacity: 0.5; /* Lo hace semitransparente como en el diseño */
+    opacity: 0.5; /* Lo hace semitransparente como en el diseÃ±o */
 }
 .audio-waveform-css span {
     flex: 1;
@@ -1364,7 +1490,7 @@ article {
     color: rgba(255, 255, 255, 0.9);
     flex-shrink: 0;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 600px) {
     .ruta-audio-card {
         padding: 2rem;
@@ -1382,13 +1508,13 @@ article {
     height: 20px;
 }
 .audio-play-btn svg.icon-play {
-    margin-left: 3px; /* Centra visualmente el triángulo */
+    margin-left: 3px; /* Centra visualmente el triÃ¡ngulo */
 }
 .audio-play-btn svg.icon-pause {
     margin-left: 0; /* Centra perfectamente las barras de pausa */
 }
 /* =========================================
-   SECCIÓN DE AUDITORÍAS (LISTA NUMERADA)
+   SECCIÃ“N DE AUDITORÃAS (LISTA NUMERADA)
    ========================================= */
 .ruta-audit-section {
     width: 100%;
@@ -1400,24 +1526,24 @@ article {
     font-weight: 800;
     color: #1a2e3b;
     text-align: center;
-    margin: 0 auto 2.5rem auto;
+    margin: 20px auto;
     line-height: 1.3;
-    letter-spacing: -0.02em;
-    max-width: 600px; /* Evita que el título se estire demasiado */
+    
+    max-width: 600px; /* Evita que el tÃ­tulo se estire demasiado */
 }
 .audit-list {
     border-top: 1px solid #d1d5db; /* Línea superior */
     border-bottom: 1px solid #d1d5db; /* Línea inferior */
-    padding: 2rem 3rem;
+    padding: 0;
 }
 .audit-item {
     display: flex;
     gap: 1.5rem;
     padding: 1.5rem 0;
-    border-bottom: 1px solid #e5e7eb; /* Línea divisoria interna muy sutil */
+    border-bottom: 1px solid #e5e7eb; /* LÃ­nea divisoria interna muy sutil */
 }
 .audit-item.border-none {
-    border-bottom: none; /* Le quita la línea interna al último ítem */
+    border-bottom: none; /* Le quita la lÃ­nea interna al Ãºltimo Ã­tem */
 }
 .audit-num {
     font-size: 1.1rem;
@@ -1432,10 +1558,10 @@ article {
     font-family: 'Bitter', serif;
     margin: 0;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 600px) {
     .audit-list {
-        padding: 1.5rem !important;
+        padding: 0 !important;
     }
 
     .audit-item {
@@ -1447,7 +1573,7 @@ article {
     }
 }
 /* =========================================
-   GALERÍA DE FOTOS (GRILLA DE 3 COLUMNAS)
+   GALERÃA DE FOTOS (GRILLA DE 3 COLUMNAS)
    ========================================= */
 .ruta-gallery-section {
     margin: 3rem 0 1rem 0; /* Espaciado final */
@@ -1473,7 +1599,7 @@ article {
     flex-direction: column;
 }
 .gallery-img-box {
-    background-color: #E8E7E3; /* Gris claro/beige del diseño */
+    background-color: #E8E7E3; /* Gris claro/beige del diseÃ±o */
     height: 220px;
     width: 100%;
     border-radius: 4px;
@@ -1507,8 +1633,24 @@ article {
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .gallery-grid {
         flex-direction: column;
         gap: 2rem;
@@ -1528,7 +1670,7 @@ article {
    ========================================= */
 .ruta-split-layout {
     display: flex;
-    gap: 3rem; /* Separación amplia entre foto y texto */
+    gap: 3rem; /* SeparaciÃ³n amplia entre foto y texto */
     margin: 4rem 0;
     align-items: stretch;
 }
@@ -1541,8 +1683,24 @@ article {
     flex-direction: column;
     gap: 1.2rem;
 }
-/* Adaptación a celulares */
+/* AdaptaciÃ³n a celulares */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .ruta-split-layout {
         flex-direction: column;
         gap: 2rem;
@@ -1552,7 +1710,7 @@ article {
     }
 }
 /* =========================================
-   TARJETAS DE GRÁFICOS
+   TARJETAS DE GRÃFICOS
    ========================================= */
 .ruta-chart-wrapper {
     position: relative;
@@ -1561,7 +1719,7 @@ article {
 }
 .ruta-chart-card {
     border-radius: 4px;
-    padding: 2.5rem; /* Le da el marco blanco generoso al gráfico */
+    padding: 2.5rem; /* Le da el marco blanco generoso al grÃ¡fico */
     display: flex;
     justify-content: center;
 }
@@ -1571,13 +1729,29 @@ article {
 .chart-img{
     width: 170%;
 }
-/* Adaptación a celulares para los gráficos */
+/* AdaptaciÃ³n a celulares para los grÃ¡ficos */
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .ruta-chart-card {
         padding: 1rem;
     }
     .ruta-chart-wrapper .km-marker-container {
-        left: -1rem; /* Ajuste del marcador en móviles */
+        left: -1rem; /* Ajuste del marcador en mÃ³viles */
     }
 }
 .scroll-text {
@@ -1595,6 +1769,22 @@ article {
     margin: -1rem 0 0 0;
 }
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     .autovias-title {
         font-size: 2.2rem !important;
     }
@@ -1634,6 +1824,22 @@ article {
     padding-bottom: 50vh !important;
 }
 @media (max-width: 900px) {
+    .tabs-menu { flex-wrap: nowrap !important; gap: 0.2rem !important; overflow-x: auto; padding-bottom: 0.5rem !important; margin-bottom: -0.5rem !important; }
+    .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
+    
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    .ruta-tab-subtitle { font-size: 0.8rem !important; }
+
+    article { position: relative; z-index: 10; }
+
+    .hero-main-title { font-size: 3.2rem !important; }
+    .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
+    .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+
     #scrolly {
         padding: 0 !important;
     }
@@ -1644,4 +1850,10 @@ article {
         border-radius: 0 !important;
         box-shadow: none !important;
     }
+}
+
+.show-on-mobile { display: none; }
+@media (max-width: 900px) {
+    .show-on-mobile { display: inline !important; }
+    .hide-on-mobile { display: none !important; }
 }
