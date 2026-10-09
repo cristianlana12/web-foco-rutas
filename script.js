@@ -123,7 +123,7 @@ map.on('load', () => {
         type: 'line',
         source: 'provincias',
         paint: {
-            'line-color': '#000000',
+            'line-color': '#555555',
             'line-width': 1.5
         }
     });

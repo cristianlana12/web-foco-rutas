@@ -193,46 +193,89 @@ body {
 }
 .landing-comienzo {
     width: 100%;
-    /* Quitamos el height fijo para que la imagen no se corte */
-    overflow: hidden;
+    height: 100vh;
     position: relative;
-    padding: 2rem 0; /* Agrega espacio arriba y abajo */
-    background-color: #f4f6f8;
-}
-
-.carousel-container {
     display: flex;
-    width: 500%; /* Contiene 5 slides (100% * 5) */
-    /* AnimaciÃ³n lateral infinita y continua (linear) para 5 elementos */
-    animation: carousel-slide 20s infinite linear;
-}
-
-.carousel-slide {
-    width: 20%; /* Cada slide ocupa el 100% de la pantalla (100% / 5) */
-    display: flex;
+    align-items: flex-end;
     justify-content: center;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.landing-comienzo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/fondo-header.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    /* Movimiento de profundidad (zoom) */
+    animation: background-zoom 20s infinite alternate ease-in-out;
+}
+
+@keyframes background-zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.35);
+    }
+}
+
+.landing-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Degradado negro de abajo hacia arriba */
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.6) 60%, transparent 100%);
+    z-index: 1;
+}
+
+.landing-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem 2rem 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+}
+
+.landing-content .hero-main-title {
+    color: #ffffff;
+    font-size: 4rem; /* Tamao grande como en la imagen */
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.landing-content .hero-lead {
+    color: #ffffff;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+}
+
+.landing-content .hero-badges {
     margin: 0;
-}
-
-.carousel-slide img {
-    /* La imagen se ve completa y con menos ancho (80% del contenedor) */
-    width: 80%; 
-    max-width: 1200px;
-    height: auto; 
-    object-fit: contain; 
-}
-
-/* AnimaciÃ³n de transiciÃ³n lateral continua para 5 slides */
-@keyframes carousel-slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-80%); } /* Al llegar a la 5ta imagen, repite el ciclo suavemente */
+    scale: 0.8; /* Ajustar el tamao del logo si es necesario */
 }
 /* =========================================
    SECCIÃ“N INTRO Y ESTADÃSTICAS
    ========================================= */
 .intro-section {
-    padding: 4rem 1.5rem;
+    padding: 1rem 1.5rem 4rem 1.5rem;
     background-color: #f4f6f8;
     text-align: center;
 }
@@ -268,7 +311,8 @@ body {
     font-size: 4.2rem;
     font-weight: 900;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
+    line-height: 1.3;
     margin: 0 0 1.5rem 0;
     color: #0F2D3D;
 }
@@ -371,7 +415,7 @@ body {
 }
 .hero-p{
     width: 65%;
-    margin: 1.5rem auto;
+    margin: 0.8rem auto;
     text-align: start;
     font-family: Bitter;
     font-size: 1.2rem;
@@ -380,14 +424,15 @@ body {
     font-size: 40px;
     font-weight: 900;
     line-height: 1.15;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
+    line-height: 1.3;
     margin: 0 0 1.5rem 0;
     color: #0F2D3D;
     text-align: center;
 }
 .map-p{
     width: 45%;
-    margin: 1.5rem auto;
+    margin: 0.8rem auto;
     text-align: start;
     font-family: Bitter;
     text-align: center;
@@ -469,7 +514,7 @@ article {
 .badge-ruta22 { background-color: #674199; }
 .badge-ruta34 { background-color: #E3A711; }
 .step h2 {
-    margin: 0 0 0.8rem 0;
+    margin: 0;
     font-size: 1.6rem;
     font-weight: 700;
 }
@@ -754,7 +799,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -764,7 +809,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     #scrolly {
         flex-direction: column;
@@ -898,7 +943,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -908,7 +953,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .panel-interactivo {
         width: 100%;
@@ -953,7 +998,7 @@ article {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 .recuadro-gris h3 {
-    margin: 0 0 0.8rem 0;
+    margin: 0;
     font-size: 1.45rem;
     color: #111827;
     font-weight: 800;
@@ -1080,7 +1125,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1090,7 +1135,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .tabs-menu {
         flex-wrap: wrap; /* Permite que las pestaÃ±as bajen de lÃ­nea si no entran */
@@ -1126,7 +1171,8 @@ article {
     font-weight: 900;
     color: #1a2e3b; /* Azul/gris muy oscuro */
     margin: 0 0 1.5rem 0;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
+    line-height: 1.3;
 }
 .ruta-tab-desc {
     font-family: 'Inter', sans-serif;
@@ -1184,7 +1230,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1194,7 +1240,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .ruta-tab-title {
         font-size: 1.8rem;
@@ -1263,7 +1309,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1273,7 +1319,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .ruta-map-placeholder {
         height: 300px;
@@ -1306,7 +1352,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1316,7 +1362,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .ruta-two-columns {
         flex-direction: column;
@@ -1337,11 +1383,27 @@ article {
    CUERPO DE LECTURA (ARTÃCULO Y DESTACADOS)
    ========================================= */
 .ruta-article-body {
-    max-width: 780px; /* Ancho Ã³ptimo de lectura */
+    width: 100%;
+    max-width: 100% !important;
     margin: 0 auto 4rem auto;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* SeparaciÃ³n automÃ¡tica entre todos los pÃ¡rrafos */
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.ruta-article-body > * {
+    width: 100%;
+    max-width: 780px;
+}
+
+.ruta-article-body > div[style*="max-width: 1050px"],
+.ruta-article-body > div[style*="max-width: 900px"],
+.ruta-article-body > div.ruta-map-placeholder,
+.ruta-article-body > .stack-on-mobile,
+.ruta-article-body > .ruta-split-layout,
+.ruta-article-body > .ruta-gallery-section {
+    max-width: 1050px !important;
 }
 .ruta-text-heading {
     font-size: 1.5rem;
@@ -1353,7 +1415,7 @@ article {
 /* Caja de cita (Blockquote) */
 .ruta-blockquote {
     margin: 1.5rem 0;
-    padding: 0.5rem 0 0.5rem 1.5rem;
+    padding: 0 0 0 1.5rem;
     /* El borde izquierdo hereda el color desde el HTML */
     border-left: 4px solid #111827; 
     background-color: transparent;
@@ -1363,7 +1425,7 @@ article {
     font-weight: 800;
     color: #1a2e3b;
     line-height: 1.5;
-    margin: 0 0 0.8rem 0;
+    margin: 0;
     font-family: 'Inter', sans-serif; /* Rompe con la serifa para contrastar */
 }
 .ruta-blockquote cite {
@@ -1371,6 +1433,7 @@ article {
     font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
+    margin: 0.8rem 0 0 0;
     color: #9ca3af;
     letter-spacing: 0.05em;
     font-style: normal;
@@ -1576,7 +1639,8 @@ article {
    GALERÃA DE FOTOS (GRILLA DE 3 COLUMNAS)
    ========================================= */
 .ruta-gallery-section {
-    margin: 3rem 0 1rem 0; /* Espaciado final */
+    max-width: 1050px;
+    margin: 4rem auto;
     width: 100%;
 }
 .gallery-eyebrow {
@@ -1639,7 +1703,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1649,7 +1713,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .gallery-grid {
         flex-direction: column;
@@ -1689,7 +1753,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1699,7 +1763,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .ruta-split-layout {
         flex-direction: column;
@@ -1735,7 +1799,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1745,7 +1809,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .ruta-chart-card {
         padding: 1rem;
@@ -1773,7 +1837,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1783,7 +1847,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     .autovias-title {
         font-size: 2.2rem !important;
@@ -1828,7 +1892,7 @@ article {
     .tab-btn { flex: 1 1 auto !important; font-size: 0.85rem !important; padding: 0.8rem 0.5rem !important; white-space: nowrap; text-align: center; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; border-left: none !important; }
     
-    .ruta-tab-title { font-size: 2rem !important; line-height: 1.2 !important; }
+    .ruta-tab-title { font-size: 2rem !important; line-height: 1.3 !important; }
     .ruta-tab-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
     .ruta-tab-subtitle { font-size: 0.8rem !important; }
 
@@ -1838,7 +1902,7 @@ article {
     .hero-lead { font-size: 1.3rem !important; line-height: 1.4 !important; }
     .hero-badges { scale: 0.5 !important; margin-bottom: 0.5rem !important; }
     .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
-    .ruta-text-desc, .ruta-article-body { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
+    .ruta-text-desc, .ruta-article-body, .hero-p { padding-left: 10px !important; padding-right: 10px !important; margin-left: auto !important; margin-right: auto !important; width: 100%; box-sizing: border-box; }
 
     #scrolly {
         padding: 0 !important;
