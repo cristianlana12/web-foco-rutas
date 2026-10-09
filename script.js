@@ -1,4 +1,4 @@
-﻿// 1. VARIABLES GLOBALES Y CONFIGURACIÃ“N DE RUTAS
+// 1. VARIABLES GLOBALES Y CONFIGURACIÃ“N DE RUTAS
 let datosRutasGeoJSON = null;
 let animacionId = null;
 let pasoActualIndex = 0;
@@ -79,7 +79,7 @@ const map = new maplibregl.Map({
         ]
     },
     center: [-65.0, -40.0],
-    zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0)
+    zoom: zoomResp(3.8, 4.0)
 });
 
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
@@ -292,6 +292,11 @@ function dibujarRutas(listaRutasConfigs) {
 }
 
 
+// Zoom responsivo: en mobile (<= 900px) usa un valor propio para que el mapa se vea grande
+function zoomResp(desktop, mobile) {
+    return window.innerWidth <= 900 ? mobile : desktop;
+}
+
 // 6. DIRECTOR DE CÃMARA (CONTROLADOR DE PASOS)
 function ejecutarPaso(index) {
     pasoActualIndex = index;
@@ -303,7 +308,7 @@ function ejecutarPaso(index) {
 
     switch (index) {
         case 0: // Intro: Todo el país
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 0, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -40.0], zoom: zoomResp(3.8, 4.0), pitch: 0, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', -1]);
             if (map.getSource('ruta-animada')) {
                 map.getSource('ruta-animada').setData({ type: 'FeatureCollection', features: [] });
@@ -311,43 +316,43 @@ function ejecutarPaso(index) {
             break;
 
         case 1: // Ruta 3 (Sur)
-            map.flyTo({ center: [-65.0, -44.0], zoom: 4.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -44.0], zoom: zoomResp(4.0, 3.8), pitch: 20, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 3]);
             dibujarRutas([{ numero: 3, color: coloresRutas.ruta3 }]);
             break;
 
         case 2: // Ruta 5 (Centro)
-            map.flyTo({ center: [-61.5, -35.5], zoom: 6.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: [-61.5, -35.5], zoom: zoomResp(6.0, 5.4), pitch: 20, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 5]);
             dibujarRutas([{ numero: 5, color: coloresRutas.ruta5 }]);
             break;
 
         case 3: // Ruta 11 (Litoral/Norte)
-            map.flyTo({ center: [-59.5, -28.8], zoom: 5.4 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: zoomResp([-59.5, -28.8], [-59.5, -29.5]), zoom: zoomResp(5.4, 5.4), pitch: 15, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 11]);
             dibujarRutas([{ numero: 11, color: coloresRutas.ruta11 }]);
             break;
 
         case 4: // Ruta 18 (Entre Ríos)
-            map.flyTo({ center: [-59.0, -31.6], zoom: 7.0 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: [-59.0, -31.6], zoom: zoomResp(7.0, 6.4), pitch: 15, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 18]);
             dibujarRutas([{ numero: 18, color: coloresRutas.ruta18 }]);
             break;
 
         case 5: // Ruta 22 (Alto Valle)
-            map.flyTo({ center: [-65.5, -38.8], zoom: 5.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 20, ...opcionesVuelo });
+            map.flyTo({ center: zoomResp([-65.5, -38.8], [-66.2, -38.8]), zoom: zoomResp(5.8, 4.9), pitch: 20, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 22]);
             dibujarRutas([{ numero: 22, color: coloresRutas.ruta22 }]);
             break;
 
         case 6: // Ruta 34 (NOA / Ejecución parcial)
-            map.flyTo({ center: [-63.5, -29.5], zoom: 4.4 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 15, ...opcionesVuelo });
+            map.flyTo({ center: zoomResp([-63.5, -29.5], [-62.5, -27.5]), zoom: zoomResp(4.4, 4.8), pitch: 15, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', 34]);
             dibujarRutas([{ numero: 34, color: coloresRutas.ruta34 }]);
             break;
 
         case 7: // Panorama general consolidado
-            map.flyTo({ center: [-65.0, -40.0], zoom: 3.8 + (window.innerWidth <= 900 ? -0.8 : 0), pitch: 0, ...opcionesVuelo });
+            map.flyTo({ center: [-65.0, -40.0], zoom: zoomResp(3.8, 4.0), pitch: 0, ...opcionesVuelo });
             if (map.getLayer('capa-ciudades')) map.setFilter('capa-ciudades', ['==', 'ruta', -1]);
             dibujarRutas(todasLasRutas);
             break;

@@ -1921,3 +1921,44 @@ article {
     .show-on-mobile { display: inline !important; }
     .hide-on-mobile { display: none !important; }
 }
+
+/* =========================================================
+   AJUSTES MOBILE FINALES (solo <= 900px, no afecta desktop)
+   ========================================================= */
+@media (max-width: 900px) {
+    /* 1. Parrafos a ancho completo con 10px por lado */
+    .intro-section { padding-left: 0 !important; padding-right: 0 !important; }
+    .intro-container { max-width: 100% !important; }
+    .hero-p, .map-p {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        box-sizing: border-box;
+    }
+    .rutas-detalle-tabs-section { padding-left: 0 !important; padding-right: 0 !important; }
+    .tab-content-area { padding-left: 10px !important; padding-right: 10px !important; }
+    /* El padding ya lo da .tab-content-area: evitamos sumar padding extra */
+    .ruta-article-body,
+    .ruta-article-body .ruta-text-desc,
+    .tab-content-area .ruta-text-desc {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+    .ruta-text-section { padding-left: 0 !important; max-width: 100% !important; }
+    .ruta-article-body > * { max-width: 100% !important; }
+
+    /* 2. Cuadros del scroll del mapa: centrados y translucidos */
+    .step {
+        width: calc(100% - 20px) !important;
+        max-width: 450px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        background-color: rgba(255, 255, 255, 0.72) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10) !important;
+    }
+
+    /* 4. Sin panel final (pila de rutas) en el scroll del mapa */
+    .step-final { display: none !important; }
+}
