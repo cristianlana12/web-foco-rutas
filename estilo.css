@@ -477,7 +477,7 @@ article {
 .step {
     margin: 0 5% 75vh auto;
     max-width: 450px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.72);
     border: none;
     padding: 2.2rem;
     border-radius: 12px;

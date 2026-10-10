@@ -1,4 +1,4 @@
-// 1. VARIABLES GLOBALES Y CONFIGURACIÃ“N DE RUTAS
+﻿// 1. VARIABLES GLOBALES Y CONFIGURACIÃ“N DE RUTAS
 let datosRutasGeoJSON = null;
 let animacionId = null;
 let pasoActualIndex = 0;
@@ -40,42 +40,16 @@ const map = new maplibregl.Map({
     container: 'map',
     style: {
         'version': 8,
-        'glyphs': 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
-        'sources': {
-            'esri-base': {
-                'type': 'raster',
-                'tiles': [
-                    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-                ],
-                'tileSize': 256,
-                'attribution': '&copy; Esri, OpenStreetMap contributors'
-            },
-
-        },
+        'glyphs': 'https://fonts.openmaptiles.org/{fontstack}/{range}.pbf',
+        'sources': {},
         'layers': [
-            // 1. CAPA DE COLOR SÃ“LIDO (Tu color beige)
             {
-                'id': 'fondo-beige',
+                'id': 'fondo-agua',
                 'type': 'background',
                 'paint': {
-                    'background-color': '#DDD9D0'
+                    'background-color': '#e5e4dc'
                 }
-            },
-            // 2. CAPA DEL MAPA (Con opacidad baja para que se transparente el beige)
-            {
-                'id': 'esri-base-layer',
-                'type': 'raster',
-                'source': 'esri-base',
-                'minzoom': 0,
-                'maxzoom': 16,
-                'paint': {
-                    'raster-opacity': 0.55,
-                    'raster-saturation': -1,
-                    'raster-contrast': -0.1,
-                    'raster-brightness-min': 0.3
-                }
-            },
-
+            }
         ]
     },
     center: [-65.0, -40.0],
@@ -85,12 +59,13 @@ const map = new maplibregl.Map({
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
 map.scrollZoom.disable();
 
-
 // 4. CONFIGURAR CAPAS DE MAPLIBRE
 map.on('load', () => {
 
     // 1. Agregar fuentes de datos (GeoJSON)
     map.addSource('provincias', { type: 'geojson', data: 'provincias.geojson' });
+    map.addSource('paises', { type: 'geojson', data: 'paises_limitrofes.geojson' });
+    
     map.addSource('rutas-base', {
         type: 'geojson',
         data: 'vial_nacional.geojson'
@@ -108,45 +83,112 @@ map.on('load', () => {
 
     // 2. Agregar capas en el orden correcto (de abajo hacia arriba)
 
+    // Paises limitrofes
+    map.addLayer({
+        id: 'capa-paises-fill',
+        type: 'fill',
+        source: 'paises',
+        paint: {
+            'fill-color': '#efede6'
+        }
+    });
+    map.addLayer({
+        id: 'capa-paises-line',
+        type: 'line',
+        source: 'paises',
+        paint: {
+            'line-color': '#b2afa8',
+            'line-width': 1.0
+        }
+    });
+
+    // Provincias
     map.addLayer({
         id: 'capa-provincias-fill',
         type: 'fill',
         source: 'provincias',
         paint: {
-            'fill-color': '#e8e6e1',
-            'fill-opacity': 0.8
+            'fill-color': '#dddad3'
         }
     });
-
     map.addLayer({
         id: 'capa-provincias-line',
         type: 'line',
         source: 'provincias',
         paint: {
-            'line-color': '#555555',
-            'line-width': 1.5
+            'line-color': '#b9b4a9',
+            'line-width': 1.0
         }
     });
 
-    // A. LÃ­neas grises de fondo (Todas las rutas)
+    // A. Líneas grises de fondo (Todas las rutas)
     map.addLayer({
         id: 'capa-rutas-base',
         type: 'line',
         source: 'rutas-base',
         paint: {
-            'line-color': '#d1d5db', // Gris un poco mÃ¡s claro
+            'line-color': '#d1d5db',
             'line-width': 2.5,
             'line-opacity': 0.5
         }
     });
 
-    // B. FORZAR la capa de bordes provinciales de Esri para que estÃ© SOBRE las lÃ­neas grises
-    // (Movemos la capa 'esri-borders-layer' encima de 'capa-rutas-base' si es necesario)
-    if (map.getLayer('esri-borders-layer')) {
-        map.moveLayer('esri-borders-layer'); // La mueve al tope temporalmente
-    }
+    // Etiquetas Paises
+    map.addLayer({
+        id: 'capa-paises-labels',
+        type: 'symbol',
+        source: 'paises',
+        layout: {
+            'text-field': ['get', 'nombre'],
+            'text-font': ['Open Sans Regular'],
+            'text-size': 12,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.2
+        },
+        paint: {
+            'text-color': '#a9a498',
+            'text-halo-color': '#efede6',
+            'text-halo-width': 1.5
+        }
+    });
 
-    // C. LÃ­nea de color animada (La ruta activa) -> DEBE ESTAR ARRIBA DE TODO
+    // Etiquetas Provincias
+    map.addLayer({
+        id: 'capa-provincias-labels',
+        type: 'symbol',
+        source: 'provincias',
+        layout: {
+            'text-field': ['get', 'nombre'],
+            'text-font': ['Open Sans Regular'],
+            'text-size': 10,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.1
+        },
+        paint: {
+            'text-color': '#a9a498',
+            'text-halo-color': '#dddad3',
+            'text-halo-width': 1.5
+        },
+        filter: ['!=', ['get', 'nombre'], 'Ciudad Autónoma de Buenos Aires']
+    });
+
+    // C. Línea de color animada (La ruta activa) -> DEBE ESTAR ARRIBA DE TODO
+    map.addLayer({
+        id: 'capa-ruta-animada',
+        type: 'line',
+        source: 'ruta-animada',
+        layout: {
+            'line-cap': 'round',
+            'line-join': 'round'
+        },
+        paint: {
+            'line-color': ['get', 'color'],
+            'line-width': 5,
+            'line-opacity': 1
+        }
+    });
+
+    // Etiquetas Ciudades (sobre rutas)
     map.addLayer({
         id: 'capa-ciudades',
         type: 'symbol',
@@ -165,23 +207,7 @@ map.on('load', () => {
         },
         filter: ['==', 'ruta', -1] // Oculto por defecto
     });
-
-    map.addLayer({
-        id: 'capa-ruta-animada',
-        type: 'line',
-        source: 'ruta-animada',
-        layout: {
-            'line-cap': 'round',
-            'line-join': 'round'
-        },
-        paint: {
-            'line-color': ['get', 'color'],
-            'line-width': 5, // Reduje un pelito el grosor para mÃ¡s elegancia
-            'line-opacity': 1
-        }
-    });
 });
-
 // 5. MOTOR DE ANIMACIÃ“N MULTI-RUTA CON VELOCIDAD Y ORDENAMIENTO DINÃMICO
 function dibujarRutas(listaRutasConfigs) {
     if (!datosRutasGeoJSON) return;
